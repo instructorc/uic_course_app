@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Client-side Languages</title>
+		<link rel="stylesheet" href="../dist/reset.css">
+		<link rel="stylesheet" href="../dist/reveal.css">
+		<link rel="stylesheet" href="../dist/theme/black.css">
+
+		<link rel="stylesheet" href="../dist/uic.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<!--<link rel="stylesheet" href="lib/css/zenburn.css">-->
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../plugin/highlight/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../css/print/pdf.css' : '../css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;800;900&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-background="#f8f8f8">
+				    <h2 style="color: #000;">Intro. Client-side Languages</h2>
+				    <h3 style="color: #000; font-weight: 200;">HTML, CSS and JS</h3>
+				    <!--<h3 style="color: #000; font-weight: 200; text-transform: none;">Survery of Process, Tools, Environments and Version Control</h3>-->
+				    <img src="../img/presentations/uic_logo_blk.PNG" width="300"  alt="UIC logo">
+				</section>
+				
+				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
+				    <h2>9-8 Plan</h2>
+				    <ul style="list-style-type: none; text-align: center;">
+				    	<li>Agenda</li>
+				    	<ul>
+				    		<li>Annoucements</li>
+				    		<ul>
+				    			<li>Quiz this Friday: 30 Multiple choice </li>
+				    			<li>Solidify Team Assignments and Accept Repository</li>
+				    			<li>Asynchronous Class Next Friday - Recorded Video & Meet with your Team</li>
+				    		</ul>
+				    	</ul>
+				    	<li>Objectives </li>
+				        <ul>
+				        	<li>Review - IClicker Assessment</li>
+				        	<li>Context for HTML, CSS and JS</li>
+				        	<li>HTTP Header Information</li>
+				        	<li>CDN's Bootstap and other HTML based frameworks</li>
+				        </ul>
+				        
+
+				    </ul>
+				</section>
+				<section data-background="#fff">
+					<h4>Review Question 1</h4>
+					<p>With consideration of the code below - select the correct option: </p>
+					<div id="flexcontain">
+						<div class="box">
+							<pre>
+								<code style="font-size: 16px; min-height: 440px" class="cs hljs"  data-trim contenteditable>
+									
+								&lt;!DOCTYPE html&gt;
+								&lt;html&gt;
+									&lt;head&gt;
+										&lt;title&gt;Page Title &lt;/title&gt;
+										&lt;style&gt;
+											body{
+												color: black;
+											}
+											.aSection{
+												color: green;
+											}
+											h1{
+												color: blue;
+											}
+										&lt;/style&gt;
+									&lt;/head&gt;
+									&lt;body&gt;
+										&lt;section class="aSection"&gt;
+											&lt;h1&gt;Section 1&lt;/h1&gt;
+										&lt;/section&gt;
+										&lt;section class="aSection"&gt;
+											&lt;h1&gt;Section 2&lt;/h1&gt;
+										&lt;/section&gt;
+										&lt;section class="aSection"&gt;
+											&lt;h1&gt;Section 3&lt;/h1&gt;
+										&lt;/section&gt;
+									&lt;/body&gt;
+								&lt;/html&gt;
+
+
+							</code>
+						</pre>
+					
+						</div>
+						<div class="box">
+							<p>What color is the text?</p>
+							<ul>
+								<li>A. Black</li>
+								<li>B. Green</li>
+								<li>C. Blue</li>
+								<li>D. Cannot be determined</li>
+								<li>E. The default color</li>
+							</ul>
+						</div>
+					</div>
+				
+
+				</section>
+				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
+					<h4>Review Question 2</h4>
+					<p>Which CSS Implementation is page specific?</p>
+					<ul>
+						<li>A. Internal CSS</li>
+						<li>B. External CSS</li>
+						<li>C. Inline CSS</li>
+						<li>D. Cannot be determined</li>
+						<li>E. Page CSS</li>
+					</ul>	
+				</section>
+				<section data-background="#fff">
+					<h4>Review Question 3</h4>
+					<p>What standards are we adhering to when we validate our code using the link below?</p>
+					<ul>
+						<li>A. Mozilla Documentation and Standards</li>
+						<li>B. The standards of set forth by Browser</li>
+						<li>C. World Wide Web Consortium(W3C)</li>
+					</ul>
+				</section>
+				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
+					<h3>Getting up to Speed w/Client-side languages</h3>
+	
+					<p>Helpful Slides and Videos</p>
+					<p><a href="https://instructorc.github.io/site/slides/webdev/html5.html">Understanding HTML</a></p>
+					<p><a href="https://instructorc.github.io/site/slides/webdev/css.html">Understanding CSS</a></p>
+
+				</section>
+				<section data-background="#fff">
+					<h4>How does the browser render the document?</h4>
+					<p>Reviewing Response and Header Info.</p>
+					<div id="flexcontain">
+						<div class="box">
+							<img src="../img/clientside/request_header.PNG"  alt="Request Header">
+					
+						</div>
+						<div class="box">
+							<img src="../img/clientside/response_headers.PNG"   alt="Response Header Info.">
+						</div>
+					</div>
+				
+
+				</section>
+
+				<section data-background="#fff">
+					<h4>Utilizing CDN's, Opensource frameworks, Templates, Design Guides etc..</h4>
+					
+					
+						<p style="font-size: .5em;"><a href="https://www.w3schools.com/bootstrap/bootstrap_get_started.asp"> W3 Schools Bootstrap Tutorial</a></p>
+						<p style="font-size: .5em;"><a href="https://getbootstrap.com/"> Bootstap's Actual site</a></p>
+						<p style="font-size: .5em;"><a href="https://get.foundation/"> Zurb Foundation</a></p>
+						<p style="font-size: .5em;"><a href="https://html5up.net/">Free Opensource Templates</a></p>
+						<p style="font-size: .5em;"><a href="https://material.io/">Design Guides </a></p>
+		
+				</section>
+
+
+
+
+				<!--<section data-background="#fff">
+					<h3>DFD Components</h3>
+					<p style="font-size: 24px;"> Front-end Frameworks    &#10022;  Back-end Frameworks &#10022;  Automation Tools &#10022;  Monitoring Tools</p>
+					<div id="flexcontain">
+						<div class="box_two" style="font-size: 22px; margin: 10px;">
+							<h3>Front-end frameworks</h3>
+							<ul>	
+								<li style="font-size: 20px;"><b>HTML Template Based</b>- Bootstrap, Zurb, PureCSS, etc. </li>
+								<li style="font-size: 20px;"><b>Component-Based</b>- React, Angular, Vue, Ember, etc.</li>
+								<li style="font-size: 20px;"><b>Template Binding</b>- HandleBars, Mustashe, Ejs, knockout, jade, etc.  </li>
+
+							</ul>
+						</div>
+						<div class="box_two" style="font-size: 22px; margin: 10px;">
+							<h3>Back-end Frameworks</h3>
+							<ul>	
+								<li style="font-size: 20px;"><b>Routing</b>- Express.js, Hapi.js, page.js </li>	 
+								<li style="font-size: 20px;"><b>Persistant Data Source</b>- Relational Databases [MySQL, PostgreSQL], NoSQL [MongoDB, CouchDB/Cloudant], Graph Databases, ect.. </li>
+							</ul>
+						</div>
+						<div class="box_two" style="font-size: 22px; margin: 10px;">
+							<h3>Automation</h3>
+							<ul>	
+								<li style="font-size: 20px;"><b>Module Bundler/Task Runner</b>- Webpack, Grunt, Gulp  </li>
+								<li style="font-size: 20px;"><b>Testing</b>- Jest, Mocha, Jasmine, ect. </li>
+							</ul>
+						</div>
+
+						
+					</div>
+				</section>
+				<section data-background="#fff">
+					<h3>DFD Example #1</h3>
+				
+					<img src="../img/arch/monolithic_micro.png" width="700" alt="Monolithic and Microservices" title="source: https://medium.com/koderlabs/introduction-to-monolithic-architecture-and-microservices-architecture-b211a5955c63">
+		
+				</section>
+				<section data-background="#fff">
+					<h3>DFD Example #2</h3>
+				
+					<img src="../img/arch/monolithic_micro.png" width="700" alt="Monolithic and Microservices" title="source: https://medium.com/koderlabs/introduction-to-monolithic-architecture-and-microservices-architecture-b211a5955c63">
+		
+				</section>
+
+	
+
+
+				<!--
+				<section data-background="images/intro/sidebanner.png" data-background-size="contain" data-background="#fff" style="top: 0;">
+					<h1>Fire Evacuation</h1>
+					
+					<div id="flexcontain">
+						<div class="box_two" style=" margin: 10px;">
+							<ul>	
+								<li style="font-size: 80%;">Please do not leave campus if there is a fire or if the fire alarm sounds.</li>
+								<li style="font-size: 80%;">The Computer Technology department will meet in the area circled in yellow.  The area is next to the highway.</li>
+							</ul>
+						</div>
+						<div class="box_two" style="font-size: 22px;">
+							<img src="images/intro/fireevac.png" alt="picture of fire evacuation">
+						</div>
+					</div>
+				</section>-->
+				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
+					<h1>Questions?</h1>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="../dist/reveal.js"></script>
+		<script src="../plugin/notes/notes.js"></script>
+		<script src="../plugin/markdown/markdown.js"></script>
+		<script src="../plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+	</body>
+</html>
