@@ -417,7 +417,7 @@
 								</code>
 							</pre>
 						</div>
-						<div class="box" style="max-width: 350px;">
+						<div class="box" style="max-width: 320px;">
 							<p>What is the output, assuming it is in the context of an otherwise correct program?</p>
 							<table>
 							  <!--<tr>
@@ -451,8 +451,35 @@
 					
 
 				</section>
+				
+				<section data-background="#fff">
+					<h3>Why was "A" the anwser?</h3>
+					
+					<p style="font-size: 28px;">This is due to the evaluation of the string based upon the ASCII table</p>
+					<img src="../img/selection_looping/ascii.png" width="730" alt="ASCII Table">
+					<p style="font-size: 24px;">In your next course (CS 211) you will use arrays of char in C, rather than the C++ string type, which is
+what we will use this semester. </p>
+				</section>
+				<section data-background="#fff">
+					<h4>String Operations Cont.</h4>
+					<p>For built-in C++ strings it is useful to know that you can use square brackets (like an array) to
+reference particular elements.  For instance: 
+</p>
+						<pre>
+							<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+								
+   string text = "All generalizations are false"; 
+
+   cout << text[ 0] << endl;   // Access part of the string, output is 'A' 
+
+   text[ 0] = 'I';             // Change part of the string, changing 'A' to 'I' 
+							</code>
+						</pre>
+					
+
+				</section>
 				<section data-background="images/intro/chrome.jpg">
-					<h1 style="background-color: rgba(0,0,0,.5); padding: .5em;">Loops</h1>
+					<h1 style="background-color: rgba(0,0,0,.5); padding: .5em;">Loops Next</h1>
 				</section>
 				<!--<section data-background="#fff">
 					<h3>Terms</h3>
