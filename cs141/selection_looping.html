@@ -500,64 +500,309 @@ reference particular elements.  For instance:
 					<!--<img src="images/methods/methods_withparams.PNG" style="float: right;" width="400" alt="Diagram of program with parameters">-->
 					
 					<div id="flexcontain">
-						<div class="box red" style="font-size: 20px; margin: 10px; background-color: #eee; height: 225px; color: #111;"><p><b style="font-size: 28px;">break</b> <br> is useful when we are in the middle of a loop and want to break out past the end of the loop.</p></div>
-						<div class="box blue" style="font-size: 20px; margin: 10px; background-color: #eee; height: 225px; color: #111;"><p><b style="font-size: 28px;">continue</b> <br>is useful when we are in the middle of a loop and we want to go back up to the top of the loop.</p></div>
+						<div class="box red" style="font-size: 28px; margin: 10px; background-color: #eee; height: 225px; color: #111;"><p><b style="font-size: 28px;">break</b> <br> is useful when we are in the middle of a loop and want to break out past the end of the loop.</p></div>
+
 
 					</div>
 				</section>
+				<section data-background="#fff">
+					<h3>Break and Continue</h3>
+				
+					<img src="../img/selection_looping/continue_statement.png" style="float: right;" width="400" alt="continue statement image explanation">
+				
+					<div id="flexcontain">
+
+						<div class="box blue" style="font-size: 28px; margin: 10px; background-color: #eee; height: 225px; color: #111;"><p><b style="font-size: 28px;">continue</b> <br>is useful when we are in the middle of a loop and we want to go back up to the top of the loop.</p></div>
+
+					</div>
+				</section>
+				<section data-background="#fff">
+					
+					<h4>Break and Continue</h4>
+					<div id="flexcontain">
+						<div class="box">
+							<pre>
+								<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+									// breakAndContinue.cpp 
+									#include &lt;iostream&gt; 
+									
+									using namespace std; 
+									
+									int main() {  
+									
+									char userInput = ' '; 
+									
+									while( true) { 
+									
+									   cout << "Enter 'r' to retry: "; 
+									   cin >> userInput;       
+									
+									   //userInput = getchar(); // getchar() reads every character, including white space 
+									   if( userInput == 'r')  
+									      continue; 
+									   else  
+									      break; 
+									}  
+									
+									cout << "Done." << endl; 
+									
+									return 0; 
+									} 
+								</code>
+							</pre>
+						<p>Consider the character 'c' and then pressing space three times and then the return key</p>
+						</div>
+						<div class="box" style="max-width: 320px;">
+							<p>After the original prompt to "Enter 'r' to retry:",  what is the output if the user input is the character 'r'? :</p>
+							<table>
+							  <!--<tr>
+							    <th><strong>Options</strong></th>
+							    <th><strong>Output</strong></th>
+							
+							  </tr>-->
+							  <tr>
+							    <td>A.</td>
+							    <td> There is no output, since the program is waiting for input.</td>
+							  
+							  </tr>
+							  <tr>
+							    <td>B.</td>
+							    <td>Enter 'r' to retry:.</td>
+							   
+							  </tr>
+							  <tr>
+							    <td>C.</td>
+							    <td>Enter 'r' to retry: Done.</td>
+							   
+							  </tr>
+							  <tr>
+							    <td>D.</td>
+							    <td>Enter 'r' to retry: <br>
+									Enter 'r' to retry: Done.</td>
+							   
+							  </tr>
+							  <tr>
+							    <td>E.</td>
+							    <td>Done. </td>
+							   
+							  </tr>
+							</table>
+						</div>
+					</div>
+					
+
+				</section>
+	
 				<section data-background="../img/arch/devops.jpg">
 					<h1 style="background-color: White; padding: .5em;">Functions</h1>
 				</section>
 				<section data-background="#fff">
 					<h3>Function Info.</h3>
+					<p>Why use functions; transfer of control; return types; parameters; declaration vs. definition; overloading; use in problem decomposition.</p>
 					<div id="flexcontain">
-						<div class="box red" style="font-size: 20px; margin: 10px; background-color: #D9E5D6; color: #1f2d3d;"><p>Functions contains a series of statements that carry out a task</p></div>
-						<div class="box blue" style="font-size: 20px; margin: 10px; background-color: #00A7E1; color: white;"><p> You can Invoke or call a Function from another program or method</p></div>
-						<div class="box green" style="font-size: 22px; margin: 10px; background-color: #EDDEA4; color: #1f2d3d;"><p>A program can contain an unlimited number of Functions</p></div>
-						<div class="box yellow" style="font-size: 22px; margin: 10px; background-color: #6369D1; color: white;"><p>A Function can be called an unlimited number of times</p></div>
-						<div class="box orange" style="font-size: 22px; margin: 10px; background-color: #FF9B42; color: #1f2d3d;"><p>Functions provide structure for testing and maintainability</p></div>
+						<div class="box red" style="font-size: 20px; height: 135px; margin: 10px; background-color: #D9E5D6; color: #1f2d3d;"><p>Functions contains a series of statements that carry out a task</p></div>
+						<div class="box blue" style="font-size: 20px; height: 135px; margin: 10px; background-color: #00A7E1; color: white;"><p> You can Invoke or call a Function from another program or method</p></div>
+						<div class="box green" style="font-size: 22px; height: 135px; margin: 10px; background-color: #EDDEA4; color: #1f2d3d;"><p>A program can contain an unlimited number of Functions</p></div>
+						<div class="box yellow" style="font-size: 22px; height: 135px; margin: 10px; background-color: #6369D1; color: white;"><p>A Function can be called an unlimited number of times</p></div>
+						<div class="box orange" style="font-size: 22px; height: 135px; margin: 10px; background-color: #FF9B42; color: #1f2d3d;"><p>Functions provide structure for testing and maintainability</p></div>
 					</div>
-				
+					<p></p>
+				</section>
+
+				<section data-background="#fff">
+					<h3>Why use Functions</h3>
+					<div id="flexcontain">
+						<div class="box" style="font-size: 22px; height: 400px; margin: 10px;">
+							<p>Miller's Magic number 7 +/- 2: Problem decomposition</p>
+							<ul>
+								<li>If this piques your interest, take a look at the original article: 
+    Miller, George A. 1956. The magic number seven, plus or minus two: Some limits on our capacity for processing information. Psychological Review 63: 81-97. </li>
+  								<li>How do you eat a bicycle?</li>
+							</ul>
+							
+						</div>
+						<div class="box" style="font-size: 22px; height: 400px; margin: 10px;">
+							<iframe width="560" height="315" src="https://www.youtube.com/embed/8ZuFb3GBHuU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						</div>
+
+					</div>
+
+				</section>
+				<section data-background="#fff">
+					
+					<h4>Transfer of Control - Example</h4>
+					<div id="flexcontain">
+						<div class="box">
+							<pre>
+								<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+									#include &lt;iostream&gt; 
+									using namespace std; 
+									
+									void One() 
+									{ 
+									   cout << "Testing one\n"; 
+									} 
+									
+									int main() 
+									{ 
+									   cout << "In main\n"; 
+									   One(); 
+									   cout << "Back in main.\n"; 
+									
+									   return 0; 
+									} 
+								</code>
+							</pre>
+						
+						</div>
+						
+					
+
+				</section>
+				<section data-background="#fff">
+					
+					<p style="font-size: 30px; font-weight: 900;">Write a program to generate and print a random number (e.g. lottery number).   
+						What libraries are needed? How can you find which library is needed if you don't know already?</p>
+					<div id="flexcontain">
+						<div class="box">
+							<pre>
+								<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+									// rand.cpp   Random number generator program. 
+									
+									//    1. What do we need to change so that the random number is  
+									//       different each time? 
+									
+									//    2. Where do we look to get information on this?  
+									
+									#include &lt;iostream&gt; 
+									using namespace std; 
+									
+									int main() { 
+									
+									int winningNumber = rand()%100;  
+									
+									cout << "The winning number is: " << winningNumber << endl; 
+									
+									return 0; 
+									
+									} 
+
+ 
+								</code>
+							</pre>
+
+						</div>
+
+					</div>
+				</section>
+				<section data-background="#fff">
+					
+					<p style="font-size: 30px; font-weight: 900;">Below is a second version that includes the libraries for <code>rand()</code> and <code>time()</code>.  Note that to use a C library (e.g. <code>stdlib.h</code>) in a C++ program, we add the letter 'c' in front of the library name, and leave off the ".h", as illustrated below: </p>
+					<div id="flexcontain">
+						<div class="box">
+							<pre>
+								<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+									// rand2.cpp   Second random number generator example. 
+									// Running program gives: 
+									//    6 1 6 5 3 2 5 0 5 6 0 5 6 6 0 Done. 
+									// Running it a second time gives: 
+									//    0 4 2 0 1 0 1 1 3 6 5 3 0 1 1 Done. 
+									#include &lt;iostream&gt; 
+									#include &lt;cstdlib&gt;    // for rand().  The original C library is: stdlib.h 
+									#include &lt;ctime&gt;      // for time( 0).  The original C library is: time.h 
+									
+									using namespace std; 
+									
+									int main() { 
+										// Initialize random number generator to give different values each time. 
+										// We will normally not do this in our programs, so results are predictable. 
+										srand( time(0));  
+									
+										// Use mod 7 to give random numbers in the range 0 to 6 
+									  	for( int i = 0; i < 15; i++)  { 
+									       cout << rand()%7 << " ";   
+									    }    
+									
+										cout << "Done. " << endl; 
+									
+									return 0;   
+									} 
+								</code>
+							</pre>
+
+						</div>
+
+					</div>
+				</section>
+				<section data-background="#fff">
+					
+					<h4>A Basic Function</h4>
+					<div id="flexcontain">
+						<div class="box">
+							<pre>
+								<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+							   returnType  functionName( type1 parameter1, type2 parameter2, ...) 
+							   {  
+							        // code goes here...  
+							   } 
+								</code>
+							</pre>
+
+						</div>
+
+					</div>
+				</section>
+				<section data-background="#fff">
+					
+					<h4>Parameters</h4>
+					<p>Passing in values using parameters</p>
+					<p>E.g. Pass two numbers to be added to a function, which returns the sum: <code>parameters.cpp</code> </p>
+					<div id="flexcontain">
+						<div class="box">
+							<pre>
+								<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+							   // paameters.cpp  
+									// Illustrate passing values into a function, using  
+									// the function return value to return a computed result. 
+
+									include &lt;iostream&gt; 
+									
+									using namespace std; 
+
+									int f(int x, int y) { 
+									
+										return x + y; 
+									} 
+
+									int main() { 
+									
+										int x=3, y=5; 
+
+										cout << "Sum of numbers is: " << f(x,y) << endl; 
+										cout << endl; 
+									
+										return 0; 
+									} 
+									</code>
+							</pre>
+
+						</div>
+
+					</div>
 				</section>
 				<!--<section data-background="#fff">
-					<h3>Terms</h3>
+					<h3>In Class Activity </h3>
+					<img src="../img/arch/produce_list_cp.jpg" width="400" alt="Graphic of grocery items">
 					<div id="flexcontain">
-						<div class="box red" style="font-size: 22px; margin: 10px; background-color: #2d4650;"><p><b style="font-size: 32px;">Constant</b> <br>Cannot be changed after a program is compiled. Utilize keyword "const"</p></div>
-						<div class="box blue" style="font-size: 22px; margin: 10px; background-color: #2d4650;"><p><b style="font-size: 32px;">Literal constant</b> <br>Its value is taken literally at each use</p></div>
-						<div class="box green" style="font-size: 22px; margin: 10px; background-color: #2d4650;"><p><b style="font-size: 32px;">Variable</b> <br>A named location in computer memory that can hold different values at different points in time</p></div>
-						<div class="box yellow" style="font-size: 22px; margin: 10px; background-color: #2d4650; height: 285px;"><p><b style="font-size: 32px;">Data Type</b> <br>Describes the format and size of (amount of memory occupied by) a data item</p></div>
-						<div class="box orange" style="font-size: 22px; margin: 10px; background-color: #2d4650; height: 285px;"><p><b style="font-size: 32px;">Intrinsic Types</b> <br>Build-in Data Types | <b>Alias</b> names for a class in the System namespace | All of the built-in types except object and string are called <b>simple types</b></p></div>
-						<div class="box orange" style="font-size: 22px; margin: 10px; background-color: #2d4650; height: 285px;"><p><b style="font-size: 32px;">Unicode</b> <br>is the system that provides a numeric value for every character.</p></div>
+						<div class="box red" style="font-size: 20px; margin: 10px; background-color: #eee; height: 225px; color: #111;"><p><b style="font-size: 28px;">Step 1</b> <br> Using the above image - define a global array within the main method that holds each of the items above. </p></div>
+						<div class="box blue" style="font-size: 20px; margin: 10px; background-color: #eee; height: 225px; color: #111;"><p><b style="font-size: 28px;">Step 2</b> <br>Create a method that outputs each of the items within the diagram</p></div>
+						<div class="box green" style="font-size: 22px; margin: 10px; background-color: #eee; height: 225px; color: #111;"><p><b style="font-size: 28px;">Step 3</b> <br>Create a method that ask the end user to input a item that needs to be picked up at the grocery store.</p></div>
+
 					</div>
-
-				</section>
-				<section data-background="#fff">
-					<h4>Data Types</h4>
-					<img src="images/intro/datatypes.PNG" width="670" height="560" alt="Built-in Data Types in c#">
-				</section>
-				<section data-background="#fff">
-					<h4>Reserved var keyword</h4>
 					
-						<pre>
-							<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
-								
-	class Program
-    {
-        static void Main(string[] args)
-        {
-  
-		  string[] learningModels = { "Distance Learning", "Online Learning", "HyBrid Learning" };
-		  var results = learningModels.ToList&lt;string&gt;().Where(x => x.Contains("H")).First();
-
-		  Console.WriteLine(results);
- 	}
-    }
-							</code>
-						</pre>
-					<p>C# lets you declare local variables without giving them <strong>explicit</strong> types.  The data type is <strong>implied</strong> at runtime.</strong>  </p>
-
-				</section>
-				<section data-background="images/intro/string.jpg">
+				
+				</section>-->
+				<!--<section data-background="images/intro/string.jpg">
 					<h3 style="text-shadow: 4px 7px 10px #333;">Outputting Data</h3>
 					<div id="flexcontain">
 						<div class="box red" style="font-size: 24px; margin: 10px; padding-top: 90px; border-radius: 150px; height: 200px; background-color: white; color: #333; font-weight: 900;"><p>CONCATENATION</p></div>
