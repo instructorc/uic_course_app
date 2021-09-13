@@ -33,13 +33,13 @@
 			<div class="slides">
 				<section data-background="#f8f8f8">
 				    <h2 style="color: #000;">Intro. Client-side Languages</h2>
-				    <h3 style="color: #000; font-weight: 200;">HTML, CSS and JS</h3>
+				    <h3 style="color: #000; font-weight: 200;">Page Layout, Responsive Design, JS, XSS</h3>
 				    <!--<h3 style="color: #000; font-weight: 200; text-transform: none;">Survery of Process, Tools, Environments and Version Control</h3>-->
 				    <img src="../img/presentations/uic_logo_blk.PNG" width="300"  alt="UIC logo">
 				</section>
 				
 				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
-				    <h2>9-8 Plan</h2>
+				    <h2>Week 4 Plan</h2>
 				    <ul style="list-style-type: none; text-align: center;">
 				    	<li>Agenda</li>
 				    	<ul>
@@ -47,15 +47,16 @@
 				    		<ul>
 				    			<li>Quiz this Friday: 30 Multiple choice &#x2713; </li>
 				    			<li>Solidify Team Assignments and Accept Repository &#x2713;</li>
-				    			<li>Asynchronous Class Next Friday - Recorded Video & Meet with your Team</li>
+				    			<li>Asynchronous Class this Friday - Recorded Video & Meet with your Team</li>
 				    		</ul>
 				    	</ul>
 				    	<li>Objectives </li>
 				        <ul>
 				        	<li>Review - IClicker Assessment</li>
-				        	<li>Context for HTML, CSS and JS</li>
-				        	<li>HTTP Header Information</li>
-				        	<li>CDN's Bootstap and other HTML based frameworks</li>
+				        	<li>Page Layout</li>
+				        	<li>Responsive Design</li>
+				        	<li>Intro. To JS. </li>
+				        	<li>XSS Attack Mitigation and CSP</li>
 				        </ul>
 				        
 
@@ -63,7 +64,7 @@
 				</section>
 				<section data-background="#fff">
 					<h4>Review Question 1</h4>
-					<p>With consideration of the code below - select the correct option: </p>
+					
 					<div id="flexcontain">
 						<div class="box">
 							<pre>
@@ -74,27 +75,29 @@
 									&lt;head&gt;
 										&lt;title&gt;Page Title &lt;/title&gt;
 										&lt;style&gt;
-											body{
-												color: black;
-											}
 											.aSection{
-												color: green;
+												flex: 1 0 300px;
+												height: 300px;
+												border: 2px solid green;
 											}
-											h1{
-												color: blue;
+											#container{
+												margin: auto;
+												width: 80%;
+												display: flex;
 											}
+							
 										&lt;/style&gt;
 									&lt;/head&gt;
 									&lt;body&gt;
-										&lt;section class="aSection"&gt;
-											&lt;h1&gt;Section 1&lt;/h1&gt;
-										&lt;/section&gt;
-										&lt;section class="aSection"&gt;
-											&lt;h1&gt;Section 2&lt;/h1&gt;
-										&lt;/section&gt;
-										&lt;section class="aSection"&gt;
-											&lt;h1&gt;Section 3&lt;/h1&gt;
-										&lt;/section&gt;
+									   &lt;div id="container"&gt;
+											&lt;section class="aSection"&gt;
+												&lt;h1&gt;Section 1&lt;/h1&gt;
+											&lt;/section&gt;
+											&lt;section class="aSection"&gt;
+												&lt;h1&gt;Section 2&lt;/h1&gt;
+											&lt;/section&gt;
+										&lt;/div&gt;
+
 									&lt;/body&gt;
 								&lt;/html&gt;
 
@@ -104,13 +107,13 @@
 					
 						</div>
 						<div class="box">
-							<p>What color is the text?</p>
+							<p>Observing the code to the left, select the option that depicts how the elements that have .aSection will render in browser  </p>
 							<ul>
-								<li>A. Black</li>
-								<li>B. Green</li>
-								<li>C. Blue</li>
+								<li>A. They will not display</li>
+								<li>B. Display Vertically</li>
+								<li>C. Display Horizontally</li>
 								<li>D. Cannot be determined</li>
-								<li>E. The default color</li>
+							
 							</ul>
 						</div>
 					</div>
@@ -119,59 +122,33 @@
 				</section>
 				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
 					<h4>Review Question 2</h4>
-					<p>Which CSS Implementation is page specific?</p>
+					<p>Which CSS property will determines if CSS Grid is implemented into page layout: </p>
 					<ul>
-						<li>A. Internal CSS</li>
-						<li>B. External CSS</li>
-						<li>C. Inline CSS</li>
-						<li>D. Cannot be determined</li>
-						<li>E. Page CSS</li>
+						<li>A. display property</li>
+						<li>B. align property</li>
+						<li>C. float property</li>
+						<li>D. none of the options presented</li>
+					
 					</ul>	
 				</section>
 				<section data-background="#fff">
 					<h4>Review Question 3</h4>
-					<p>What standards are we adhering to when we validate our code using the link below?</p>
+					<p>True or False: To implement CSS Flexbox or CSS Grid, A parent element/container must be present?</p>
 					<ul>
-						<li>A. Mozilla Documentation and Standards</li>
-						<li>B. The standards of set forth by Browser</li>
-						<li>C. World Wide Web Consortium(W3C)</li>
+						<li>A. True</li>
+						<li>B. False</li>
+					
 					</ul>
 				</section>
 				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
-					<h3>Getting up to Speed w/Client-side languages</h3>
+					<h3>Page Layout</h3>
 	
 					<p>Helpful Slides and Videos</p>
-					<p><a href="https://instructorc.github.io/site/slides/webdev/html5.html">Understanding HTML</a></p>
-					<p><a href="https://instructorc.github.io/site/slides/webdev/css.html">Understanding CSS</a></p>
+					<p><a href="https://instructorc.github.io/site/slides/webdev/layout.html">Understanding HTML</a></p>
 
-				</section>
-				<section data-background="#fff">
-					<h4>How does the browser render the document?</h4>
-					<p>Reviewing Response and Header Info.</p>
-					<div id="flexcontain">
-						<div class="box">
-							<img src="../img/clientside/request_header.PNG"  alt="Request Header">
-					
-						</div>
-						<div class="box">
-							<img src="../img/clientside/response_headers.PNG"   alt="Response Header Info.">
-						</div>
-					</div>
-				
 
 				</section>
 
-				<section data-background="#fff">
-					<h4>Utilizing CDN's, Opensource frameworks, Templates, Design Guides etc..</h4>
-					
-					
-						<p style="font-size: .5em;"><a href="https://www.w3schools.com/bootstrap/bootstrap_get_started.asp"> W3 Schools Bootstrap Tutorial</a></p>
-						<p style="font-size: .5em;"><a href="https://getbootstrap.com/"> Bootstap's Actual site</a></p>
-						<p style="font-size: .5em;"><a href="https://get.foundation/"> Zurb Foundation</a></p>
-						<p style="font-size: .5em;"><a href="https://html5up.net/">Free Opensource Templates</a></p>
-						<p style="font-size: .5em;"><a href="https://material.io/">Design Guides </a></p>
-		
-				</section>
 
 
 
