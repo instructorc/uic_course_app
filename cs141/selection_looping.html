@@ -804,6 +804,321 @@ reference particular elements.  For instance:
 					<h1 style="background-color: White; padding: .5em;">Functions<br>Call by Value vs. Reference 
 </h1>
 				</section>
+
+				<section data-background="#fff">
+					
+					<h4></h4>
+					<p>Consider the following program to swap to numbers</p>
+					<div id="flexcontain">
+						<div class="box">
+							<pre>
+								<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+								// swap.cpp  
+								//    Use parameters to swap two numbers 
+
+								#include &lt;iostream&gt; 
+								
+								using namespace std; 
+								
+								void swap(int x, int y) { 
+								
+									x = y; 
+									y = x; 
+								
+									cout << "Inside swap, x and y are: " << x << " " << y << endl; 
+								} 
+								
+								int main() { 
+								
+									int x = 3, y = 5; 
+									cout << "Before swap, x and y are: " << x << " " << y << endl; 
+									swap( x,y); 
+									cout << " After swap, x and y are: " << x << " " << y << endl; 
+									cout << endl; 
+									return 0; 
+								
+								}
+								</code>
+							</pre>
+						
+						</div>
+						<div class="box" style="max-width: 300px;">
+							<p>What are the values for x and y when printed inside function <code>swap( x,y)</code>?</p>
+							<table>
+							  <!--<tr>
+							    <th><strong>Options</strong></th>
+							    <th><strong>Output</strong></th>
+							
+							  </tr>-->
+							  <tr>
+							    <td>A.</td>
+							    <td> 3 3</td>
+							  
+							  </tr>
+							  <tr>
+							    <td>B.</td>
+							    <td>3 5</td>
+							   
+							  </tr>
+							  <tr>
+							    <td>C.</td>
+							    <td>5 3</td>
+							   
+							  </tr>
+							  <tr>
+							    <td>D.</td>
+							    <td>5 5</td>
+							   
+							  </tr>
+	
+							</table>
+						</div>
+					</div>
+					
+
+				</section>
+				<section data-background="#fff">
+					
+					
+					<p>Suppose we change the swap function as follows, with the rest of the code remaining the same: <code>void swap(int x, int y)</code> </p>
+					<div id="flexcontain">
+						<div class="box">
+							<pre>
+								<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+								// swap.cpp  
+								// Use parameters to swap two numbers 
+
+								#include &lt;iostream&gt; 
+								
+								using namespace std; 
+								
+								void swap(int x, int y) { 
+								
+									int temp = x; 
+									x = y; 
+									y = temp; 
+									cout << "Inside swap, x and y are: " << x << " " << y << endl; 
+								} 
+								
+								int main() { 
+								
+									int x = 3, y = 5; 
+									cout << "Before swap, x and y are: " << x << " " << y << endl; 
+									swap( x,y); 
+									cout << " After swap, x and y are: " << x << " " << y << endl; 
+									cout << endl; 
+									return 0; 
+								
+								}
+								</code>
+							</pre>
+					
+						</div>
+						<div class="box" style="max-width: 300px;">
+							<p>Again, what are the values for x and y when printed inside function <code>swap( x,y)</code>?</p>
+							<table>
+							  <!--<tr>
+							    <th><strong>Options</strong></th>
+							    <th><strong>Output</strong></th>
+							
+							  </tr>-->
+							  <tr>
+							    <td>A.</td>
+							    <td> 3 3</td>
+							  
+							  </tr>
+							  <tr>
+							    <td>B.</td>
+							    <td>3 5</td>
+							   
+							  </tr>
+							  <tr>
+							    <td>C.</td>
+							    <td>5 3</td>
+							   
+							  </tr>
+							  <tr>
+							    <td>D.</td>
+							    <td>5 5</td>
+							   
+							  </tr>
+	
+							</table>
+						</div>
+					</div>
+
+				</section>
+				<section data-background="#fff">
+					
+					
+					<p>Below is the updated version of the program that includes the updated version of the swap(…) function:  <code>void swap(int x, int y)</code> </p>
+					<div id="flexcontain">
+						<div class="box">
+							<pre>
+								<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+								// swap.cpp  
+								// Use parameters to swap two numbers 
+
+								#include &lt;iostream&gt; 
+								
+								using namespace std; 
+								
+								void swap(int x, int y) { 
+								
+									int temp = x; 
+									x = y; 
+									y = temp; 
+									cout << "Inside swap, x and y are: " << x << " " << y << endl; 
+								} 
+								
+								int main() { 
+								
+									int x = 3, y = 5; 
+									cout << "Before swap, x and y are: " << x << " " << y << endl; 
+									swap( x,y); 
+									cout << " After swap, x and y are: " << x << " " << y << endl; 
+									cout << endl; 
+									return 0; 
+								
+								}
+								</code>
+							</pre>
+					
+						</div>
+						<div class="box" style="max-width: 300px;">
+							<p>Now what are the values for x and y when printed in main() after the call to function <code>swap( x,y)</code>?</p>
+							<table>
+							  <!--<tr>
+							    <th><strong>Options</strong></th>
+							    <th><strong>Output</strong></th>
+							
+							  </tr>-->
+							  <tr>
+							    <td>A.</td>
+							    <td> 3 3</td>
+							  
+							  </tr>
+							  <tr>
+							    <td>B.</td>
+							    <td>3 5</td>
+							   
+							  </tr>
+							  <tr>
+							    <td>C.</td>
+							    <td>5 3</td>
+							   
+							  </tr>
+							  <tr>
+							    <td>D.</td>
+							    <td>5 5</td>
+							   
+							  </tr>
+	
+							</table>
+						</div>
+					</div>
+
+				</section>
+				<section data-background="#fff">
+					
+					<h4>Reference Parameters</h4>
+					<p> To get the swap function to swap the numbers and reflect those changes back to the calling code, we must add an ampersand & between the parameter type and the parameter name: </p>
+					<div id="flexcontain">
+						<div class="box">
+							<pre>
+								<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+									void swap(int &x, int &y) { 
+									
+										int temp = x; 
+										x = y; 
+										y = temp; 
+									} 
+									</code>
+							</pre>
+							<p>This causes a parameter's changed value to be reflected back to the calling code.</p>
+						</div>
+						<div class="box">
+							<p>Consider the following function declaration: </p>
+							<pre>
+								<code style="font-size: 22px;" class="cs hljs"  data-trim contenteditable>
+									 void foo( int x, int &y, int &z)
+									</code>
+							</pre>
+							<p>In the function  foo,  changes to x are not reflected back, but changes to y and z are. 
+In this example <strong>x is a value parameter</strong>, but <strong>y and z are reference parameters</strong>. </p>
+						</div>
+					</div>
+				
+				</section>
+				<section data-background="#fff">
+					
+					
+					<p>Consider the following program segment that uses a move number and a score: </p>
+					<div id="flexcontain">
+						<div class="box">
+							<pre>
+								<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+
+								#include &lt;iostream&gt; 
+								
+								using namespace std; 
+								
+								int updateScoreAndMoveNumber(int score, int moveNumber){
+									score++;
+									moveNumber++;
+									return score;
+								} 
+								
+								int main() { 
+								
+									int score = 0;
+									int moveNumber = 0;
+									
+									//How do we modify the function to update both score and move number?
+									score == updateScoreAndMoveNumber( score, noveNumber);
+									cout << moveNumber << "Updated score is: " << score << endl;
+									
+									return 0;
+								
+								}
+								</code>
+							</pre>
+					
+						</div>
+						<div class="box" style="max-width: 300px;">
+							<p>What should we change so that function <code>updateScoreAnMoveNumber()</code> also changes <code>moveNumber</code> ?</p>
+							<table>
+							  <!--<tr>
+							    <th><strong>Options</strong></th>
+							    <th><strong>Output</strong></th>
+							
+							  </tr>-->
+							  <tr>
+							    <td>A.</td>
+							    <td> 3 3</td>
+							  
+							  </tr>
+							  <tr>
+							    <td>B.</td>
+							    <td>3 5</td>
+							   
+							  </tr>
+							  <tr>
+							    <td>C.</td>
+							    <td>5 3</td>
+							   
+							  </tr>
+							  <tr>
+							    <td>D.</td>
+							    <td>5 5</td>
+							   
+							  </tr>
+	
+							</table>
+						</div>
+					</div>
+
+				</section>
 				<!--<section data-background="#fff">
 					<h3>In Class Activity </h3>
 					<img src="../img/arch/produce_list_cp.jpg" width="400" alt="Graphic of grocery items">
