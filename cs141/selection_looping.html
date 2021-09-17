@@ -1122,7 +1122,7 @@ In this example <strong>x is a value parameter</strong>, but <strong>y and z are
 				<section data-background="#fff">
 					
 					
-					<h4>Consider these function declaration choices.  Assume each function would have a body of code to implement the function: </h4>
+					<p>Consider these function declaration choices.  Assume each function would have a body of code to implement the function: </p>
 					<div id="flexcontain">
 						<div class="box">
 							<code>
@@ -1155,8 +1155,8 @@ In this example <strong>x is a value parameter</strong>, but <strong>y and z are
 							  <tr>
 							    <td>B.</td>
 							    <td>
-							    	cout << "Swapping the values stored in a and b gives: "; 
-									f(a,b); 
+							    	cout << "Swapping the values stored in a and b gives: "; <br />
+									f(a,b); <br />
 									cout << a << " and " << b;
 							    </td>
 							   
@@ -1186,7 +1186,6 @@ In this example <strong>x is a value parameter</strong>, but <strong>y and z are
 					<p style="font-size: 28px;">Does the program shown in the table below compile and run as-is? </p>
 					  <ul style="font-size: 28px;">
 					     <li>A) Yes </li>
-					
 					     <li>B)  No </li>
 					  </ul>
 					<p style="font-size: 28px;">Why or why not?</p>
@@ -1194,9 +1193,55 @@ In this example <strong>x is a value parameter</strong>, but <strong>y and z are
 				</section>
 				<section data-background="#fff">
 					<h4>Function Overloading </h4>
+					<img src="../img/selection_looping/method_overload.PNG" width="790" alt="method overload example">
+					<p style="font-size: 26px;">What is the effect, if any, if we change only the return type of the function: int sum( int a, int b, int c) from  int  to  float? </p>
+					  <ul style="font-size: 22px;">
+					     <li><strong>A)</strong> It previously compiled and ran correctly, and still does &nbsp; &nbsp;          <strong>B)</strong>It previously did not compile, and still does not compile   </li>
+					     <li><strong>C)</strong> It previously did not compile, but now it compiles and runs correctly</li>
+					     <li><strong>D)</strong>The compiler error goes away and the program runs, however it doesn't do what is intended  </li>
+					  </ul>
+					<p style="font-size: 28px;">Why or why not?</p>
+					
+				</section>
+				<section data-background="#fff">
+					<h4>Default Parameters</h4>
 				
-					<p style="font-size: 28px;">Functions can have the same name, but must have different argument signatures.  For instance consider a function to sum some numbers.    The argument signature is the name of the function plus the types and number of parameters.  </p>
-		
+					<p style="font-size: 24px;">We can do this using default parameters, where we add an equal sign and the default value at the end of the parameter:    </p>
+					<div id="flexcontain">
+						<div class="box">
+							<pre>
+								<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+								// defaultArgs.cpp 
+								//    Illustrate default parameters in functions 
+								#include &lt;iostream&gt;
+								
+								using namespace std; 
+
+								// Matches on one, two or three int parameters: 
+								
+								int sum( int a, int b=0, int c=0){  
+								
+									return a+b+c; 
+								} 
+								
+								int main(){ 
+								
+									int result = 0; 
+									result = sum( 1,3); 
+									cout << "Sum of 1 and 3 is: " << result << endl; 
+									
+									result = sum( 1,3,5); 
+									cout << "Sum of 1, 3 and 5 is: " << result << endl; 
+									cout << "Done with program"; 
+								
+									return 0; 
+								
+								} // end main() 
+							</code>
+						</pre>
+						</div>
+						
+					</div>
 					
 				</section>
 				<!--<section data-background="#fff">
