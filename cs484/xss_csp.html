@@ -81,6 +81,7 @@
 					
 					</ul>
 				</section>
+
 				<section data-background="#fff">
 					<h3>Cross Site Scripting XSS</h3>
 					<p style="font-size: 24px;">A type of injection, in which malicious scripts are injected into websites</p>
@@ -145,7 +146,15 @@
 
 				</section>
 				<section data-background="#fff">
-					<h4>Example of Reflected Cross Scripting Attack</h4>
+					<h3>Example 1 (Reflected XSS)</h3>
+					<p style="font-size: 28px;">Data is read directly from the HTTP request and reflected back in the HTTP response. Reflected XSS exploits occur when an attacker causes a user to supply dangerous content to a vulnerable web application, which is then reflected back to the user and executed by the web browser. The most common mechanism for delivering malicious content is to include it as a parameter in a URL that is posted publicly or e-mailed directly to victims. URLs constructed in this manner constitute the core of many phishing schemes, whereby an attacker convinces victims to visit a URL that refers to a vulnerable site. After the site reflects the attacker’s content back to the user, the content is executed and proceeds to transfer private information, such as cookies that may include session information, from the user’s machine to the attacker or perform other nefarious activities.</p>
+				</section>
+				<section data-background="#fff">
+					<h3>Example 2(Stored XSS)</h3>
+					<p style="font-size: 28px;">The application stores dangerous data in a database or other trusted data store. The dangerous data is subsequently read back into the application and included in dynamic content. Stored XSS exploits occur when an attacker injects dangerous content into a data store that is later read and included in dynamic content. From an attacker’s perspective, the optimal place to inject malicious content is in an area that is displayed to either many users or particularly interesting users. Interesting users typically have elevated privileges in the application or interact with sensitive data that is valuable to the attacker. If one of these users executes malicious content, the attacker may be able to perform privileged operations on behalf of the user or gain access to sensitive data belonging to the user.</p>
+				</section>
+				<section data-background="#fff">
+					<h4>Performing Reflected Cross Scripting Attack</h4>
 				
 					<p style="font-size: 24px;">We can do this using default parameters, where we add an equal sign and the default value at the end of the parameter or structure the URL to execute JS code that makes a HTTP request to desired location.   </p>
 					<div id="flexcontain">
@@ -168,8 +177,8 @@
 				</section>
 				
 				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
-					<h4>Mitigating XSS Attacks</h4>
-					<p>Mitigating both Reflected and Stored </p>
+					<h4>Mitigating both Reflected and Stored </h4>
+				
 					<ul>
 						<li>Escaping control characters in dynamic content that the website interpolates into HTML</li>
 						<ul>
@@ -177,13 +186,13 @@
 						</ul>
 			
 					</ul>
-					<p>Helpful tips in Mitigating Reflected XSS Attacks</p>
+					<p>Helpful tips for finding XSS Attacks</p>
 					<ul>
 						<li>Test URL Endpoints</li>
-						<li>Submit random alphanumeric values</li>
+						<li>Test the attack in a browser</li>
 					
 					</ul>
-					<li><strong>Implements a Content Security Policy!!</strong></li>
+					<p><strong>Implement a Content Security Policy!!</strong></p>
 					<aside class="notes">
 						When mitigating Cross Site Scripting attacks, there are a number of things we can do.  Some are small measures, 
 						but helpful.  Limiting the number of characters that are allowed in input fields.  Although this can be altered,
@@ -193,40 +202,52 @@
 						Escaping content is key, whether dynamic content comes from the backend database or the HTTP request, you need to 
 						escape it in the same way.
 						
+						For testing URL Endpoints -  Submit a unique random value and determine whether the value is reflected in the response
+						For testing in the browser - execute some simple JavaScript like alert(document.domain) which will trigger a visible popup within the browser if the attack succeeds.
+						
 						
 						
 						
 					</aside>
 				</section>
 				<section data-background="#fff">
+					<h2>Content Security Policy (CSP)</h2>
+					<p>CSP makes it possible for server administrators to <strong>reduce</strong> or <strong>eliminate</strong> the vectors by which XSS can occur by specifying the domains that the browser should consider to be valid sources of executable scripts</p>
+				</section>
+				<section data-background="#fff">
 					<h3>Implementing a CSP</h3>
-					<div class="box">
+				
 						<pre>
 							<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
 							// 1) Via the server: Example Below
 							Content-Security-Policy: default-src 'self' trusted.com *.trusted.com
 							
 							// 2) Meta tag with head of site
-							&lt;meta&gt;
+							&lt;meta http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src https://*; child-src 'none';" /&gt;
+							
+							// 3) We can use the set method of the Express Response object
+							res.set("Content-Security-Policy", "default-src 'self'");
 	
 						</code>
 					</pre>
-					</div>
+				
 					<div id="flexcontain">
-						<div class="box red" style="font-size: 18px; margin: 10px; background-color: #eee; height: 220px; color: #111;"><p><b style="font-size: 28px;">Example 1</b> <br> Implement via the server. If you have access </p></div>
-						<div class="box blue" style="font-size: 18px; margin: 10px; background-color: #eee; height: 220px; color: #111;"><p><b style="font-size: 28px;">Consideration 2</b> <br>Use of Meta Tag within HTML</p></div>
-						<div class="box green" style="font-size: 18px; margin: 10px; background-color: #eee; height: 220px; color: #111;"><p><b style="font-size: 28px;">Consideration 3</b> <br> Use within Middleware <a href="https://content-security-policy.com/examples/express-js/">Configuration with Express.js</a></p></div>
+						<div class="box red" style="font-size: 24px; margin: 10px; background-color: #eee; height: 220px; color: #111;"><p><b style="font-size: 32px;">Consideration 1</b> <br> Implement via the server. If you have access </p></div>
+						<div class="box blue" style="font-size: 24px; margin: 10px; background-color: #eee; height: 220px; color: #111;"><p><b style="font-size: 32px;">Consideration 2</b> <br>Use of Meta Tag within HTML</p></div>
+						<div class="box green" style="font-size: 24px; margin: 10px; background-color: #eee; height: 220px; color: #111;"><p><b style="font-size: 32px;">Consideration 3</b> <br> Use within Middleware <a href="https://content-security-policy.com/examples/express-js/">Configuration with Express.js</a></p></div>
 
 					</div>
 					<aside class="notes">
 						Example 1 - A web site administrator wants to allow content from a trusted domain and all its subdomains (it doesn't have to be the same domain that the CSP is set on.)
 						Example 2 - We use the meta tag within the head of the site.
-						Example 3 - Implemented within the middleware of a framework.  The link will take you to an example of how Express.js middleware is used to set the Content Security Policy
+						Example 3 - Implemented within the middleware of a framework.  The link will take you to an example of how Express.js middleware is used to set the Content Security Policy.
+						    This will discussed more in the upcoming weeks.
 					</aside>
 				</section>
 				<section data-background="#fff">
 					<h3>Enabling Reporting on CSP</h3>
-					<div class="box">
+				
 						<pre>
 							<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
 							// 1) Server Implementation: 
@@ -234,11 +255,10 @@
 							
 						</code>
 					</pre>
-					</div>
+					
 					<div id="flexcontain">
-						<div class="box red" style="font-size: 18px; margin: 10px; background-color: #eee; height: 220px; color: #111;"><p><b style="font-size: 28px;">Example 1</b> <br> Implement via the server. If you have access </p></div>
-						<div class="box blue" style="font-size: 18px; margin: 10px; background-color: #eee; height: 220px; color: #111;"><p><b style="font-size: 28px;">Consideration 2</b> <br>Use of Meta Tag within HTML</p></div>
-						<div class="box green" style="font-size: 18px; margin: 10px; background-color: #eee; height: 220px; color: #111;"><p><b style="font-size: 28px;">Consideration 3</b> <br> Use within Middleware <a href="https://content-security-policy.com/examples/express-js/">Configuration with Express.js</a></p></div>
+						<div class="box red" style="font-size: 32px; margin: 10px; background-color: #eee; height: 220px; color: #111;"><p><b style="font-size: 28px;">Implementation</b> <br> Implemented via the server. You will need to set up your server to receive the reports; it can store or process them in whatever manner you determine is appropriate.</p></div>
+
 
 					</div>
 					<aside class="notes">
