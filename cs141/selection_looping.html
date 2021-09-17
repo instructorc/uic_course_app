@@ -1119,6 +1119,86 @@ In this example <strong>x is a value parameter</strong>, but <strong>y and z are
 					</div>
 
 				</section>
+				<section data-background="#fff">
+					
+					
+					<h4>Consider these function declaration choices.  Assume each function would have a body of code to implement the function: </h4>
+					<div id="flexcontain">
+						<div class="box">
+							<code>
+							A.	void f(int  x, int  y) <br />
+
+							B.  void f(int &x, int &y) <br />
+
+							C.  int  f(int  x, int  y)  <br />
+
+							D.  float f(int  x, int  y) <br />
+
+							E.  The necessary function declaration is not shown
+							</code>
+						
+					
+						</div>
+						<div class="box" style="max-width: 3100px;">
+							<p style="font-size: 24px;">Assuming we are using a function call to implement each of the situations described below, where <code>a</code> and <code>b</code> are both of type <code>int</code>.     Which of the above alternatives would be the best approach to use?  ?</p>
+							<table style="font-size: 20px;">
+							  <!--<tr>
+							    <th><strong>Options</strong></th>
+							    <th><strong>Output</strong></th>
+							
+							  </tr>-->
+							  <tr>
+							    <td>A.</td>
+							    <td>  cout << "a divided by b is: " << f(a,b); </td>
+							  
+							  </tr>
+							  <tr>
+							    <td>B.</td>
+							    <td>
+							    	cout << "Swapping the values stored in a and b gives: "; 
+									f(a,b); 
+									cout << a << " and " << b;
+							    </td>
+							   
+							  </tr>
+							  <tr>
+							    <td>C.</td>
+							    <td>cout << "The average number of seats in the rooms is: " << f(a,b) << endl;  </td>
+							   
+							  </tr>
+			
+	
+							</table>
+						</div>
+					</div>
+
+				</section>
+				<section data-background="#fff">
+					
+					<h4>Functions: Declaration vs. Definition </h4>
+					<p style="font-size: 20px;"> All functions must have been "seen" by the compiler before they can be used.  One way to do this is to place all functions before main(). </p>
+						<img src="../img/selection_looping/function_declaration_definition.PNG" width="700" alt="function definition and declaration image">
+				
+				</section>
+				<section data-background="#fff">
+					<h4>Function Overloading </h4>
+					<img src="../img/selection_looping/method_overload.PNG" width="790" alt="method overload example">
+					<p style="font-size: 28px;">Does the program shown in the table below compile and run as-is? </p>
+					  <ul style="font-size: 28px;">
+					     <li>A) Yes </li>
+					
+					     <li>B)  No </li>
+					  </ul>
+					<p style="font-size: 28px;">Why or why not?</p>
+					
+				</section>
+				<section data-background="#fff">
+					<h4>Function Overloading </h4>
+				
+					<p style="font-size: 28px;">Functions can have the same name, but must have different argument signatures.  For instance consider a function to sum some numbers.    The argument signature is the name of the function plus the types and number of parameters.  </p>
+		
+					
+				</section>
 				<!--<section data-background="#fff">
 					<h3>In Class Activity </h3>
 					<img src="../img/arch/produce_list_cp.jpg" width="400" alt="Graphic of grocery items">

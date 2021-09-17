@@ -52,7 +52,7 @@
 						<ul>
 							<li>Writing CSP Policy Examples</li>
 							<li>Implementing CSP - Testing Policy and Report Enabling</li>
-							<li></li>
+						
 						</ul>
 			        </ul>
 			        
@@ -62,30 +62,138 @@
 				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
 					<h4>Review Question 1</h4>
 					<p>What is the primary difference between stored and reflected XSS </p>
-					<ul>
+					<ul style="font-size: 32px;">
 						<li>A. stored and reflected used JS to initiate attack</li>
-						<li>B. align property</li>
-						<li>C. float property</li>
-						<li>D. none of the options presented</li>
+						<li>B. stored attacks are stored on the target servers while reflected is when an application receives data in an HTTP request and includes that data within the immediate response in an unsafe way</li>
+						<li>C. reflected attacks are stored on the target servers while stored XSS attacks are when an application receives data in an HTTP request and includes that data within the immediate response in an unsafe way</li>
+			
 					
 					</ul>	
 				</section>
 				<section data-background="#fff">
 					<h4>Review Question 2</h4>
-					<p>True or False: To implement CSS Flexbox or CSS Grid, A parent element/container must be present?</p>
+					<p>Reflected XSS require:</p>
 					<ul>
-						<li>A. True</li>
-						<li>B. False</li>
+						<li>A. A user to register for a malicious website</li>
+						<li>B. A user to visit a malicious link</li>
+						<li>C. A user to access the result of a DB query</li>
+						<li>D. More than one of the above</li>
 					
 					</ul>
 				</section>
-				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
-					<h3>Page Layout</h3>
-	
-					<p>Helpful Slides and Videos</p>
-					<p><a href="https://instructorc.github.io/site/slides/webdev/layout.html">Understanding HTML</a></p>
+				<section data-background="#fff">
+					<h3>Cross Site Scripting XSS</h3>
+					<p style="font-size: 24px;">A type of injection, in which malicious scripts are injected into otherwise benign and trusted websites</p>
+					<div id="flexcontain">
+						<div class="box_two" style="font-size: 22px; margin: 10px;">
+							<h3>Stored XSS Attacks</h3>
+							<ul>	
+								<li style="font-size: 20px;"><b>Where the injected malicious script is permanently stored on the target servers [Persistant]</b></li>
+								<li style="font-size: 20px;"><b>How:</b>- </li>
 
 
+							</ul>
+						</div>
+						<div class="box_two" style="font-size: 22px; margin: 10px;">
+							<h3>Reflected XSS Attacks</h3>
+							<ul>	
+								<li style="font-size: 20px;"><b>Where the injected malicious script is reflected off of a web application to the victim’s browser. [None Persistant]</b> </li>	 
+								<li style="font-size: 20px;"><b>How:</b>- </li>
+							</ul>
+						</div>
+						<div class="box_two" style="font-size: 22px; margin: 10px;">
+							<h3>Other XSS Attacks: </h3>
+							<ul>	
+								<li style="font-size: 20px;"><b>Blind XSS</b>-   </li>
+								<li style="font-size: 20px;"><b>DOM Based XSS</b>-  </li>
+							</ul>
+						</div>
+
+						
+					</div>
+					  <aside class="notes">
+					    Cross Site Scripting Attacks are when attackers inject malicious JavaScript into the browser.  Without the 
+					    proper security measures implemented for the client, the server and even the application, a browser will obediently execute any Javascript
+					    code that appears in a web page.
+					    
+					    So what are the possible dangers.  It's possible to steal login credentials or other sensitive informatin like credit
+					    card numbers as a user types them in. There's the possibility of disclosing files, installation of Trojan horse programs, 
+					    redirecting the user to some other page or site, or modify content or HTML code.  If JavaScript can read the HTTP session information.  
+					    And we'll talk sessions in the comming weeks, but if they are able to read the session information an attacker can hijack a user's session
+					    entirely this is called Session Hijacking.
+					    
+					    Theres two primary categories.  Stored and Reflected Cross Site Scripting Attacks.  On the slide, you will see the word persistant for stored
+					    Cross site scripting attacks and non-persistant.  
+					    
+					    With stored attacks, these are saved on the server, more specifically the database.  An 
+					    example of a possible attack would be submitting a some JS code using the script tags into the comment section of a chat or comment
+					    section of an app.  Typically the chat session data is saved to a database and rendered back to the client and interpretted as JavaScript.
+					    So what we put into the text box was actually javascript code, but when rendered back in the chat view, the browser will interepet are code 
+					    and execute the code.  This code is saved to the database and anyone who is also on the thread will be able to see the executed code.
+					    
+					    With Reflected, the attack is typically embedded into a clickable link. Typically, an attacker would first test the site to see if they 
+					    can execute a script in a input field.  The input field you might put the opening and closing script tag and try to initiate an alertbox.
+					    If you are able to initiate an alertbox, youo know does not have the correct security measures implemented.
+					    
+					    
+					  </aside>
+				</section>
+				<section data-background="#fff">
+					<h3>Mitigating XSS Attacks</h3>
+					<p style="font-size: 24px;">A type of injection, in which malicious scripts are injected into otherwise benign and trusted websites</p>
+					<div id="flexcontain">
+						<div class="box_two" style="font-size: 22px; margin: 10px;">
+							<h3>Stored XSS Attacks</h3>
+							<ul>	
+								<li style="font-size: 20px;"><b>Where the injected malicious script is permanently stored on the target servers [Persistant]</b></li>
+								<li style="font-size: 20px;"><b>How:</b>- </li>
+
+
+							</ul>
+						</div>
+						<div class="box_two" style="font-size: 22px; margin: 10px;">
+							<h3>Reflected XSS Attacks</h3>
+							<ul>	
+								<li style="font-size: 20px;"><b>Where the injected malicious script is reflected off of a web application to the victim’s browser. [None Persistant]</b> </li>	 
+								<li style="font-size: 20px;"><b>How:</b>- </li>
+							</ul>
+						</div>
+						<div class="box_two" style="font-size: 22px; margin: 10px;">
+							<h3>Other XSS Attacks: </h3>
+							<ul>	
+								<li style="font-size: 20px;"><b>Blind XSS</b>-   </li>
+								<li style="font-size: 20px;"><b>DOM Based XSS</b>-  </li>
+							</ul>
+						</div>
+
+						
+					</div>
+					  <aside class="notes">
+					    Cross Site Scripting Attacks are when attackers inject malicious JavaScript into the browser.  Without the 
+					    proper security measures implemented for the client, the server and even the application, a browser will obediently execute any Javascript
+					    code that appears in a web page.
+					    
+					    So what are the possible dangers.  It's possible to steal login credentials or other sensitive informatin like credit
+					    card numbers as a user types them in. There's the possibility of disclosing files, installation of Trojan horse programs, 
+					    redirecting the user to some other page or site, or modify content or HTML code.  If JavaScript can read the HTTP session information.  
+					    And we'll talk sessions in the comming weeks, but if they are able to read the session information an attacker can hijack a user's session
+					    entirely this is called Session Hijacking.
+					    
+					    Theres two primary categories.  Stored and Reflected Cross Site Scripting Attacks.  On the slide, you will see the word persistant for stored
+					    Cross site scripting attacks and non-persistant.  
+					    
+					    With stored attacks, these are saved on the server, more specifically the database.  An 
+					    example of a possible attack would be submitting a some JS code using the script tags into the comment section of a chat or comment
+					    section of an app.  Typically the chat session data is saved to a database and rendered back to the client and interpretted as JavaScript.
+					    So what we put into the text box was actually javascript code, but when rendered back in the chat view, the browser will interepet are code 
+					    and execute the code.  This code is saved to the database and anyone who is also on the thread will be able to see the executed code.
+					    
+					    With Reflected, the attack is typically embedded into a clickable link. Typically, an attacker would first test the site to see if they 
+					    can execute a script in a input field.  The input field you might put the opening and closing script tag and try to initiate an alertbox.
+					    If you are able to initiate an alertbox, youo know does not have the correct security measures implemented.
+					    
+					    
+					  </aside>
 				</section>
 				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
 					<h3>Good Video on XSS</h3>
