@@ -83,14 +83,12 @@
 				</section>
 				<section data-background="#fff">
 					<h3>Cross Site Scripting XSS</h3>
-					<p style="font-size: 24px;">A type of injection, in which malicious scripts are injected into otherwise benign and trusted websites</p>
+					<p style="font-size: 24px;">A type of injection, in which malicious scripts are injected into websites</p>
 					<div id="flexcontain">
 						<div class="box_two" style="font-size: 22px; margin: 10px;">
 							<h3>Stored XSS Attacks</h3>
 							<ul>	
 								<li style="font-size: 20px;"><b>Where the injected malicious script is permanently stored on the target servers [Persistant]</b></li>
-								<li style="font-size: 20px;"><b>How:</b>- </li>
-
 
 							</ul>
 						</div>
@@ -98,14 +96,14 @@
 							<h3>Reflected XSS Attacks</h3>
 							<ul>	
 								<li style="font-size: 20px;"><b>Where the injected malicious script is reflected off of a web application to the victim’s browser. [None Persistant]</b> </li>	 
-								<li style="font-size: 20px;"><b>How:</b>- </li>
+								
 							</ul>
 						</div>
 						<div class="box_two" style="font-size: 22px; margin: 10px;">
 							<h3>Other XSS Attacks: </h3>
 							<ul>	
-								<li style="font-size: 20px;"><b>Blind XSS</b>-   </li>
-								<li style="font-size: 20px;"><b>DOM Based XSS</b>-  </li>
+							
+								<li style="font-size: 20px;"><b>DOM Based XSS</b>-attackers smuggle malicious JS into a user's web page via the URI fragment.  </li>
 							</ul>
 						</div>
 
@@ -126,71 +124,15 @@
 					    Cross site scripting attacks and non-persistant.  
 					    
 					    With stored attacks, these are saved on the server, more specifically the database.  An 
-					    example of a possible attack would be submitting a some JS code using the script tags into the comment section of a chat or comment
-					    section of an app.  Typically the chat session data is saved to a database and rendered back to the client and interpretted as JavaScript.
+					    example of a possible attack would be submitting  a link that contains some JS code using the script tags into the comment
+					    section of an app.  Typically the chat session data is saved to a database and rendered back to the client as a clickable link.  Once the link is clicked, the browser interprets the JavaScript.
 					    So what we put into the text box was actually javascript code, but when rendered back in the chat view, the browser will interepet are code 
-					    and execute the code.  This code is saved to the database and anyone who is also on the thread will be able to see the executed code.
+					    and execute the code.  This code is saved to the database and anyone who is also on the thread will be able to see the code and may be tempted to
+					    click the link also.
 					    
-					    With Reflected, the attack is typically embedded into a clickable link. Typically, an attacker would first test the site to see if they 
+					    With reflected, Typically, an attacker would first test the site to see if they 
 					    can execute a script in a input field.  The input field you might put the opening and closing script tag and try to initiate an alertbox.
-					    If you are able to initiate an alertbox, youo know does not have the correct security measures implemented.
-					    
-					    
-					  </aside>
-				</section>
-				<section data-background="#fff">
-					<h3>Mitigating XSS Attacks</h3>
-					<p style="font-size: 24px;">A type of injection, in which malicious scripts are injected into otherwise benign and trusted websites</p>
-					<div id="flexcontain">
-						<div class="box_two" style="font-size: 22px; margin: 10px;">
-							<h3>Stored XSS Attacks</h3>
-							<ul>	
-								<li style="font-size: 20px;"><b>Where the injected malicious script is permanently stored on the target servers [Persistant]</b></li>
-								<li style="font-size: 20px;"><b>How:</b>- </li>
-
-
-							</ul>
-						</div>
-						<div class="box_two" style="font-size: 22px; margin: 10px;">
-							<h3>Reflected XSS Attacks</h3>
-							<ul>	
-								<li style="font-size: 20px;"><b>Where the injected malicious script is reflected off of a web application to the victim’s browser. [None Persistant]</b> </li>	 
-								<li style="font-size: 20px;"><b>How:</b>- </li>
-							</ul>
-						</div>
-						<div class="box_two" style="font-size: 22px; margin: 10px;">
-							<h3>Other XSS Attacks: </h3>
-							<ul>	
-								<li style="font-size: 20px;"><b>Blind XSS</b>-   </li>
-								<li style="font-size: 20px;"><b>DOM Based XSS</b>-  </li>
-							</ul>
-						</div>
-
-						
-					</div>
-					  <aside class="notes">
-					    Cross Site Scripting Attacks are when attackers inject malicious JavaScript into the browser.  Without the 
-					    proper security measures implemented for the client, the server and even the application, a browser will obediently execute any Javascript
-					    code that appears in a web page.
-					    
-					    So what are the possible dangers.  It's possible to steal login credentials or other sensitive informatin like credit
-					    card numbers as a user types them in. There's the possibility of disclosing files, installation of Trojan horse programs, 
-					    redirecting the user to some other page or site, or modify content or HTML code.  If JavaScript can read the HTTP session information.  
-					    And we'll talk sessions in the comming weeks, but if they are able to read the session information an attacker can hijack a user's session
-					    entirely this is called Session Hijacking.
-					    
-					    Theres two primary categories.  Stored and Reflected Cross Site Scripting Attacks.  On the slide, you will see the word persistant for stored
-					    Cross site scripting attacks and non-persistant.  
-					    
-					    With stored attacks, these are saved on the server, more specifically the database.  An 
-					    example of a possible attack would be submitting a some JS code using the script tags into the comment section of a chat or comment
-					    section of an app.  Typically the chat session data is saved to a database and rendered back to the client and interpretted as JavaScript.
-					    So what we put into the text box was actually javascript code, but when rendered back in the chat view, the browser will interepet are code 
-					    and execute the code.  This code is saved to the database and anyone who is also on the thread will be able to see the executed code.
-					    
-					    With Reflected, the attack is typically embedded into a clickable link. Typically, an attacker would first test the site to see if they 
-					    can execute a script in a input field.  The input field you might put the opening and closing script tag and try to initiate an alertbox.
-					    If you are able to initiate an alertbox, youo know does not have the correct security measures implemented.
+					    If you are able to initiate an alertbox, you now know that the site does not have the correct security measures implemented.
 					    
 					    
 					  </aside>
@@ -201,6 +143,110 @@
 					<iframe width="760" height="515" src="https://www.youtube.com/embed/EoaDgUgS6QA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
+				</section>
+				<section data-background="#fff">
+					<h4>Example of Reflected Cross Scripting Attack</h4>
+				
+					<p style="font-size: 24px;">We can do this using default parameters, where we add an equal sign and the default value at the end of the parameter or structure the URL to execute JS code that makes a HTTP request to desired location.   </p>
+					<div id="flexcontain">
+						<div class="box">
+							<pre>
+								<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+								// 1) test browser for execution of JS code
+								// 2) Formulate URL to execute JS code as endpoint
+								
+								
+								&lt;script type="text/javascript"&gt;
+									var information = '../hackinfo?getCookies=' + escape(document.cookie);
+								&lt;/script&gt;
+							</code>
+						</pre>
+						</div>
+						
+					</div>
+					
+				</section>
+				
+				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
+					<h4>Mitigating XSS Attacks</h4>
+					<p>Mitigating both Reflected and Stored </p>
+					<ul>
+						<li>Escaping control characters in dynamic content that the website interpolates into HTML</li>
+						<ul>
+							<li>Modern templating and front-end frameworks implement this feature </li>
+						</ul>
+			
+					</ul>
+					<p>Helpful tips in Mitigating Reflected XSS Attacks</p>
+					<ul>
+						<li>Test URL Endpoints</li>
+						<li>Submit random alphanumeric values</li>
+					
+					</ul>
+					<li><strong>Implements a Content Security Policy!!</strong></li>
+					<aside class="notes">
+						When mitigating Cross Site Scripting attacks, there are a number of things we can do.  Some are small measures, 
+						but helpful.  Limiting the number of characters that are allowed in input fields.  Although this can be altered,
+						it is still a good practice. Health Insurance provider Blue Cross Blue Shield always cuts my name off
+						and I want to think that this is a small measure of security that is being implemented.  
+						
+						Escaping content is key, whether dynamic content comes from the backend database or the HTTP request, you need to 
+						escape it in the same way.
+						
+						
+						
+						
+					</aside>
+				</section>
+				<section data-background="#fff">
+					<h3>Implementing a CSP</h3>
+					<div class="box">
+						<pre>
+							<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+							// 1) Via the server: Example Below
+							Content-Security-Policy: default-src 'self' trusted.com *.trusted.com
+							
+							// 2) Meta tag with head of site
+							&lt;meta&gt;
+	
+						</code>
+					</pre>
+					</div>
+					<div id="flexcontain">
+						<div class="box red" style="font-size: 18px; margin: 10px; background-color: #eee; height: 220px; color: #111;"><p><b style="font-size: 28px;">Example 1</b> <br> Implement via the server. If you have access </p></div>
+						<div class="box blue" style="font-size: 18px; margin: 10px; background-color: #eee; height: 220px; color: #111;"><p><b style="font-size: 28px;">Consideration 2</b> <br>Use of Meta Tag within HTML</p></div>
+						<div class="box green" style="font-size: 18px; margin: 10px; background-color: #eee; height: 220px; color: #111;"><p><b style="font-size: 28px;">Consideration 3</b> <br> Use within Middleware <a href="https://content-security-policy.com/examples/express-js/">Configuration with Express.js</a></p></div>
+
+					</div>
+					<aside class="notes">
+						Example 1 - A web site administrator wants to allow content from a trusted domain and all its subdomains (it doesn't have to be the same domain that the CSP is set on.)
+						Example 2 - We use the meta tag within the head of the site.
+						Example 3 - Implemented within the middleware of a framework.  The link will take you to an example of how Express.js middleware is used to set the Content Security Policy
+					</aside>
+				</section>
+				<section data-background="#fff">
+					<h3>Enabling Reporting on CSP</h3>
+					<div class="box">
+						<pre>
+							<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+							// 1) Server Implementation: 
+							Content-Security-Policy: default-src 'self' trusted.com *.trusted.com
+							
+						</code>
+					</pre>
+					</div>
+					<div id="flexcontain">
+						<div class="box red" style="font-size: 18px; margin: 10px; background-color: #eee; height: 220px; color: #111;"><p><b style="font-size: 28px;">Example 1</b> <br> Implement via the server. If you have access </p></div>
+						<div class="box blue" style="font-size: 18px; margin: 10px; background-color: #eee; height: 220px; color: #111;"><p><b style="font-size: 28px;">Consideration 2</b> <br>Use of Meta Tag within HTML</p></div>
+						<div class="box green" style="font-size: 18px; margin: 10px; background-color: #eee; height: 220px; color: #111;"><p><b style="font-size: 28px;">Consideration 3</b> <br> Use within Middleware <a href="https://content-security-policy.com/examples/express-js/">Configuration with Express.js</a></p></div>
+
+					</div>
+					<aside class="notes">
+						Before enacting a Content Security Policy, it may be helpful to monitor what URL's are triggered within your app.  You 
+						don't want to break a service that depends that your application depends on.  For example, your might make serveral request to 
+						an Extenral RESTFul API.  It's good to monitor the report that will be written to a file somewhere on your server just to observe
+						what HTTP request are taking place on your server.
+					</aside>
 				</section>
 
 
