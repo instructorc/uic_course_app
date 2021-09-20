@@ -193,6 +193,18 @@
 					<h2>Content Security Policy (CSP)</h2>
 					<p>CSP makes it possible for server administrators to <strong>reduce</strong> or <strong>eliminate</strong> the vectors by which XSS can occur by specifying the domains that the browser should consider to be valid sources of executable scripts</p>
 				</section>
+				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
+					<h4>What Does CSP Prevent??</h4>
+				
+					<ul>
+						<li><strong>XSS</strong> - CSP automatically blocks the code from sending sensitive information to the hacker's domain.</li>
+						<li><strong>Browser Hijacking & Ad Injection</strong> - Client-side malware causes unwanted ads to appear on your users' browsers. A CSP prevents these ads from loading when affected users go on your website.</li>
+						<li><strong>Unauthorized Piggyback Tags</strong> - One tag could also be loading multiple tags from vendors you have not authorized. A CSP eliminates this security risk..</li>
+			
+					</ul>
+					
+
+				</section>
 				<section data-background="#fff">
 					<h3>Implementing a CSP</h3>
 				
@@ -230,7 +242,7 @@
 						<pre>
 							<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
 							// 1) Server Implementation: 
-							Content-Security-Policy: default-src 'self' trusted.com *.trusted.com
+							Content-Security-Policy-Report-Only: default-src https:; report-uri /csp-violation-report-endpoint/
 							
 						</code>
 					</pre>
@@ -245,6 +257,39 @@
 						don't want to break a service that depends that your application depends on.  For example, your might make serveral request to 
 						an Extenral RESTFul API.  It's good to monitor the report that will be written to a file somewhere on your server just to observe
 						what HTTP request are taking place on your server.
+					</aside>
+				</section>
+				<section data-background="#fff">
+					<h3>Sample Output of Report</h3>
+				
+						<pre>
+							<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+							{
+						    "csp-report": {
+						        "document-uri": "https://mplsrenters.com/",
+						        "referrer": "",
+						        "violated-directive": "script-src",
+						        "effective-directive": "script-src",
+						        "original-policy": "default-src 'none'; form-action 'none'; frame-ancestors 'none'; report-uri https://mplsrenters.com/r/d/csp/wizard",
+						        "disposition": "report",
+						        "blocked-uri": "inline",
+						        "line-number": 4,
+						        "source-file": "https://mplsrenters.com/",
+						        "status-code": 0,
+						        "script-sample": ""
+						    }
+						}
+							
+						</code>
+					</pre>
+					
+					<div id="flexcontain">
+						<div class="box red" style="font-size: 32px; margin: 10px; background-color: #eee; height: 220px; color: #111;"><p><b style="font-size: 28px;">Implementation</b> <br> Implemented via the server. You will need to set up your server to receive the reports; it can store or process them in whatever manner you determine is appropriate.</p></div>
+
+
+					</div>
+					<aside class="notes">
+						This is what a report will look like once generated if someone seeks to involk JS code from a different domain.
 					</aside>
 				</section>
 
