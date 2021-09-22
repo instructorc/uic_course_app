@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Understanding C++ [Selection, Looping, Functions]</title>
+		<title>Understanding C++ [Arrays + Vectors]</title>
 		<link rel="stylesheet" href="../dist/reset.css">
 		<link rel="stylesheet" href="../dist/reveal.css">
 		<link rel="stylesheet" href="../dist/theme/black.css">
@@ -45,7 +45,7 @@
 				    <h2 style="color: #000;">CS141 Program Design II - C++</h2>
 				    <img src="../img/cplus/c-logo.png" width="375"  alt="C++ logo">
 				    <h3 style="color: #000; font-weight: 200;"></h3>
-				    <h3 style="color: #000; font-weight: 200; text-transform: none;">Selection, Loops ands Functions</h3>
+				    <h3 style="color: #000; font-weight: 200; text-transform: none;">Arrays, 2d Arrays, Search and Use Cases</h3>
 				    <img src="../img/presentations/uic_logo_blk.PNG" width="250"  alt="UIC logo">
 				</section>
 				<!--<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
@@ -61,182 +61,79 @@
 				<section data-background="#eee">
 				    <h3>Objectives</h3>
 				    <ul style="font-size: 28px;">
-						<li>Review Program 1 solution; Review program 2 description </li>
-						<li>Selection</li>
-						<li>Loops </li>
-						<li>Functions: Transfer of control, Value vs. Reference parameters </li>
+						<li>Arrays + Vectors</li>
+						<li>Memory Management</li>
+						<li>2d Arrays, Multi-dimensional Arrays </li>
+						<li>Seaarch and Use Cases</li>
 
 				    </ul>
 				</section>
 				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
 
-					<h2>Selection - Coding Options</h2>
+					<h2>Array Review & Usage</h2>
 					<div id="flexcontain">
-						<div class="box" style="font-size: 28px; margin: 10px; height: 235px; color: #111; border: none; max-width: 300px;"><h2>A.</h2>
-												<pre>
-							<code style="font-size: 14px;" class="cs hljs"  data-trim contenteditable>
-								if (expression1) 
-								   action1; 
-								else if (expression2) 
-								   action2; 
-								else if (expression3) 
-								   action3; 
-								else 
-								   defaultAction; 
-
-
-							</code>
-						</pre>
+						<div class="box" style="font-size: 28px; margin: 10px;  color: #111; border: none; ">
+							<pre>
+								<code style="font-size: 28px;" class="cs hljs"  data-trim contenteditable>
+									int scores[ 7] = {2,4,6,8,10,12,14}; 
+								</code>
+							</pre>
 						</div>
-						<div class="box" style="font-size: 28px; margin: 10px; height: 235px; color: #111; border: none; max-width: 400px;"><h2>B.</h2>
-						<pre>
-							<code style="font-size: 14px;" class="cs hljs"  data-trim contenteditable>
-								if (expression1) 
-								   action1; 
-								else  
-								   if (expression2) 
-								
-								      action2; 
-								   else  
-								
-								      if (expression3) 
-								
-								         action3; 
-
-
-							</code>
-						</pre>
-						</div>
-						<div class="box" style="font-size: 28px; margin: 10px; height: 235px; color: #111; border: none; max-width: 400px;"><h2>C.</h2>
-						<pre>
-							<code style="font-size: 14px;" class="cs hljs"  data-trim contenteditable>
-							switch( variable) { 
-							
-							   case 1: action1; 
-							
-							           break; 
-							
-							   case 2: action2; 
-							
-							           break; 
-							
-							   case 3: action3; 
-							
-							           break; 
-							
-							   default:     
-							
-							         defaultAction; 
-							
-							         break; 
-							
-							} 
-
-
-							</code>
-						</pre>
-						</div>
-						<div class="box" style="font-size: 28px; margin: 10px; height: 235px; color: #111; border: none; max-width: 400px;"><h2>D.</h2>
-						<pre>
-							<code style="font-size: 14px;" class="cs hljs"  data-trim contenteditable>
-							if (expression1) 
-							   action1; 
-							if (expression2) 
-							   action2; 
-							if (expression3) 
-							   action3;
-
-							</code>
-						</pre>
-						</div>
+				
 					</div>
-					<p style="font-size: 24px;">Given user input for a menu of a few items, choose code to handle each menu option.</p>
-					<p style="font-size: 24px;">Answer: </p>
-				</section>
-				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
-
-					<h2>Selection - Coding Options</h2>
-					<div id="flexcontain">
-						<div class="box" style="font-size: 28px; margin: 10px; height: 235px; color: #111; border: none; max-width: 300px;"><h2>A.</h2>
-												<pre>
-							<code style="font-size: 14px;" class="cs hljs"  data-trim contenteditable>
-								if (expression1) 
-								   action1; 
-								else if (expression2) 
-								   action2; 
-								else if (expression3) 
-								   action3; 
-								else 
-								   defaultAction; 
-
-
-							</code>
-						</pre>
-						</div>
-						<div class="box" style="font-size: 28px; margin: 10px; height: 235px; color: #111; border: none; max-width: 400px;"><h2>B.</h2>
-						<pre>
-							<code style="font-size: 14px;" class="cs hljs"  data-trim contenteditable>
-								if (expression1) 
-								   action1; 
-								else  
-								   if (expression2) 
-								      action2; 
-								   else  
-								
-								      if (expression3) 
-								         action3; 
-
-
-							</code>
-						</pre>
-						</div>
-						<div class="box" style="font-size: 28px; margin: 10px; height: 235px; color: #111; border: none; max-width: 400px;"><h2>C.</h2>
-						<pre>
-							<code style="font-size: 14px;" class="cs hljs"  data-trim contenteditable>
-							switch( variable) { 
-							
-							   case 1: action1; 
-							
-							           break; 
-							
-							   case 2: action2; 
-							
-							           break; 
-							
-							   case 3: action3; 
-							
-							           break; 
-							
-							   default:     
-							
-							         defaultAction; 
-							
-							         break; 
-							
-							} 
-
-
-							</code>
-						</pre>
-						</div>
-						<div class="box" style="font-size: 28px; margin: 10px; height: 235px; color: #111; border: none; max-width: 400px;"><h2>D.</h2>
-						<pre>
-							<code style="font-size: 14px;" class="cs hljs"  data-trim contenteditable>
-							if (expression1) 
-							   action1; 
-							if (expression2) 
-							   action2; 
-							if (expression3) 
-							   action3;
-
-							</code>
-						</pre>
-						</div>
-					</div>
-					<p style="font-size: 24px;">Tax filing program, where multiple conditions might be true.</p>
-					<p style="font-size: 24px;">Answer: </p>
+					<img src="../img/arrays/array_image.PNG"  alt="array visual">
+					<p style="font-size: 24px;">Rather than having to store multiple values of the same type in different variables, we can store them in an array. This is appropriate when we have a group of values of the same type, such as a list of numbers, or a group of characters representing a playing board for a game. </p>
 				</section>
 				<section data-background="#fff">
+					
+					<p style="font-size: 22px; font-weight: bold;">Consider writing a program using multiple variables to keep track of a number of test scores.   
+How would we write this?  What are the advantages and limitations? How might we use a function to get the test scores average?   
+See program <code>averageScoresUsingVariables.cpp</code> </p>
+					<p style="font-size: 26px;">What you would need to do to modify it to read input from within a function?  What exactly would this look like?</p>
+					<div id="flexcontain">
+						<div class="box">
+							<pre>
+								<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+									#include &lt;iostream&gt; 
+									using namespace std; 
+									//const int Size=3; // Declare "magic number" used for size of things 
+
+									int main(){ 
+									
+									    int sum=0;  // accumulate the sum 
+									    int scores[ 3];    // indexed from 0 up to n-1 
+									
+									    // Read in scores values 
+									    cout &lt;&lt; "Enter " &lt;&lt; 3 &lt;&lt; " scores: "; 
+									
+										for( int i=0; i&lt;3; i++) { 
+											cin &gt;&gt; scores[ i]; 
+										} 
+									
+										cout &lt;&lt; endl;               
+									    cout &lt;&lt; "\nThe scores are: "; 
+									
+									    for (int i=0; i&lt;3; i++) { 
+									        cout &lt;&lt; scores[ i] &lt;&lt; " "; 
+									        sum = sum + scores[ i]; 
+									    } 
+									
+									    cout &lt;&lt; endl; 
+									    cout &lt;&lt; "The average is: " &lt;&lt; (float)sum/3 &lt;&lt; endl; 
+
+									    return 0; 
+									
+									}//end main() 
+
+								</code>
+							</pre>
+						
+						</div>
+						
+					
+
+				</section>
+				<!--<section data-background="#fff">
 					<h3>Selections within ranges</h3>
 				
 					<div id="flexcontain">
@@ -352,11 +249,11 @@
 						</div>
 						<div class="box">
 							<table>
-							  <!--<tr>
+							  <tr>
 							    <th><strong>Options</strong></th>
 							    <th><strong>Output</strong></th>
 							
-							  </tr>-->
+							  </tr>
 							  <tr>
 							    <td>A.</td>
 							    <td> is three.</td>
@@ -432,11 +329,11 @@
 						<div class="box" style="max-width: 320px;">
 							<p>What is the output, assuming it is in the context of an otherwise correct program?</p>
 							<table>
-							  <!--<tr>
+							  <tr>
 							    <th><strong>Options</strong></th>
 							    <th><strong>Output</strong></th>
 							
-							  </tr>-->
+							  </tr>
 							  <tr>
 							    <td>A.</td>
 							    <td>The chicken comes before the Egg.</td>
@@ -497,7 +394,7 @@ reference particular elements.  For instance:
 					<h3>Break and Continue</h3>
 				
 					<img src="../img/selection_looping/continue_break.jpg" style="float: left;" width="400" alt="continue break image explanation">
-					<!--<img src="images/methods/methods_withparams.PNG" style="float: right;" width="400" alt="Diagram of program with parameters">-->
+
 					
 					<div id="flexcontain">
 						<div class="box red" style="font-size: 28px; margin: 10px; background-color: #eee; height: 225px; color: #111;"><p><b style="font-size: 28px;">break</b> <br> is useful when we are in the middle of a loop and want to break out past the end of the loop.</p></div>
@@ -555,11 +452,11 @@ reference particular elements.  For instance:
 						<div class="box" style="max-width: 320px;">
 							<p>After the original prompt to "Enter 'r' to retry:",  what is the output if the user input is the character 'r'? :</p>
 							<table>
-							  <!--<tr>
+							  <tr>
 							    <th><strong>Options</strong></th>
 							    <th><strong>Output</strong></th>
 							
-							  </tr>-->
+							  </tr>
 							  <tr>
 							    <td>A.</td>
 							    <td> There is no output, since the program is waiting for input.</td>
@@ -814,7 +711,7 @@ reference particular elements.  For instance:
 							<pre>
 								<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
 								// swap.cpp  
-								// Use parameters to swap two numbers 
+								//    Use parameters to swap two numbers 
 
 								#include &lt;iostream&gt; 
 								
@@ -845,11 +742,11 @@ reference particular elements.  For instance:
 						<div class="box" style="max-width: 300px;">
 							<p>What are the values for x and y when printed inside function <code>swap( x,y)</code>?</p>
 							<table>
-							  <!--<tr>
+							  <tr>
 							    <th><strong>Options</strong></th>
 							    <th><strong>Output</strong></th>
 							
-							  </tr>-->
+							  </tr>
 							  <tr>
 							    <td>A.</td>
 							    <td> 3 3</td>
@@ -917,11 +814,11 @@ reference particular elements.  For instance:
 						<div class="box" style="max-width: 300px;">
 							<p>Again, what are the values for x and y when printed inside function <code>swap( x,y)</code>?</p>
 							<table>
-							  <!--<tr>
+							  <tr>
 							    <th><strong>Options</strong></th>
 							    <th><strong>Output</strong></th>
 							
-							  </tr>-->
+							  </tr>
 							  <tr>
 							    <td>A.</td>
 							    <td> 3 3</td>
@@ -988,11 +885,11 @@ reference particular elements.  For instance:
 						<div class="box" style="max-width: 300px;">
 							<p>Now what are the values for x and y when printed in main() after the call to function <code>swap( x,y)</code>?</p>
 							<table>
-							  <!--<tr>
+							  <tr>
 							    <th><strong>Options</strong></th>
 							    <th><strong>Output</strong></th>
 							
-							  </tr>-->
+							  </tr>
 							  <tr>
 							    <td>A.</td>
 							    <td> 3 3</td>
@@ -1088,11 +985,11 @@ In this example <strong>x is a value parameter</strong>, but <strong>y and z are
 						<div class="box" style="max-width: 290px;">
 							<p>What should we change so that function <code>updateScoreAnMoveNumber()</code> also changes <code>moveNumber</code> ?</p>
 							<table style="font-size: 20px;">
-							  <!--<tr>
+							  <tr>
 							    <th><strong>Options</strong></th>
 							    <th><strong>Output</strong></th>
 							
-							  </tr>-->
+							  </tr>
 							  <tr>
 							    <td>A.</td>
 							    <td> It is not possible to update moveNumber, since we can only return one value </td>
@@ -1142,11 +1039,11 @@ In this example <strong>x is a value parameter</strong>, but <strong>y and z are
 						<div class="box" style="max-width: 3100px;">
 							<p style="font-size: 24px;">Assuming we are using a function call to implement each of the situations described below, where <code>a</code> and <code>b</code> are both of type <code>int</code>.     Which of the above alternatives would be the best approach to use?  ?</p>
 							<table style="font-size: 20px;">
-							  <!--<tr>
+							  <tr>
 							    <th><strong>Options</strong></th>
 							    <th><strong>Output</strong></th>
 							
-							  </tr>-->
+							  </tr>
 							  <tr>
 							    <td>A.</td>
 							    <td>  cout << "a divided by b is: " << f(a,b); </td>
@@ -1240,31 +1137,9 @@ In this example <strong>x is a value parameter</strong>, but <strong>y and z are
 							</code>
 						</pre>
 						</div>
+						
 					</div>
-				</section>
-				<section data-background="#fff">
 					
-					<h4>Default Parameters Cont.</h4>
-					<p style="font-size: 22px;"> Note that issues that can arise when we have default parameters mixed with different types, because types can be promoted so that they match some other type.  In this way a bool might match a char, a char might match an int, an int might match a float, and so on.  With this in mind, what would be the output if in the above program we had the following: </p>
-					<div id="flexcontain">
-						<div class="box">
-							<pre>
-								<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
-									cout << "Funky sum is: " << sum( 2.5,true,'A') << endl; 
-									</code>
-							</pre>
-							<p>This causes a parameter's changed value to be reflected back to the calling code.</p>
-						</div>
-
-						<div class="box" style="max-width: 300px;">
-							<ul>
-								<li><strong>A)</strong> Compiler error</p></li>
-								<li><strong>B)</strong> Compiles, but gives a run-time error </li>
-								<li><strong>C)</strong> 67</li>
-								<li> <strong>D)</strong> 68</li>
-							</ul>
-						</div>
-					</div>
 				</section>
 				<!--<section data-background="#fff">
 					<h3>In Class Activity </h3>

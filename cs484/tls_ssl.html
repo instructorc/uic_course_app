@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Cross Site Scripting (XSS) + CSP</title>
+		<title>TLS/SSL</title>
 		<link rel="stylesheet" href="../dist/reset.css">
 		<link rel="stylesheet" href="../dist/reveal.css">
 		<link rel="stylesheet" href="../dist/theme/black.css">
@@ -32,8 +32,8 @@
 		<div class="reveal">
 			<div class="slides">
 				<section data-background="#f8f8f8">
-				    <h2 style="color: #000;">Cross Site Scripting (XSS) + CSP</h2>
-				    <h3 style="color: #000; font-weight: 200;"> XSS Attacks, CSP</h3>
+				    <h2 style="color: #000;">Http(s)/http/2 + TLS/SSL</h2>
+				    <h3 style="color: #000; font-weight: 200;"> Network Transmission and Request/Response</h3>
 				    <!--<h3 style="color: #000; font-weight: 200; text-transform: none;">Survery of Process, Tools, Environments and Version Control</h3>-->
 				    <img src="../img/presentations/uic_logo_blk.PNG" width="300"  alt="UIC logo">
 				</section>
@@ -43,15 +43,18 @@
 			
 			        <ul>
 			        	
-			        	<li>Cross Site Scripting</li>
+			        	<li>Http(s)/Http2</li>
 			        	<ul>
-			        		<li>Catagorizing CSS Attacks - Stored | Reflected | DOM Based Attacks</li>
-			        		<li>XSS Mitigation</li>
+			        		<li>What is Hypertext Transfer Protocol?</li>
+			        		<li>Request and Response Objects</li>
+			        		<li></li>
 			        	</ul>
-			        	<li>Content Security Policy </li>
+			        	<li>TLS/SSL </li>
 						<ul>
-							<li>Writing CSP Policy Examples</li>
-							<li>Implementing CSP - Testing Policy and Report Enabling</li>
+							<li>Asymmetric Encryption | Symmetric Encryption</li>
+							<li>TLS/SSL Certificates</li>
+							<li>Certificate Authorities</li>
+							<li>TLS/SSL Handskake</li>
 						
 						</ul>
 			        </ul>
@@ -62,7 +65,7 @@
 
 
 				<section data-background="#fff">
-					<h3>Cross Site Scripting XSS</h3>
+					<h3>Http</h3>
 					<p style="font-size: 24px;">A type of injection, in which malicious scripts are injected into websites</p>
 					<div id="flexcontain">
 						<div class="box_two" style="font-size: 22px; margin: 10px;">
