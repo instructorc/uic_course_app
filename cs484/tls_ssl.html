@@ -33,7 +33,7 @@
 			<div class="slides">
 				<section data-background="#f8f8f8">
 				    <h2 style="color: #000;">Http(s)/http/2 + TLS/SSL</h2>
-				    <h3 style="color: #000; font-weight: 200;"> Network Transmission and Request/Response</h3>
+				    <h3 style="color: #000; font-weight: 200;"> Data-in-Transit & Encryption</h3>
 				    <!--<h3 style="color: #000; font-weight: 200; text-transform: none;">Survery of Process, Tools, Environments and Version Control</h3>-->
 				    <img src="../img/presentations/uic_logo_blk.PNG" width="300"  alt="UIC logo">
 				</section>
@@ -42,19 +42,19 @@
 				    <h2>Objectives</h2>
 			
 			        <ul>
-			        	
+						<li>Terminology</li>
 			        	<li>Http(s)/Http2</li>
 			        	<ul>
 			        		<li>What is Hypertext Transfer Protocol?</li>
 			        		<li>Request and Response Objects</li>
-			        		<li></li>
+			        
 			        	</ul>
-			        	<li>TLS/SSL </li>
+			        	<li>Encryption + TLS/SSL </li>
 						<ul>
-							<li>Asymmetric Encryption | Symmetric Encryption</li>
-							<li>TLS/SSL Certificates</li>
+							<li>Encryption - Asymmetric Encryption | Symmetric Encryption | Hash Functions</li>
+							<li>TLS/SSL Handshake</li>
 							<li>Certificate Authorities</li>
-							<li>TLS/SSL Handskake</li>
+						
 						
 						</ul>
 			        </ul>
@@ -62,72 +62,116 @@
 
 				   
 				</section>
+				<section data-background="white" style="background-size: 80%;">
+					<h3 style="background-color:rgba(255, 255, 255, 0.7); color: black;">Ton's of Acronyms - Activity</h3>
+					<!--<p style="background-color:rgba(255, 255, 255, 0.7);  font-size: .8em; color: black;" class="fragment"> a method of providing <strong>shared computing resources</strong>, including applications, computing, storage, networking, development, and deployment platforms as well as business processes. </p>-->
+					<div id="flexcontain" class="fragment">
+						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">Http(s)</h3></div>
+						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">TCP</h3></div>
+						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">TLS</h3></div>
+						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">CSR</h3></div>
+						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">MAC</h3></div>
+						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">EV Cert.</h3></div>
+						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">CA</h3></div>
+						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">DNS</h3></div>
+						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">ECDHE</h3></div>
 
-
+					</div>
+				</section>
+				<section data-background="../img/arch/devops.jpg">
+					<h1 style="color: black; background-color: rgba(255,255,255, .6); padding: 3px;">Http/Http(s)</h1>
+				</section>
 				<section data-background="#fff">
-					<h3>Http</h3>
-					<p style="font-size: 24px;">A type of injection, in which malicious scripts are injected into websites</p>
+					<h4>URL Breakdown</h4>
+					<img src="../img/tls/http_image.jpg"  alt="URL Breakdown"/>
+					<div id="flexcontain">
+						<div class="box">
+							<p> </p>
+						</div>
+					</div>
+				</section>
+				<section data-background="#fff">
+					<h3>Hypertext Transfer Protocol</h3>
+					<p style="font-size: 24px;">an application layer protocol designed to transfer information between networked devices and runs on top of other layers of the network protocol stack.</p>
 					<div id="flexcontain">
 						<div class="box_two" style="font-size: 22px; margin: 10px;">
-							<h3>Stored XSS Attacks</h3>
+							<h3>http</h3>
 							<ul>	
 								<li style="font-size: 20px;"><b>Where the injected malicious script is permanently stored on the target servers [Persistant]</b></li>
 
 							</ul>
 						</div>
 						<div class="box_two" style="font-size: 22px; margin: 10px;">
-							<h3>Reflected XSS Attacks</h3>
+							<h3>https</h3>
 							<ul>	
 								<li style="font-size: 20px;"><b>Where the injected malicious script is reflected off of a web application to the victim’s browser. [None Persistant]</b> </li>	 
 								
 							</ul>
 						</div>
 						<div class="box_two" style="font-size: 22px; margin: 10px;">
-							<h3>Other XSS Attacks: </h3>
+							<h3>http/2</h3>
 							<ul>	
-							
-								<li style="font-size: 20px;"><b>DOM Based XSS</b>-attackers smuggle malicious JS into a user's web page via the URI fragment.  </li>
+								<li style="font-size: 20px;"> <b>modifies how the data is formatted (framed) and transported between the client and server, both of which manage the entire process, and hides all the complexity from our applications within the new framing layer</b></li>
 							</ul>
 						</div>
-
-						
+	
 					</div>
+					
 					  <aside class="notes">
-					    Cross Site Scripting Attacks are when attackers inject malicious JavaScript into the browser.  Without the 
-					    proper security measures implemented for the client, the server and even the application, a browser will obediently execute any Javascript
-					    code that appears in a web page.
-					    
-					    So what are the possible dangers.  It's possible to steal login credentials or other sensitive informatin like credit
-					    card numbers as a user types them in. There's the possibility of disclosing files, installation of Trojan horse programs, 
-					    redirecting the user to some other page or site, or modify content or HTML code.  If JavaScript can read the HTTP session information.  
-					    And we'll talk sessions in the comming weeks, but if they are able to read the session information an attacker can hijack a user's session
-					    entirely this is called Session Hijacking.
-					    
-					    Theres two primary categories.  Stored and Reflected Cross Site Scripting Attacks.  On the slide, you will see the word persistant for stored
-					    Cross site scripting attacks and non-persistant.  
-					    
-					    With stored attacks, these are saved on the server, more specifically the database.  An 
-					    example of a possible attack would be submitting  a link that contains some JS code using the script tags into the comment
-					    section of an app.  Typically the chat session data is saved to a database and rendered back to the client as a clickable link.  Once the link is clicked, the browser interprets the JavaScript.
-					    So what we put into the text box was actually javascript code, but when rendered back in the chat view, the browser will interepet are code 
-					    and execute the code.  This code is saved to the database and anyone who is also on the thread will be able to see the code and may be tempted to
-					    click the link also.
-					    
-					    With reflected, Typically, an attacker would first test the site to see if they 
-					    can execute a script in a input field.  The input field you might put the opening and closing script tag and try to initiate an alertbox.
-					    If you are able to initiate an alertbox, you now know that the site does not have the correct security measures implemented.
 					    
 					    
 					  </aside>
 				</section>
 				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
-					<h3>Good Video on XSS</h3>
-	
-					<iframe width="760" height="515" src="https://www.youtube.com/embed/EoaDgUgS6QA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+					<h4>HTTP/2 overview</h4>
+					<p>The primary goals for HTTP/2 are to reduce latency by enabling full request and response multiplexing, minimize protocol overhead via efficient compression of HTTP header fields, and add support for request prioritization and server push.</p>
+					<img src="../img/tls/binary_framing_layer01.svg"  alt="http2 binary_framing Layer"/>
+					
 
 				</section>
 				<section data-background="#fff">
+					<h3>Encryption</h3>
+					<p style="font-size: 24px;"><strong>Encryption Algorithm</strong> takes input data and scrambles it by using an encryption key - a secret between two parties</p>
+					<div id="flexcontain">
+						<div class="box_two" style="font-size: 22px; margin: 10px;">
+							<h3>Symmetric</h3>
+							<ul>	
+								<li style="font-size: 20px;">- Uses the same key to encrypt and decrypt data <br>- Operate as <i>block ciphers</i> they break the input data into fixed-size blocks that can be individually encrypted</li>
+
+							</ul>
+						</div>
+						<div class="box_two" style="font-size: 22px; margin: 10px;">
+							<h3>Asymmetric</h3>
+							<ul>	
+								<li style="font-size: 20px;">- Uses different keys to encrypt and decrypt data. <br>- Sometimes called <i>public-key cryptography</i> the encryption key (public key) can be published; only the decryption key (private key) needs to be kept secret.</li>	 
+								
+							</ul>
+						</div>
+
+
+						
+					</div>
+					  <aside class="notes">
+					    
+					    
+					  </aside>
+				</section>
+				<section data-background="#fff">
+					<h3>Hash Functions</h3>
+					<p style="font-size: 24px;"><strong>cryptographic hash functions</strong>which can be thought of as encryption algorithms whose output <i>cannot</i> be decrypted.</p>
+					
+					<p>Using hashing algorithms is typically how passwords are stored in a database.  The web server store the hashed value of the password in the database but will deliberately forget the actuall password value.</p>
+					<img src="../img/tls/hash.png" alt="picture of hashing algorithm process" />
+					  <aside class="notes">
+					    
+					    
+					  </aside>
+				</section>
+				<section data-background="#fff">
+					<h2>TLS Handshake</h2>
+					<p>CSP makes it possible for server administrators to <strong>reduce</strong> or <strong>eliminate</strong> the vectors by which XSS can occur by specifying the domains that the browser should consider to be valid sources of executable scripts</p>
+				</section>
+				<!--<section data-background="#fff">
 					<h3>Example 1 (Reflected XSS)</h3>
 					<p style="font-size: 28px;">Data is read directly from the HTTP request and reflected back in the HTTP response. Reflected XSS exploits occur when an attacker causes a user to supply dangerous content to a vulnerable web application, which is then reflected back to the user and executed by the web browser. The most common mechanism for delivering malicious content is to include it as a parameter in a URL that is posted publicly or e-mailed directly to victims. URLs constructed in this manner constitute the core of many phishing schemes, whereby an attacker convinces victims to visit a URL that refers to a vulnerable site. After the site reflects the attacker’s content back to the user, the content is executed and proceeds to transfer private information, such as cookies that may include session information, from the user’s machine to the attacker or perform other nefarious activities.</p>
 				</section>
@@ -196,18 +240,7 @@
 					<h2>Content Security Policy (CSP)</h2>
 					<p>CSP makes it possible for server administrators to <strong>reduce</strong> or <strong>eliminate</strong> the vectors by which XSS can occur by specifying the domains that the browser should consider to be valid sources of executable scripts</p>
 				</section>
-				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
-					<h4>What Does CSP Prevent??</h4>
-				
-					<ul>
-						<li><strong>XSS</strong> - CSP automatically blocks the code from sending sensitive information to the hacker's domain.</li>
-						<li><strong>Browser Hijacking & Ad Injection</strong> - Client-side malware causes unwanted ads to appear on your users' browsers. A CSP prevents these ads from loading when affected users go on your website.</li>
-						<li><strong>Unauthorized Piggyback Tags</strong> - One tag could also be loading multiple tags from vendors you have not authorized. A CSP eliminates this security risk..</li>
-			
-					</ul>
-					
 
-				</section>
 				<section data-background="#fff">
 					<h3>Implementing a CSP</h3>
 				

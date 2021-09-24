@@ -84,6 +84,38 @@
 					<img src="../img/arrays/array_image.PNG"  alt="array visual">
 					<p style="font-size: 24px;">Rather than having to store multiple values of the same type in different variables, we can store them in an array. This is appropriate when we have a group of values of the same type, such as a list of numbers, or a group of characters representing a playing board for a game. </p>
 				</section>
+				<!--	<section data-background="#fff">
+					<h3>Activity 1  </h3>
+
+					<div id="flexcontain">
+						<div class="box_two" style="margin: 10px;">
+							<ul style="font-size: 42px;">	
+								<li><b>Using the list to the right</b></li>
+								<ul>
+									<li>Create an array accessing each individual element</li>
+									<li>Create a function that accepts two arguments 1) the grocery array and 2) an item to be added to list</li>
+									<li>Return the list back to the main method and output updated list</li>
+								</ul>
+
+							</ul>
+
+						</div>
+						<div class="box_two" style=" margin: 10px;">
+							<img src="../img/arrays/grocery_list.jpg" alt="picture of grocery list">
+						</div>
+					</div>
+
+					
+				</section>-->
+			<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
+				<h4>The name of the array is the address of the first element of the array.</h4>
+				<code style="font-size: 22px;">The elements of this array can be referred to in a program as
+ 						scores[0] . . . scores[99]. </code>
+				<p style="font-size: 22px;">When the program is compiled, the compiler does not save the addresses of all of the elements, but only saves the address of the first element, scores[0].  When the program needs to access any element, such as scores[1], it calculates the address by adding units to the address of scores[0].
+ The number of bytes in each unit is equal to the number of bytes required to store an element of the array.  In this example, the number of bytes in each unit is 8 bytes (needed to store a double).</p>
+ 				<p style="font-size: 22px;">The address of scores[0] can be obtained by using the & ("address of") operator.</p>
+ 				<code>In C++, the name of the array, scores, without a subscript, is the same as &scores[0].</code>
+			</section>			
 				<section data-background="#fff">
 					
 					<p style="font-size: 22px; font-weight: bold;">Consider writing a program using multiple variables to keep track of a number of test scores.   
@@ -133,162 +165,202 @@ See program <code>averageScoresUsingVariables.cpp</code> </p>
 					
 
 				</section>
+
 				<section data-background="#fff">
-					<h3>Activity 1  </h3>
-
-					<div id="flexcontain">
-						<div class="box_two" style="margin: 10px;">
-							<ul>	
-								<li><b>Using the list to the right</b></li>
-								<ul>
-									<li>Create an array accessing each individual element</li>
-									<li>Using the same list, create an array using the array initializer syntax </li>
-								</ul>
-
-							</ul>
-
-						</div>
-						<div class="box_two" style=" margin: 10px;">
-							<img src="../img/arrays/grocery_list.jpg" alt="picture of grocery list">
-						</div>
-					</div>
-
-					
-				</section>
-				<section data-background="#fff">
-					<p>Consider the code segment shown at left below, designed to give a letter grade based on a score: </p>
+					<p>With a normal array we must be careful to keep track of the end of the array.  Consider what can happen  in program <code>iq.cpp</code> shown below:  </p>
 					<div id="flexcontain">
 						<div class="box">
 							<pre>
-								<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+								<code style="font-size: 16px; mid-width: 400px;" class="cs hljs"  data-trim contenteditable>
 									
-							int score; 
-							
-							cout << "Enter score: "; 
-							
-							cin >> score; 
-						
-							// Determine the grade 
-							
-							if (score >= 90) 
-							   cout << "A"; 
-							if (score >= 80) 
-							   cout << "B"; 
-							
-							if (score >= 70) 
-							   cout << "C"; 
-							
-							if (score >= 60) 
-							   cout << "D"; 
-							
-							else 
-							
-							   cout << "F"; 
-								</code>
-							</pre>
-						</div>
-						<div class="box">
-							<p>With input 72, what is the output?</p>
-							<ul>
-								<li>A. AB</li>
-								<li>B. ABC</li>
-								<li>C. C</li>
-								<li>D. D</li>
-								<li>E. CD</li>
-							</ul>
-						</div>
-					</div>
-				
-
-				</section>
-
-				<!--<section data-background="#fff">
-					<p>Indentation should reflect meaning -  The code on the previous slide should be written as: </p>
-					<div id="flexcontain">
-						<div class="box">
-							<pre>
-								<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
-									
-								// Determine the grade 
+								using namespace std; 
+								#include &lt;iostream&gt; 
 								
-								if (score >= 90) 
-								   cout << "A"; 
-								else  
-									if (score >= 80) 
-									   cout << "B"; 
+								void change( char initials[]) { 
+								
+									for( int i=0; i&lt;2; i++) { 
+									initials[ i] = 'A'; 
+									} 
+								} 
+								
+								int main() { 
+								
+									int iq = 120; 
+									char initials[] = "CF"; //NULL-terminated C string 
+									cout &lt;&lt; initials &lt;&lt; " has iq: " &lt;&lt; iq &lt;&lt; endl; 
+									change( initials); 
+									cout &lt;&lt; initials &lt;&lt; " has iq: " &lt;&lt; iq &lt;&lt; endl; 
 									
-									else  
-										if (score >= 70) 
-										   cout << "C"; 
-										
-										else  
-											if (score >= 60) 
-											   cout << "D"; 
-											
-											else 
-											
-											   cout << "F"; 
+									return 0; 
+								} 
 								</code>
 							</pre>
 						</div>
-						<div class="box">
-							<p>What test cases would you use for this code?  Why might this matter?</p><br>
+						<div class="box" style="max-width: 320px;">
+							<p>What is the output when running this program? </p>
+							<ul>
+								<li>A. CF has iq: 120 </li>
+								<li>B. CF has iq: CF </li>
+								<li>C. AA has iq: 120 </li>
+								<li>D. AA has iq: 65 </li>
 							
-	
+							</ul>
+							<p>If we modify the for loop maximum value from 2 to 13, then which of the above options is the closest to the actual output? </p>
 						</div>
 					</div>
 				
+
+				</section>
+
+
+				<section data-background="#fff">
+					<h4>Explanation </h4>
+					<img src="../img/arrays/comp_memory.PNG" width="650" alt="Computer memory with arrays">
+					<div id="flexcontain">
+						<div class="box">
+							<p>Without describing memory addresses fully, it is helpful to know that when the computer is turned on the first part of memory is often mapped to a chip called the Basic Input-Output System, or BIOS.  The BIOS indicates where the computer should look next to load the Operating System.  Within the operating system we might then launch an IDE such as DevC++.  From within the IDE we might run a program, starting within main(), where first the compiler sees and allocates memory for iq, and then next it sees and allocates memory for initials. </p>
+						</div>
+					</div>
+					
+
 				</section>
 				<section data-background="#fff">
-					<p>What is the output of the following code for an input of 2? </p>
+					<h4>Explanation cont.</h4>
+					<img src="../img/arrays/comp_memory.PNG" width="650" alt="Computer memory with arrays">
+					<div id="flexcontain">
+						<div class="box">
+							<p>Overwriting the end of initials with successive 'A' letters changes "DR" to "AA" and also overwrites the string-ending NULL with 'A'.  If the for loop limit is large enough it continues overwriting what is next in memory, eventually also overwriting iq with 'A' letters.  When iq is next printed, its value is no longer 120 but is 'A', whose ASCII value is 65.  This is why the output (in DevC++) becomes  </p>
+						</div>
+					</div>
+					
+
+				</section>
+
+				<section data-background="#fff">
+					<p>Consider the code segment shown below.  If after the function call to <i>changeLetters(…)</i> the value of <i>number</i> has changed, what is the most likely cause?  </p>
 					<div id="flexcontain">
 						<div class="box">
 							<pre>
-								<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
-								cin >> num;  //Read in num value 
-								if (num >= 3)   
-								   if (num == 3) 
-								      cout << "is three. "; 
-								else 
-								   cout << "less than three. "; 
-								cout << "Done.\n"; 
+								<code style="font-size: 18px;" class="cs hljs"  data-trim contenteditable>
+									
+									int number = 5; 
+									char letters[]="ABCD"; 
+									cout &lt;&lt; number; 
+									changeLetters( letters); 
+									cout &lt;&lt; number; 
 								</code>
 							</pre>
 						</div>
 						<div class="box">
-							<table>
-							  <tr>
-							    <th><strong>Options</strong></th>
-							    <th><strong>Output</strong></th>
+
+							<ul>
+								<li>A. number is a global variable instead of a local variable as it should be </li>
+								<li>B. Although number is not passed to function <i>changeLetters()</i>, function <i>changeLetters()</i> itself calls a second function which changes number </li>
+								<li>C. There are some ASCII control characters that are present in the code even though they are not visible </li>
+								<li>D. Function <i>changeLetters()</i> overwrites the end of array letters  </li>
 							
-							  </tr>
-							  <tr>
-							    <td>A.</td>
-							    <td> is three.</td>
-							  
-							  </tr>
-							  <tr>
-							    <td>B.</td>
-							    <td>is three. Done.</td>
-							   
-							  </tr>
-							  <tr>
-							    <td>C.</td>
-							    <td>less than three. </td>
-							   
-							  </tr>
-							  <tr>
-							    <td>D.</td>
-							    <td>Done. </td>
-							   
-							  </tr>
-							</table>
+							</ul>
+							
 						</div>
 					</div>
-					<p>Consider Input of 3 and 4</p>
+				
 
 				</section>
 				<section data-background="#fff">
+					<h4 style="font-size: 28px;">Previously we saw an example [ overwrite.cpp ] where we overwrote the end of an array.  To avoid this we can use a vector rather than an array in  [ overwriteWithVector.cpp ] : </h4>
+					<div id="flexcontain">
+						<div class="box">
+							<pre>
+								<code style="font-size: 18px; min-height: 620px;" class="cs hljs"  data-trim contenteditable>
+									
+
+									/* Output is: 
+									first is: A and letters are CIF
+									Now first is: A and letters are CIF
+									End of program. 
+									 */ 
+									
+									#include &lt;iostream&gt; 
+									#include &lt;vector&gt; 
+									using namespace std; 
+									
+									void reset( vector&lt;char&gt; letters){ 
+									
+									 // In loop below in DevC++ it works for i&lt;24, but hangs when i&lt;25 
+									 // for( int i=0; i&lt;25; i++) { 
+									 //  letters[ i] = 'Z'; 
+									 // } 
+									
+									  // Safer version uses the size of the vector 
+									  for( int i=0; i&lt;letters.size(); i++) { 
+									
+									    letters[ i] = 'Z';    // even safer would be to use letters.at(i) = 'Z'; 
+									  } 
+									} 
+									
+									int main() { 
+									  char first = 'A'; 
+									  vector&lt;char&gt; letters(3); 
+									  letters.at(0) = 'C';  letters.at(1) = 'I'; letters.at(2) = 'F'; 
+									
+									  // Instead of the above, we could use: 
+									  // letters.push_back( 'C'); letters.push_back( 'I'); letters.push_back( 'F'); 
+									
+									  cout &lt;&lt; "first is: " &lt;&lt; first &lt;&lt; " and letters are "; 
+									
+									  for( int i=0; i&lt;letters.size(); i++) { 
+									     cout &lt;&lt; letters.at(i); 
+									  } 
+									  cout &lt;&lt; endl; 
+									  reset( letters); 
+									  cout &lt;&lt; "Now first is: " &lt;&lt; first &lt;&lt; " and letters are "; 
+									
+									  for( int i=0; i&lt;letters.size(); i++) {
+									     cout &lt;&lt; letters.at(i); 
+									  } 
+									  cout &lt;&lt; endl; 
+									  cout &lt;&lt; "End of program. " &lt;&lt; endl; 
+									
+									  return 0; 
+									}
+								</code>
+							</pre>
+						</div>
+
+					</div>
+				
+
+				</section>
+				<section data-background="#fff">
+					<h3>More on Arrays</h3>
+					<p>Consider code that manipulates a set of test scores for a class that are typed in by a user.   
+How many of the following code segments likely must be implemented using an array?</p>
+					<div id="flexcontain">
+						<div class="box">
+							<ul>
+								<li>I. Find the min and max scores </li>
+								<li>II. Display the scores in ascending order </li>
+								<li>III. Count how many there are within the 'A', 'B', 'C', 'D' and 'F' score ranges </li>
+								<li>IV. Count how many there are of each score</li>
+							</ul>
+						</div>
+						<div class="box">
+
+							<ul>
+								<li>A. 0 </li>
+								<li>B. 1 </li>
+								<li>C. 2 </li>
+								<li>D. 3  </li>
+								<li>E. 4  </li>
+							
+							</ul>
+							
+						</div>
+					</div>
+				
+
+				</section>
+				<!--<section data-background="#fff">
 					<h4>Braces and Indentation</h4>
 					<img src="../img/selection_looping/proper_indentation.PNG" width="790" alt="code braces and proper indentation">
 				</section>
