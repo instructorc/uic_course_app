@@ -58,9 +58,36 @@
 						
 						</ul>
 			        </ul>
-			        
+ 
+				</section>
+				<section data-background="#fff">
+					<h4>Question 1</h4>
 
-				   
+					<p>Uses the same key to encrypt and decrypt a message? </p>
+					<ul>
+						<li>A. asymmetric encryption</li>
+						<li>B. symmetric encryption</li>
+						<li>C. hash function </li>
+						<li>D. cipher suite </li>
+					
+					</ul>
+		
+				
+
+				</section>
+				<section data-background="#fff">
+					<h4>Question 2</h4>
+
+					<p>Term used for data prior to encryption? </p>
+					<ul>
+						<li>A. cipher text</li>
+						<li>B. data-in-transit </li>
+						<li>C. default text</li>
+						<li>E. plain text</li>
+					</ul>
+		
+				
+
 				</section>
 				<section data-background="white" style="background-size: 80%;">
 					<h3 style="background-color:rgba(255, 255, 255, 0.7); color: black;">Ton's of Acronyms - Activity</h3>
@@ -81,30 +108,23 @@
 				<section data-background="../img/arch/devops.jpg">
 					<h1 style="color: black; background-color: rgba(255,255,255, .6); padding: 3px;">Http/Http(s)</h1>
 				</section>
-				<section data-background="#fff">
-					<h4>URL Breakdown</h4>
-					<img src="../img/tls/http_image.jpg"  alt="URL Breakdown"/>
-					<div id="flexcontain">
-						<div class="box">
-							<p> </p>
-						</div>
-					</div>
-				</section>
+
 				<section data-background="#fff">
 					<h3>Hypertext Transfer Protocol</h3>
+					<img src="../img/tls/http_image.jpg"  alt="URL Breakdown"/>
 					<p style="font-size: 24px;">an application layer protocol designed to transfer information between networked devices and runs on top of other layers of the network protocol stack.</p>
 					<div id="flexcontain">
 						<div class="box_two" style="font-size: 22px; margin: 10px;">
 							<h3>http</h3>
 							<ul>	
-								<li style="font-size: 20px;"><b>Where the injected malicious script is permanently stored on the target servers [Persistant]</b></li>
+								<li style="font-size: 20px;"><b>protocol for transmitting hypermedia documents, such as HTML[Data-in-Transit - Plain text]</b></li>
 
 							</ul>
 						</div>
 						<div class="box_two" style="font-size: 22px; margin: 10px;">
 							<h3>https</h3>
 							<ul>	
-								<li style="font-size: 20px;"><b>Where the injected malicious script is reflected off of a web application to the victim’s browser. [None Persistant]</b> </li>	 
+								<li style="font-size: 20px;"><b>is encrypted in order to increase security of data transfer  [Data-in-transit - cipher text]</b> </li>	 
 								
 							</ul>
 						</div>
@@ -124,11 +144,12 @@
 				</section>
 				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
 					<h4>HTTP/2 overview</h4>
-					<p>The primary goals for HTTP/2 are to reduce latency by enabling full request and response multiplexing, minimize protocol overhead via efficient compression of HTTP header fields, and add support for request prioritization and server push.</p>
-					<img src="../img/tls/binary_framing_layer01.svg"  alt="http2 binary_framing Layer"/>
+					<p style="font-size: 28px;">The primary goals for HTTP/2 are to reduce latency by enabling full request and response multiplexing, minimize protocol overhead via efficient compression of HTTP header fields, and add support for request prioritization and server push.</p>
+					<img src="../img/tls/binary_framing_layer01.svg" width="650"  alt="http2 binary_framing Layer"/>
 					
 
 				</section>
+
 				<section data-background="#fff">
 					<h3>Encryption</h3>
 					<p style="font-size: 24px;"><strong>Encryption Algorithm</strong> takes input data and scrambles it by using an encryption key - a secret between two parties</p>
@@ -157,8 +178,22 @@
 					  </aside>
 				</section>
 				<section data-background="#fff">
+					<h2>Symmetric vs. Asymmetric</h2>
+					<p>Visual without going into much detail</p>
+					<div id="flexcontain">
+						<div class="box_two">
+							<img src="../img/tls/ceasar.png" alt="one key">
+						</div>
+						<div class="box_two">
+						
+							<img src="../img/tls/dhe.png" alt="key-pair">
+						</div>
+					</div>
+				</section>
+
+				<section data-background="#fff">
 					<h3>Hash Functions</h3>
-					<p style="font-size: 24px;"><strong>cryptographic hash functions</strong>which can be thought of as encryption algorithms whose output <i>cannot</i> be decrypted.</p>
+					<p style="font-size: 24px;"><strong>Cryptographic hash functions </strong>which can be thought of as encryption algorithms whose output <i>cannot</i> be decrypted.</p>
 					
 					<p>Using hashing algorithms is typically how passwords are stored in a database.  The web server store the hashed value of the password in the database but will deliberately forget the actuall password value.</p>
 					<img src="../img/tls/hash.png" alt="picture of hashing algorithm process" />
@@ -167,9 +202,55 @@
 					    
 					  </aside>
 				</section>
+				<section data-background="../img/arch/devops.jpg">
+					<h1 style="color: black; background-color: rgba(255,255,255, .6); padding: 3px;">What is this below?<br> ECDHE-ECDSA-AES128-GCM-SHA256</h1>
+				</section>
 				<section data-background="#fff">
-					<h2>TLS Handshake</h2>
-					<p>CSP makes it possible for server administrators to <strong>reduce</strong> or <strong>eliminate</strong> the vectors by which XSS can occur by specifying the domains that the browser should consider to be valid sources of executable scripts</p>
+					<h3>Cipher Suites</h3>
+					<p>A set of algorithms used to secure communication - Consist of three separate algorithms</p>
+					<img src="../img/tls/cipher-suite-elements.png" width="600" alt="cipher suites graphic">
+					<div id="flexcontain">
+						<div class="box red" style="font-size: 22px; margin: 10px; background-color: #eee; height: 180px; color: #111;"><p><b style="font-size: 28px;">key-exchange algorithm</b> <br> asymmetric encryption algorithm used to exchange secret keys </p></div>
+						<div class="box blue" style="font-size: 22px; margin: 10px; background-color: #eee; height: 180px; color: #111;"><p><b style="font-size: 28px;">Symmetric algorithm</b> <br>block cipher designed for encrypting the content of TCP packets</p></div>
+						<div class="box green" style="font-size: 22px; margin: 10px; background-color: #eee; height: 180px; color: #111;"><p><b style="font-size: 28px;">MAC Algorithm</b> <br>authenticating the encrypted messages.</p></div>
+
+					</div>
+					
+				
+				</section>
+				<section data-background="#fff">
+					<h2>TLS Handshake Steps</h2>
+					<div id="flexcontain">
+						<div class="box_two">
+							<ul style="font-size: 22px;">
+								<li>1) Determines version of TLS and list cipher suites.</li>
+								<li>2) Webserver selects the most secure cipher suite it can support and instructs browser to use those algorithms for comm.</li>
+								<li>3/4) Same time as step 2, the server passes a digital certificate, containing the server name, the certificate authority(who validates Authenticity)</li>
+								<li>5) Browser verifies authenticity with certificate authorities</li>
+								<li>6) The two machines generate a session key that will be used to encrypt the TLS conversation</li>
+								<li>7) Session specifications are set and encrypted communication can take place</li>
+							</ul>
+						</div>
+						<div class="box_two">
+						
+							<img src="../img/tls/TLS-handshake-protocol.png" alt="visual of TLS handshake" title="attribution: https://www.researchgate.net/figure/TLS-handshake-protocol_fig1_298065605">
+						</div>
+					</div>
+				</section>
+				<section data-background="#fff">
+					<h4>Aproximate time it takes to complete TLS Handshake?</h4>
+
+							<ul>
+								<li>A. About 300 - 400ms </li>
+								<li>B. 2 - 3 seconds </li>
+								<li>C. About 1 second </li>
+								<li>D. 50 - 150ms </li>
+								<li>E. 500 - 800ms</li>
+							</ul>
+
+				</section>
+				<section data-background="../img/arch/devops.jpg">
+					<h1 style="color: black; background-color: rgba(255,255,255, .6); padding: 3px;">Digital Certificates</h1>
 				</section>
 				<!--<section data-background="#fff">
 					<h3>Example 1 (Reflected XSS)</h3>
@@ -380,11 +461,8 @@
 					
 					<h3>Suggested Reading</h3>
 					<ul style="font-size: 28px;">
-						<li>https://owasp.org/www-community/attacks/xss/</li>
-						<li>https://blog.bluetriangle.com/how-to-implement-a-content-security-policy-csp</li>
-						<li>https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP</li>
-						<li>https://content-security-policy.com/examples/express-js/</li>
-						<li>https://xss.pwnfunction.com/</li>
+						<li>Forthcoming</li>
+
 					</ul>
 				</section>
 
