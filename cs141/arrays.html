@@ -354,11 +354,112 @@ How many of the following code segments likely must be implemented using an arra
 								<li>E. 4  </li>
 							
 							</ul>
-							
+							<p>We need to store all the scores in an array so that we can sort them into ascending order, and also would likely need to store them to count how many there are of each score. </p>
 						</div>
 					</div>
 				
 
+				</section>
+				<section data-background="#fff">
+					<h3 style="color: white; background-color: rgb(106, 136, 50);">Passing Arrays as Parameters</h3>
+					<p style="font-size: 28px; margin-bottom: -12px;">Remember that:    the name of an array is the address of the first element </p>
+					<div id="flexcontain">
+						<div class="box_two" style="margin: 10px; max-width: 300px;">
+						<ul style="font-size: 36px;">	
+							<li><b>Considerations:</b></li>
+							<ul>
+								<li>When passing an array to a function, you don't have to do anything special to get array changes reflected 
+back to the calling part of the code. </li>
+							
+
+							</ul>
+						</ul>
+						</div>
+						<div class="box_two" style="margin: 10px;">
+							<pre>
+								<code style="font-size: 18px; min-height: 620px;" class="cs hljs"  data-trim contenteditable>	
+								#include &lt;iostream&gt; 
+								using namespace std;
+								//const int Size=3; 
+								
+								void getAverage(int sum, int scores[3]) {
+								    cout << endl;
+								    cout << "\nThe scores are: ";
+								    for (int i = 0; i < 3; i++) {
+								        cout << scores[i] << " ";
+								        sum = sum + scores[i];
+								    }
+								    cout << endl;
+								    cout << "The average is: " << (float)sum / 3 << endl;
+								}
+								
+								void getScores(int scores[3]) {
+								    // Read in scores values 
+								    cout << "Enter " << 3 << " scores: ";
+								    for (int i = 0; i < 3; i++) {
+								        cin >> scores[i];
+								    }
+								}
+								
+								int main() {
+								    int scores[3];
+								
+								    int sum = 0;  // accumulate the sum 
+								       // indexed from 0 up to n-1 
+								    getScores(scores);
+								    getAverage(sum, scores);
+								
+								    return 0;
+								
+								}//end main() 
+								</code>
+							</pre>
+						</div>
+
+					</div>
+				</section>
+				<section data-background="#fff">
+					<h3 style="color: white; background-color: rgb(106, 136, 50);">Two-dimensional array</h3>
+					<p style="font-size: 28px; margin-bottom: -12px;">Contains two dimensions: <b>height</b> and <b>width</b>.  The location of an element within the array depends on two factors.</p>
+					<div id="flexcontain">
+						<div class="box_two" style="margin: 10px;">
+						<ul>	
+							<li><b>Examples: </b></li>
+							<ul style="font-size: 32px;">
+								<li>Apartment building with five floors</li>
+								<li>Each floor has studio apartments and one-and two-bedroom apartments</li>
+								<li>– To determine a tenant’s rent, you need to know two pieces of information:</li>
+								<ul>
+									<li>The floor</li>
+									<li>The number of bedrooms in the apartment</li>
+								</ul>
+								<li>c++ syntax: <br> <code> int ENT_BY_FLOOR_AND_BDRMS [5][3];</code></li>
+							</ul>
+						</ul>
+						</div>
+						<div class="box_two" style=" margin: 10px;">
+							<img src="../img/arrays/multi_apartment_one.png" width="330" alt="Multi-dimensional array example one">
+							<img src="../img/arrays/multi_apartment_two.png" width="330" alt="Multi-dimensional array example two">
+						</div>
+					</div>
+				</section>
+				<section data-background="#fff">
+					<h3>In-Class Activity</h3>
+					<p>There are two ways we can represent the data below</p>
+						<img src="../img/arrays/multi_apartment_one.png" width="330" alt="Multi-dimensional array example one">
+					<div id="flexcontain">
+						<div class="box red" style="font-size: 20px; margin: 10px; background-color: #eee; height: 225px; color: #111;"><p><b style="font-size: 28px;">2 Dimensional Array</b> <br> Using the above image - create a 2-dimensional array that holds each of the items above. </div>
+						<div class="box blue" style="font-size: 20px; margin: 10px; background-color: #eee; height: 225px; color: #111;"><p><b style="font-size: 28px;">Processing through Array</b> <br>How can we process through this array</p></div>
+						<!--<div class="box green" style="font-size: 22px; margin: 10px; background-color: #eee; height: 225px; color: #111;"><p><b style="font-size: 28px;"></b> <br> <br> How can we process through this array</p></div>-->
+
+					</div>
+					
+				
+				</section>
+				<section data-background="#fff">
+					<h3>Jump back to class notes</h3>
+
+				
 				</section>
 				<!--<section data-background="#fff">
 					<h4>Braces and Indentation</h4>
