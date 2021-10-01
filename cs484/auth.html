@@ -44,19 +44,14 @@
 			        <ul style="font-size: 26px;">
 						<li>Authentication and Authorization</li>
 			        	<li>Authentication Options</li>
-						<li>Considerations</li>
+						<li>Considerations + Mitigations</li>
 			        	<ul>
 			        		<li>Password Configuration</li>
 							<li>Securely Storing Passwords - Hashing and Salting Passwords</li>
 			        		<li>Multifactor Authentication</li>
+							<li>Brute Force Attacks</li>
 			        
 			        	</ul>
-			        	<li>Mitigations</li>
-						<ul>
-							<li>Brute Force Attacks</li>
-							<li>TLS/SSL Handshake</li>
-							<li>Certificate Authorities</li>
-						</ul>
 						<li>Understanding Passport.js</li>
 						<ul>
 							<li>Strategies, Implementation & Initialization</li>
@@ -117,20 +112,20 @@
 
 				<section data-background="#fff">
 					<h3>Authentication & Authorization</h3>
-					<img src="../img/tls/http_image.jpg"  alt="URL Breakdown"/>
+					<img src="../img/auth/auth_access.png" width="650"  alt="Courtesy of okta - authorization verses access"/>
 					<p style="font-size: 24px;"></p>
 					<div id="flexcontain">
-						<div class="box_two" style="font-size: 22px; margin: 10px;">
+						<div class="box_two" style="font-size: 28px; margin: 10px;">
 							<h3>Authentication</h3>
 							<ul>	
-								<li style="font-size: 20px;"><b>validating</b> that users are whom they claim to be</li>
+								<li style="font-size: 26px;"><b>Validating</b> that users are whom they claim to be</li>
 
 							</ul>
 						</div>
-						<div class="box_two" style="font-size: 22px; margin: 10px;">
+						<div class="box_two" style="font-size: 26px; margin: 10px;">
 							<h3>Authorization</h3>
 							<ul>	
-								<li style="font-size: 20px;"><b>access and permission</b>to specific resource or application functions </li>	 
+								<li style="font-size: 26px;"><b>Access and permission</b> to specific resource or application functions </li>	 
 							</ul>
 						</div>
 	
@@ -141,18 +136,63 @@
 					    
 					  </aside>
 				</section>
+				<section data-background="#fff">
+					<h3>Activity</h3>
+					<p>Partner with someone and think about important factors you need to consider when implementing Authentication. Consider the two buckets below.</p>
+					
+					<div id="flexcontain">
+						<div class="box red" style="font-size: 22px; margin: 10px; background-color: #eee; height: 180px; color: #111;"><p><b style="font-size: 28px;">Routes</b> <br>Identify all the possible routes needed for Authentication purposes </p></div>
+						<div class="box blue" style="font-size: 22px; margin: 10px; background-color: #eee; height: 180px; color: #111;"><p><b style="font-size: 28px;">Authentication Concerns</b> <br>Issues or problems and end-user can encounter with Authentication</p></div>
+					</div>
+				</section>
 				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
 					<h4>Authentication Options</h4>
-					<img src="../img/auth/auth_options.png" alt="authentication options"/>
-					<ul>
-						<li>Http-Native - built into HyperText Transfer Protocol[locked-in to whats provided]</li>
-						<li>Sessions - Utilizes Cookies & Sessions to manage logged-in and logged-out users</li>
-						<li>JWT Tokens - stateless authentication method where a JSON Web token (JWT) is stored in the browser (usually localStorage)</li>
-					</ul>
-					
+					<div id="flexcontain">
+						<div class="box_two" style="font-size: 22px; margin: 10px;">
+				
+							<ul>
+								<li><strong>Http-Native</strong> - built into HyperText Transfer Protocol [locked-in to whats provided]</li>
+								<li><strong>Sessions</strong> - Utilizes Cookies & Sessions to manage logged-in and logged-out users</li>
+								<li><strong>JWT Tokens</strong> - stateless authentication method where a JSON Web token (JWT) is stored in the browser (usually localStorage)</li>
+								<li><strong>OAuth</strong> - open-standard authorization protocol that allows for authentication via server to server communication.   Allow a website or application to access resources hosted by other web apps. Access Token provided for authentication purposes.</li>
+								<li><strong>Third-Party Cloud-base Authentication</strong> - Netlify, Amazon Cognito, AuthO</li>
+							</ul>
+						</div>
+						<div class="box_two" style="font-size: 22px; margin: 10px;">
+							<img src="../img/auth/auth_options.png" alt="authentication options"/>
+						</div>
+					</div>
+				</section>
+				<section data-background="white" style="background-size: 80%;">
+					<h3 style="background-color:rgba(255, 255, 255, 0.7); color: black;">Authentication Considerations</h3>
+					<p style="background-color:rgba(255, 255, 255, 0.7);  font-size: .8em; color: black;" class="fragment"> There are a number things we can do to enhance authorization security. </p>
+					<div id="flexcontain" class="fragment">
+						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">Secure Storage of Passwords </h3></div>
+						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">Multifactor Authentication</h3></div>
+						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">Implementing CAPTCHA</h3></div>
+						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">Secure Password Resets</h3></div>
+						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">Banning Disposable Email Accounts</h3></div>
+						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">Enforcing Strong Passwords</h3></div>
 
+
+					</div>
 				</section>
 
+				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
+					<h4>Secure Storage of Password</h4>
+					<div id="flexcontain">
+					
+							<img src="../img/auth/hash_salt.png" width="700" alt="Hashing and Salting Password" title="SOURCE: https://cyberhoot.com/cybrary/password-salting/"/>
+						
+						<div class="box_two" style="font-size: 22px; margin: 10px;">
+							<ul>
+								<li><strong>Hasing Algorithm </strong> - built into HyperText Transfer Protocol [locked-in to whats provided]</li>
+								<li><strong>Salting</strong> - Utilizes Cookies & Sessions to manage logged-in and logged-out users</li>
+
+							</ul>
+						</div>
+					</div>
+				</section>
 				<!--<section data-background="#fff">
 					<h3>Encryption</h3>
 					<p style="font-size: 24px;"><strong>Encryption Algorithm</strong> takes input data and scrambles it by using an encryption key - a secret between two parties</p>
@@ -464,7 +504,7 @@
 					
 					<h3>Suggested Reading</h3>
 					<ul style="font-size: 28px;">
-						<li>Forthcoming</li>
+					
 
 					</ul>
 				</section>
