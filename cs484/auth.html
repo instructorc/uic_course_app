@@ -72,9 +72,6 @@
 						<li>D. Http-Native Authentication</li>
 					
 					</ul>
-		
-				
-
 				</section>
 				<section data-background="#fff">
 					<h4>Question 2</h4>
@@ -270,14 +267,11 @@
 				</section>
 				<section data-background="#fff">
 					<h3>Password Recovery/Reset</h3>
-					<ul>
-						<li></li>
-					</ul>
+					<img src="../img/auth/login_forgot.png" width="500" alt="login screen"/>
 					<h3>Common Attack Vectors</h3>
 					<div id="flexcontain">
-						<div class="box red" style="font-size: 24px; margin: 10px; background-color: #eee; height: 220px; color: #111;"><p><b style="font-size: 26px;">User enumeration attack</b> <br>- malicious actor is looking for differences in the server's response based on the validity of submitted credentials  </p></div>
-						<div class="box blue" style="font-size: 24px; margin: 10px; background-color: #eee; height: 220px; color: #111;"><p><b style="font-size: 26px;">Account Lockout</b> <br> </p></div>
-						<div class="box blue" style="font-size: 24px; margin: 10px; background-color: #eee; height: 220px; color: #111;"><p><b style="font-size: 26px;"></b> <br> </p></div>
+						<div class="box red" style="font-size: 20px; margin: 10px; background-color: #eee; height: 190px; color: #111;"><p><b style="font-size: 22px;">Step 1 - User enumeration attack</b> <br>- malicious actor is looking for differences in the server's response based on the validity of submitted credentials. <br> <a href="https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/03-Identity_Management_Testing/04-Testing_for_Account_Enumeration_and_Guessable_User_Account">OWASP good read</a>  </p></div>
+						<div class="box red" style="font-size: 20px; margin: 10px; background-color: #eee; height: 190px; color: #111;"><p><b style="font-size: 22px;">Step 2 - Brute Force attack</b> <br>- consists of an attacker submitting many passwords or passphrases with the hope of eventually guessing correctly<br>  </p></div>
 
 					</div>
 					<aside class="notes">
@@ -291,7 +285,7 @@
 						<li>Adopting a subscription API services that identifiy disposable email addresses could be a viable option</li>
 
 					<pre style="max-height: 300px;">
-						<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+						<code style="font-size: 16px; max-height: 300px;" class="cs hljs"  data-trim contenteditable>
 							// Maintained List of disposable email addresses
 							0815.ru
 							0wnd.net
@@ -850,15 +844,44 @@
 				</section>
 
 				<section data-background="#fff">
-					<h3>Hash Functions</h3>
-					<p style="font-size: 24px;"><strong>Cryptographic hash functions </strong>which can be thought of as encryption algorithms whose output <i>cannot</i> be decrypted.</p>
+					<h3>MultiFactor Authentication</h3>
+					<p style="font-size: 28px;"><strong>MultiFactor Authentication </strong> also known as two-factor authentication; requires a returning user to identify themselves with at least two of the following three categories of information.  something they <strong>know</strong>, something they <strong>have</strong> and something they <strong>are</strong>.</p>
 					
-					<p>Using hashing algorithms is typically how passwords are stored in a database.  The web server store the hashed value of the password in the database but will deliberately forget the actuall password value.</p>
-					<img src="../img/tls/hash.png" alt="picture of hashing algorithm process" />
+
+					<p style="font-size: 26px; font-weight: 700;">Question 1: What ways have you seen the three categories implemented? <br> Question 2: What type of attack might this prevent?</p>
+					
 					  <aside class="notes">
 					    
 					    
 					  </aside>
+				</section>
+				<section data-background="../img/arch/devops.jpg">
+					<h1 style="color: black; background-color: rgba(255,255,255, .6); padding: 3px;">Implement Passport.js</h1>
+				</section>
+				<section data-background="#fff">
+					<h4>Question 1</h4>
+
+					<p>A cookie can be used for all of the below options expect which option? </p>
+					<ul>
+						<li>A. Session Management</li>
+						<li>B. Personalization of Settings</li>
+						<li>C. Refresing Browser</li>
+						<li>D. Tracking User Behavior</li>
+					
+					</ul>
+				</section>
+				<section data-background="#fff">
+					<h4>Question 2</h4>
+
+					<p>Which of the following can you not be set for a cookie? </p>
+					<ul>
+						<li>A. Max-Age</li>
+						<li>B. Expiration</li>
+						<li>C. Domain</li>
+						<li>D. Path</li>
+						<li>E. All of the above</li>
+					
+					</ul>
 				</section>
 				<!--<section data-background="../img/arch/devops.jpg">
 					<h1 style="color: black; background-color: rgba(255,255,255, .6); padding: 3px;">What is this below?<br> ECDHE-ECDSA-AES128-GCM-SHA256</h1>
