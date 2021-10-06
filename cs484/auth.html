@@ -52,11 +52,12 @@
 							<li>Brute Force Attacks</li>
 			        
 			        	</ul>
-						<li>Understanding Passport.js</li>
+						<li>Understanding Cookies and Sessions</li>
+						<li>Implementing Passport.js</li>
 						<ul>
 							<li>Strategies, Implementation & Initialization</li>
 							<li>Sessions and Cookies using Passport.js</li>
-							<li>Temporary Storage - localStorage </li>
+							<li>Session Store - Connect SQLite3 | Better-sqlite3-session-store </li>
 						</ul>
 			        </ul>
  
@@ -856,7 +857,7 @@
 					  </aside>
 				</section>
 				<section data-background="../img/arch/devops.jpg">
-					<h1 style="color: black; background-color: rgba(255,255,255, .6); padding: 3px;">Implement Passport.js</h1>
+					<h1 style="color: black; background-color: rgba(255,255,255, .6); padding: 3px;">Understanding Cookies and Sessions</h1>
 				</section>
 				<section data-background="#fff">
 					<h4>Question 1</h4>
@@ -873,15 +874,71 @@
 				<section data-background="#fff">
 					<h4>Question 2</h4>
 
-					<p>Which of the following can you not be set for a cookie? </p>
+					<p>Which of the following can you not set for a cookie? </p>
 					<ul>
 						<li>A. Max-Age</li>
 						<li>B. Expiration</li>
 						<li>C. Domain</li>
 						<li>D. Path</li>
-						<li>E. All of the above</li>
+						<li>E. All are permissible options</li>
 					
 					</ul>
+				</section>
+				<section data-background="#fff">
+					<h3>What is a cookie?</h3>
+					<p style="font-size: 28px;">A small piece of data that a server sends to a user's web browser</p>
+					<p style="font-size: 24px;"> <span style="font-weight: 700;">Primary use cases: </span><br>Session management | Personalization | Tracking</li>
+					<p style="font-weight: 700; font-size: 22px;">What additional info. can a cookie carry besides the value? </p>
+					<img src="../img/auth/cookie_info.PNG" width="500" alt="cookie properties" title="SOURCE: https://flaviocopes.com/express-cookies/ ">
+					<pre>
+						<code style="font-size: 14px;" class="cs hljs"  data-trim contenteditable>
+							//Expires after 360000 ms from the time it is set.
+							res.cookie(name, 'value', {expire: 360000 + Date.now(), httpOnly: true, path: '/admin', secure: true}); 	
+						</code>
+					</pre>
+					<aside class="notes">
+						Good resource: https://www.paladion.net/blogs/cookie-attributes-and-their-importance
+					</aside>
+				
+				</section>
+				<section data-background="#fff">
+					<h3>Types of Cookies</h3>
+
+					<ul style="font-size: 24px;">
+						<li><strong>Session cookies</strong> - Does not have <code>Expires</code> + <code>Max-Age</code>; browser deletes it when it shuts down</li>
+						<li><strong>Persistent cookies</strong> - stored  on client until deadline set by <code>Expires</code> or <code>Max-Age</code></li>
+						<li><strong>Secure cookies</strong> - when <code>httpOnly</code> is set to true. Only works with HTTP/HTTPS and does not work for scripting languages. </li>
+						<li><strong>Third-party cookies</strong> - used by websites to show ads on their web pages or track website traffic. Visual below.</li>
+					</ul>
+					<img src="../img/auth/third-party-cookies-request.png" width="500" alt="image of third party cookie request"/>
+				</section>
+				<section data-background="#fff">
+					<h3>What is a Session?</h3>
+					<p><strong>Server-side storage</strong> of information that <strong>persist</strong> throughout the user's interaction with the web site or web application. </p>
+
+					<img src="../img/auth/diagram_websession.png" width="600" alt="diagram of web session browser and server interaction"/>
+				</section>
+				<section data-background="../img/arch/devops.jpg">
+					<h1 style="color: black; background-color: rgba(255,255,255, .6); padding: 3px;">Implementing Passport.js</h1>
+				</section>
+				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
+					<h4>Getting Started with Passport.js</h4>
+					<p>Passport is authentication middleware for Node.js.  Configuration steps below:</p>
+					<div id="flexcontain">
+						<div class="box_two" style="font-size: 22px; margin: 10px;">
+				
+							<ul>
+								<li><strong>Step 1</strong> - Determine which strategy. Ex. local strategy, OAuth, OpenID</li>
+								<li><strong>Step 2</strong> - Configure Strategy</li>
+								<li><strong>Step 3</strong> - Set Middleware</li>
+								<li><strong>Step 4</strong> - Authorize Protected Routes</li>
+
+							</ul>
+						</div>
+						<div class="box_two" style="font-size: 22px; margin: 10px;">
+							<img src="../img/auth/auth_options.png" alt="authentication options"/>
+						</div>
+					</div>
 				</section>
 				<!--<section data-background="../img/arch/devops.jpg">
 					<h1 style="color: black; background-color: rgba(255,255,255, .6); padding: 3px;">What is this below?<br> ECDHE-ECDSA-AES128-GCM-SHA256</h1>
@@ -899,25 +956,7 @@
 					
 				
 				</section>
-				<section data-background="#fff">
-					<h2>TLS Handshake Steps</h2>
-					<div id="flexcontain">
-						<div class="box_two">
-							<ul style="font-size: 22px;">
-								<li>1) Determines version of TLS and list cipher suites.</li>
-								<li>2) Webserver selects the most secure cipher suite it can support and instructs browser to use those algorithms for comm.</li>
-								<li>3/4) Same time as step 2, the server passes a digital certificate, containing the server name, the certificate authority(who validates Authenticity)</li>
-								<li>5) Browser verifies authenticity with certificate authorities</li>
-								<li>6) The two machines generate a session key that will be used to encrypt the TLS conversation</li>
-								<li>7) Session specifications are set and encrypted communication can take place</li>
-							</ul>
-						</div>
-						<div class="box_two">
-						
-							<img src="../img/tls/TLS-handshake-protocol.png" alt="visual of TLS handshake" title="attribution: https://www.researchgate.net/figure/TLS-handshake-protocol_fig1_298065605">
-						</div>
-					</div>
-				</section>
+
 				<section data-background="#fff">
 					<h4>Aproximate time it takes to complete TLS Handshake?</h4>
 
