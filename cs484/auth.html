@@ -928,9 +928,8 @@
 						<div class="box_two" style="font-size: 22px; margin: 10px;">
 				
 							<ul>
-								<li><strong>Step 0</strong> - Determine which strategy. Ex. local strategy, OAuth, OpenID</li>
-								<li><strong>Step 1</strong> - Install Dependencies</li>
-								<li><strong>Step 2</strong> - Configure Strategy</li>
+								<li><strong>Step 1</strong> - Determine which strategy. Ex. local strategy, OAuth, OpenID & Install Dependencies</li>
+								<li><strong>Step 2</strong> - Configure Strategy *There are over 480 of these</li>
 								<li><strong>Step 3</strong> - Set Middleware</li>
 								<li><strong>Step 4</strong> - Authorize Protected Routes</li>
 
@@ -942,22 +941,222 @@
 					</div>
 				</section>
 				<section data-background="#fff">
-					<h4>Performing Reflected Cross Scripting Attack</h4>
+					<h4>Step 1 - Install Dependencies</h4>
 				
-					<p style="font-size: 24px;">We can do this using default parameters, where we add an equal sign and the default value at the end of the parameter or structure the URL to execute JS code that makes a HTTP request to desired location.   </p>
+					<p style="font-size: 24px;">When incorporating a database, we will install more packages</p>
 					<div id="flexcontain">
 						<div class="box">
 							<pre>
 								<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
-								// 1) test browser for execution of JS code
-								// 2) Formulate URL to execute JS code as endpoint
-								
-								
-								&lt;script type="text/javascript"&gt;
-									var information = '../hackinfo?getCookies=' + escape(document.cookie);
-								&lt;/script&gt;
+								npm install passport.js //install passport.js
+								npm install passport passport-local  //install passport.js local strategy
+								npm install express body-parser express-session //one command to install body-parser and express session 
+								//consider install bycryptjs for hashing passwords
 							</code>
 						</pre>
+						</div>
+						
+					</div>
+					
+				</section>
+				<section data-background="#fff">
+					<h4>Step 2 - Configure Strategy </h4>
+				
+					<p style="font-size: 24px;">Create a config folder and file that holds strategy configuration </p>
+					<div id="flexcontain">
+						<div class="box">
+							<pre>
+								<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+									const LocalStrategy = require('passport-local').Strategy;
+									var sqlite3 = require('sqlite3').verbose()
+									let databaseOperations = require('../database.js');
+									
+
+									module.exports = function(passport) {
+									console.log("Passport Function triggered");
+									//Passport pulls the the name variables from the name attribute in login form.  If different, you need to use whats on lines 10 and 11
+									passport.use(new LocalStrategy({
+										usernameField: 'email',
+										passwordField: 'password'
+									}, function(username, password, done) {
+										console.log(username);
+										databaseOperations.authenticateUser(username, password, done);
+									}));
+
+									passport.serializeUser(function(user, done) {
+										done(null, user); 
+									});
+									
+									passport.deserializeUser(function(user, done) {
+										done(null, user); //you can access with req.user
+									});
+									
+									}
+								</code>
+							</pre>
+						</div>
+						
+					</div>
+					
+				</section>
+				<section data-background="#fff">
+					<h4>Step 2 cont. - Context File "database.js" </h4>
+				
+					<p style="font-size: 24px;">Helpful Database Operations </p>
+					<div id="flexcontain">
+						<div class="box">
+							<pre>
+								<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+									var sqlite3 = require('sqlite3').verbose()
+									const bcrypt = require('bcryptjs');
+									
+									//Creating a new database instance - Indication of connected database
+									let db = new sqlite3.Database('./mplsrenter.sqlite', (err) => {
+										if (err) {
+										  // Cannot open database
+										  console.error(err.message)
+										  throw err
+										}else{
+											//Successful database connection
+											console.log('Connected to the SQLite database.') 
+										}
+									});
+									
+									let createProfile = (profile) =>{
+										var createProfileSql ='INSERT INTO PROSPECTIVE_PROFILE (prof_id, prof_firstname,prof_lastname, prof_address, prof_decision_date, prof_email, prof_password, prof_phone, prof_rent_range, prof_image_url, prof_class_num) VALUES (?,?,?,?,?,?,?,?,?,?,?)'
+										var params =[null, profile.firstName, profile.lastName, null, profile.move_date, profile.userEmail, profile.user_password, null, profile.user_rent_range, './images/user_profile_images/generic_profile_img.png', null];
+									
+										db.run(createProfileSql, params, function(err){
+											if (err){
+												return console.log(err.message);
+											}
+											console.log("Profile Created");
+											console.log(`Rows inserted ${this.changes}`);	  
+										});
+									}
+									
+									let authenticateUser = (username, password, done) =>{
+									
+										var findUser = 'SELECT * FROM PROSPECTIVE_PROFILE WHERE prof_email = ?';
+									
+										db.get(findUser, username, function (err, user) {
+											console.log(user);
+											if (!user) {
+											  return done(null, false);
+											}
+											bcrypt.compare(password, user.prof_password, function (err, result) {
+											  if (err) {
+												return console.log(err.message);
+											  }
+											  if (result) {
+												return done(null, user);
+											  }
+											});
+									  
+										  });
+									}
+									
+									
+									//Create Prospective Profile Table
+									db.run(`CREATE TABLE PROSPECTIVE_PROFILE (
+										prof_id INTEGER PRIMARY KEY,
+										prof_firstname varchar(255),
+										prof_lastname varchar(255),
+										prof_address varchar(255),
+										prof_decision_date date,
+										prof_email varchar(100),
+										prof_password text,
+										prof_phone varchar(45),
+										prof_rent_range varchar(45),
+										prof_image_url text,
+										prof_class_num int(11)
+									  )`,
+									(err) => {
+										if (err) {
+											// Table already created
+										}else{
+										   //Indicate if table is already created
+										   console.log('Prospective Profile Created');
+										}
+									});
+									
+								</code>
+							</pre>
+						</div>
+						
+					</div>
+					
+				</section>
+				<section data-background="#fff">
+					<h4>Step 3 - Configure Middleware </h4>
+				
+					<p style="font-size: 24px;">Provide</p>
+					<div id="flexcontain">
+						<div class="box">
+							<pre>
+								<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+									//Require dependencies you installed
+									var createError = require('http-errors');
+									var express = require('express');
+									var session = require('express-session');
+									var path = require('path');
+									var cookieParser = require('cookie-parser');
+									var logger = require('morgan');
+									var hbs = require('hbs');
+									const passport = require('passport');
+
+									//passport config
+									require('./config/passport')(passport);
+									
+									var session_config = {
+											secret: 'secret', //a random unique string key used to authenticate a session
+											resave: true, //nables the session to be stored back to the session store, even if the session was never modified during the request
+											saveUninitialized: true //his allows any uninitialized session to be sent to the store. When a session is created but not modified, it is referred to as uninitialized.
+											cookie: { secure: true } //true is a recommended option. However, it requires an https-enabled website
+											//store  parameter when saving session to database
+									};
+									
+									session_config.cookie.secure = false;
+									//IMPORTANT REVIEW IN CLASS - https://expressjs.com/en/resources/middleware/session.html
+
+									//Express Sessions
+									app.use(session(session_config))
+									//Reference for above - https://www.section.io/engineering-education/session-management-in-nodejs-using-expressjs-and-express-session/
+
+
+									//Passport middleware
+									app.use(passport.initialize());
+									app.use(passport.session());
+								</code>
+							</pre>
+						</div>
+						
+					</div>
+					
+				</section>
+				<section data-background="#fff">
+					<h4>Step 4 - Authorize Routes </h4>
+				
+					<p style="font-size: 24px;">Once Authenticated - where can user access </p>
+					<div id="flexcontain">
+						<div class="box">
+							<pre>
+								<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+									var express = require('express');
+									var router = express.Router();
+									const passport = require('passport');
+
+
+									router.post('/', (req, res, next) => {
+										passport.authenticate('local', {
+											successRedirect: '/dashboard',
+											failureRedirect: '/sign_in'
+										})(req, res, next);
+									});
+
+									module.exports = router;
+								</code>
+							</pre>
 						</div>
 						
 					</div>
