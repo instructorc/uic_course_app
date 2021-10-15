@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Data and Data Modeling</title>
+		<link rel="stylesheet" href="../dist/reset.css">
+		<link rel="stylesheet" href="../dist/reveal.css">
+		<link rel="stylesheet" href="../dist/theme/black.css">
+
+		<link rel="stylesheet" href="../dist/uic.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<!--<link rel="stylesheet" href="lib/css/zenburn.css">-->
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../plugin/highlight/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../css/print/pdf.css' : '../css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;800;900&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-background="#f8f8f8">
+				    <h2 style="color: #000;">Data + Data Modeling</h2>
+				    <h3 style="color: #000; font-weight: 200;"> Data | Data Exchange Formats | Data Modeling</h3>
+				    <!--<h3 style="color: #000; font-weight: 200; text-transform: none;">Survery of Process, Tools, Environments and Version Control</h3>-->
+				    <img src="../img/presentations/uic_logo_blk.PNG" width="300"  alt="UIC logo">
+				</section>
+				
+				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
+				    <h2>Objectives</h2>
+			
+			        <ul>
+						<li>Understanding what is Data</li>
+			        	<li>Data Exchange Formats</li>
+			        	<ul>
+			        		<li>JSON</li>
+			        		<li>XML</li>
+			        
+			        	</ul>
+			        	<li>Requesting Data</li>
+						<ul>
+							<li>AJAX</li>
+							<li>XMLHttpRequest</li>
+							<li>Fetch</li>
+							<li>Modern Frameworks</li>
+
+						</ul>
+			        </ul>
+ 
+				</section>
+				<!--<section data-background="#fff">
+					<h4>Question 1</h4>
+
+					<p>Uses the same key to encrypt and decrypt a message? </p>
+					<ul>
+						<li>A. asymmetric encryption</li>
+						<li>B. symmetric encryption</li>
+						<li>C. hash function </li>
+						<li>D. cipher suite </li>
+					
+					</ul>
+		
+				
+
+				</section>
+				<section data-background="#fff">
+					<h4>Question 2</h4>
+
+					<p>Term used for data prior to encryption? </p>
+					<ul>
+						<li>A. cipher text</li>
+						<li>B. data-in-transit </li>
+						<li>C. default text</li>
+						<li>E. plain text</li>
+					</ul>
+		
+				
+
+				</section>-->
+				<section data-background="../img/arch/devops.jpg">
+					<h1 style="color: black; background-color: rgba(255,255,255, .6); padding: 3px;">What is Data?</h1>
+				</section>
+				<section data-background="#fff">
+					<h3>Raw Data</h3>
+					<img src="../img/data/rawdata.png"  alt="raw data"/>
+					
+					<div id="flexcontain">
+						<div class="box_two" style="font-size: 32px; margin: 10px;">
+							<h3>Data</h3>
+							<ul>	
+								<li style="font-size: 26px;"><b>Data</b> - Consist of raw facts</li>
+
+							</ul>
+						</div>
+						<div class="box_two" style="font-size: 32px; margin: 10px;">
+							<h3>Raw Data</h3>
+							<ul>	
+								<li style="font-size: 26px;"><b>Raw Data</b> - indicates that the facts have not yet been processes to reveal their meaning. </li>	
+							</ul>
+						</div>
+					</div>
+					
+					  <aside class="notes">
+					    
+					    
+					  </aside>
+				</section>
+
+				<section data-background="../img/data/data_bg.png">
+					<h1 style="color: black; background-color: rgba(255,255,255, .6); padding: 3px;">The purpose of collecting raw data is to extract meaning.</h1>
+				</section>
+				<section data-background="white" style="background-size: 80%;">
+					<h3 style="background-color:rgba(255, 255, 255, 0.7); color: black;">Ton's of Acronyms - Activity</h3>
+					<!--<p style="background-color:rgba(255, 255, 255, 0.7);  font-size: .8em; color: black;" class="fragment"> a method of providing <strong>shared computing resources</strong>, including applications, computing, storage, networking, development, and deployment platforms as well as business processes. </p>-->
+					<div id="flexcontain" class="fragment">
+						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">Http(s)</h3></div>
+						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">TCP</h3></div>
+						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">TLS</h3></div>
+						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">CSR</h3></div>
+						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">MAC</h3></div>
+						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">EV Cert.</h3></div>
+						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">CA</h3></div>
+						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">DNS</h3></div>
+						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">ECDHE</h3></div>
+
+					</div>
+				</section>
+				<section data-background="../img/arch/devops.jpg">
+					<h1 style="color: black; background-color: rgba(255,255,255, .6); padding: 3px;">Http/Http(s)</h1>
+				</section>
+
+				<section data-background="#fff">
+					<h3>Hypertext Transfer Protocol</h3>
+					<img src="../img/tls/http_image.jpg"  alt="URL Breakdown"/>
+					<p style="font-size: 24px;">an application layer protocol designed to transfer information between networked devices and runs on top of other layers of the network protocol stack.</p>
+					<div id="flexcontain">
+						<div class="box_two" style="font-size: 22px; margin: 10px;">
+							<h3>http</h3>
+							<ul>	
+								<li style="font-size: 20px;"><b>protocol for transmitting hypermedia documents, such as HTML[Data-in-Transit - Plain text]</b></li>
+
+							</ul>
+						</div>
+						<div class="box_two" style="font-size: 22px; margin: 10px;">
+							<h3>https</h3>
+							<ul>	
+								<li style="font-size: 20px;"><b>is encrypted in order to increase security of data transfer  [Data-in-transit - cipher text]</b> </li>	 
+								
+							</ul>
+						</div>
+						<div class="box_two" style="font-size: 22px; margin: 10px;">
+							<h3>http/2</h3>
+							<ul>	
+								<li style="font-size: 20px;"> <b>modifies how the data is formatted (framed) and transported between the client and server, both of which manage the entire process, and hides all the complexity from our applications within the new framing layer</b></li>
+							</ul>
+						</div>
+	
+					</div>
+					
+					  <aside class="notes">
+					    
+					    
+					  </aside>
+				</section>
+				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
+					<h4>HTTP/2 overview</h4>
+					<p style="font-size: 28px;">The primary goals for HTTP/2 are to reduce latency by enabling full request and response multiplexing, minimize protocol overhead via efficient compression of HTTP header fields, and add support for request prioritization and server push.</p>
+					<img src="../img/tls/binary_framing_layer01.svg" width="650"  alt="http2 binary_framing Layer"/>
+					
+
+				</section>
+
+				<section data-background="#fff">
+					<h3>Encryption</h3>
+					<p style="font-size: 24px;"><strong>Encryption Algorithm</strong> takes input data and scrambles it by using an encryption key - a secret between two parties</p>
+					<div id="flexcontain">
+						<div class="box_two" style="font-size: 22px; margin: 10px;">
+							<h3>Symmetric</h3>
+							<ul>	
+								<li style="font-size: 20px;">- Uses the same key to encrypt and decrypt data <br>- Operate as <i>block ciphers</i> they break the input data into fixed-size blocks that can be individually encrypted</li>
+
+							</ul>
+						</div>
+						<div class="box_two" style="font-size: 22px; margin: 10px;">
+							<h3>Asymmetric</h3>
+							<ul>	
+								<li style="font-size: 20px;">- Uses different keys to encrypt and decrypt data. <br>- Sometimes called <i>public-key cryptography</i> the encryption key (public key) can be published; only the decryption key (private key) needs to be kept secret.</li>	 
+								
+							</ul>
+						</div>
+
+
+						
+					</div>
+					  <aside class="notes">
+					    
+					    
+					  </aside>
+				</section>
+				<section data-background="#fff">
+					<h2>Symmetric vs. Asymmetric</h2>
+					<p>Visual without going into much detail</p>
+					<div id="flexcontain">
+						<div class="box_two">
+							<img src="../img/tls/ceasar.png" alt="one key">
+						</div>
+						<div class="box_two">
+						
+							<img src="../img/tls/dhe.png" alt="key-pair">
+						</div>
+					</div>
+				</section>
+
+				<section data-background="#fff">
+					<h3>Hash Functions</h3>
+					<p style="font-size: 24px;"><strong>Cryptographic hash functions </strong>which can be thought of as encryption algorithms whose output <i>cannot</i> be decrypted.</p>
+					
+					<p>Using hashing algorithms is typically how passwords are stored in a database.  The web server store the hashed value of the password in the database but will deliberately forget the actuall password value.</p>
+					<img src="../img/tls/hash.png" alt="picture of hashing algorithm process" />
+					  <aside class="notes">
+					    
+					    
+					  </aside>
+				</section>
+				<section data-background="../img/arch/devops.jpg">
+					<h1 style="color: black; background-color: rgba(255,255,255, .6); padding: 3px;">What is this below?<br> ECDHE-ECDSA-AES128-GCM-SHA256</h1>
+				</section>
+				<section data-background="#fff">
+					<h3>Cipher Suites</h3>
+					<p>A set of algorithms used to secure communication - Consist of three separate algorithms</p>
+					<img src="../img/tls/cipher-suite-elements.png" width="600" alt="cipher suites graphic">
+					<div id="flexcontain">
+						<div class="box red" style="font-size: 22px; margin: 10px; background-color: #eee; height: 180px; color: #111;"><p><b style="font-size: 28px;">key-exchange algorithm</b> <br> asymmetric encryption algorithm used to exchange secret keys </p></div>
+						<div class="box blue" style="font-size: 22px; margin: 10px; background-color: #eee; height: 180px; color: #111;"><p><b style="font-size: 28px;">Symmetric algorithm</b> <br>block cipher designed for encrypting the content of TCP packets</p></div>
+						<div class="box green" style="font-size: 22px; margin: 10px; background-color: #eee; height: 180px; color: #111;"><p><b style="font-size: 28px;">MAC Algorithm</b> <br>authenticating the encrypted messages.</p></div>
+
+					</div>
+					
+				
+				</section>
+				<section data-background="#fff">
+					<h2>TLS Handshake Steps</h2>
+					<div id="flexcontain">
+						<div class="box_two">
+							<ul style="font-size: 22px;">
+								<li>1) Determines version of TLS and list cipher suites.</li>
+								<li>2) Webserver selects the most secure cipher suite it can support and instructs browser to use those algorithms for comm.</li>
+								<li>3/4) Same time as step 2, the server passes a digital certificate, containing the server name, the certificate authority(who validates Authenticity)</li>
+								<li>5) Browser verifies authenticity with certificate authorities</li>
+								<li>6) The two machines generate a session key that will be used to encrypt the TLS conversation</li>
+								<li>7) Session specifications are set and encrypted communication can take place</li>
+							</ul>
+						</div>
+						<div class="box_two">
+						
+							<img src="../img/tls/TLS-handshake-protocol.png" alt="visual of TLS handshake" title="attribution: https://www.researchgate.net/figure/TLS-handshake-protocol_fig1_298065605">
+						</div>
+					</div>
+				</section>
+				<section data-background="#fff">
+					<h4>Aproximate time it takes to complete TLS Handshake?</h4>
+
+							<ul>
+								<li>A. About 300 - 400ms </li>
+								<li>B. 2 - 3 seconds </li>
+								<li>C. About 1 second </li>
+								<li>D. 50 - 150ms </li>
+								<li>E. 500 - 800ms</li>
+							</ul>
+
+				</section>
+				<section data-background="../img/arch/devops.jpg">
+					<h1 style="color: black; background-color: rgba(255,255,255, .6); padding: 3px;">Digital Certificates</h1>
+				</section>
+				<!--<section data-background="#fff">
+					<h3>Example 1 (Reflected XSS)</h3>
+					<p style="font-size: 28px;">Data is read directly from the HTTP request and reflected back in the HTTP response. Reflected XSS exploits occur when an attacker causes a user to supply dangerous content to a vulnerable web application, which is then reflected back to the user and executed by the web browser. The most common mechanism for delivering malicious content is to include it as a parameter in a URL that is posted publicly or e-mailed directly to victims. URLs constructed in this manner constitute the core of many phishing schemes, whereby an attacker convinces victims to visit a URL that refers to a vulnerable site. After the site reflects the attacker’s content back to the user, the content is executed and proceeds to transfer private information, such as cookies that may include session information, from the user’s machine to the attacker or perform other nefarious activities.</p>
+				</section>
+				<section data-background="#fff">
+					<h3>Example 2(Stored XSS)</h3>
+					<p style="font-size: 28px;">The application stores dangerous data in a database or other trusted data store. The dangerous data is subsequently read back into the application and included in dynamic content. Stored XSS exploits occur when an attacker injects dangerous content into a data store that is later read and included in dynamic content. From an attacker’s perspective, the optimal place to inject malicious content is in an area that is displayed to either many users or particularly interesting users. Interesting users typically have elevated privileges in the application or interact with sensitive data that is valuable to the attacker. If one of these users executes malicious content, the attacker may be able to perform privileged operations on behalf of the user or gain access to sensitive data belonging to the user.</p>
+				</section>
+				<section data-background="#fff">
+					<h4>Performing Reflected Cross Scripting Attack</h4>
+				
+					<p style="font-size: 24px;">We can do this using default parameters, where we add an equal sign and the default value at the end of the parameter or structure the URL to execute JS code that makes a HTTP request to desired location.   </p>
+					<div id="flexcontain">
+						<div class="box">
+							<pre>
+								<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+								// 1) test browser for execution of JS code
+								// 2) Formulate URL to execute JS code as endpoint
+								
+								
+								&lt;script type="text/javascript"&gt;
+									var information = '../hackinfo?getCookies=' + escape(document.cookie);
+								&lt;/script&gt;
+							</code>
+						</pre>
+						</div>
+						
+					</div>
+					
+				</section>
+				
+				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
+					<h4>Mitigating both Reflected and Stored </h4>
+				
+					<ul>
+						<li>Escaping control characters in dynamic content that the website interpolates into HTML</li>
+						<ul>
+							<li>Modern templating and front-end frameworks implement this feature </li>
+						</ul>
+			
+					</ul>
+					<p>Helpful tips for finding XSS Attacks</p>
+					<ul>
+						<li>Test URL Endpoints</li>
+						<li>Test the attack in a browser</li>
+					
+					</ul>
+					<p><strong>Implement a Content Security Policy!!</strong></p>
+					<aside class="notes">
+						When mitigating Cross Site Scripting attacks, there are a number of things we can do.  Some are small measures, 
+						but helpful.  Limiting the number of characters that are allowed in input fields.  Although this can be altered,
+						it is still a good practice. Health Insurance provider Blue Cross Blue Shield always cuts my name off
+						and I want to think that this is a small measure of security that is being implemented.  
+						
+						Escaping content is key, whether dynamic content comes from the backend database or the HTTP request, you need to 
+						escape it in the same way.
+						
+						For testing URL Endpoints -  Submit a unique random value and determine whether the value is reflected in the response
+						For testing in the browser - execute some simple JavaScript like alert(document.domain) which will trigger a visible popup within the browser if the attack succeeds.
+						
+						
+						
+						
+					</aside>
+				</section>
+				<section data-background="#fff">
+					<h2>Content Security Policy (CSP)</h2>
+					<p>CSP makes it possible for server administrators to <strong>reduce</strong> or <strong>eliminate</strong> the vectors by which XSS can occur by specifying the domains that the browser should consider to be valid sources of executable scripts</p>
+				</section>
+
+				<section data-background="#fff">
+					<h3>Implementing a CSP</h3>
+				
+						<pre>
+							<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+							// 1) Via the server: Example Below
+							Content-Security-Policy: default-src 'self' trusted.com *.trusted.com
+							
+							// 2) Meta tag with head of site
+							&lt;meta http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src https://*; child-src 'none';" /&gt;
+							
+							// 3) We can use the set method of the Express Response object
+							res.set("Content-Security-Policy", "default-src 'self'");
+	
+						</code>
+					</pre>
+				
+					<div id="flexcontain">
+						<div class="box red" style="font-size: 24px; margin: 10px; background-color: #eee; height: 220px; color: #111;"><p><b style="font-size: 32px;">Consideration 1</b> <br> Implement via the server. If you have access </p></div>
+						<div class="box blue" style="font-size: 24px; margin: 10px; background-color: #eee; height: 220px; color: #111;"><p><b style="font-size: 32px;">Consideration 2</b> <br>Use of Meta Tag within HTML</p></div>
+						<div class="box green" style="font-size: 24px; margin: 10px; background-color: #eee; height: 220px; color: #111;"><p><b style="font-size: 32px;">Consideration 3</b> <br> Use within Middleware <a href="https://content-security-policy.com/examples/express-js/">Configuration with Express.js</a></p></div>
+
+					</div>
+					<aside class="notes">
+						Example 1 - A web site administrator wants to allow content from a trusted domain and all its subdomains (it doesn't have to be the same domain that the CSP is set on.)
+						Example 2 - We use the meta tag within the head of the site.
+						Example 3 - Implemented within the middleware of a framework.  The link will take you to an example of how Express.js middleware is used to set the Content Security Policy.
+						    This will discussed more in the upcoming weeks.
+					</aside>
+				</section>
+				<section data-background="#fff">
+					<h3>Enabling Reporting on CSP</h3>
+				
+						<pre>
+							<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+							// 1) Server Implementation: 
+							Content-Security-Policy-Report-Only: default-src https:; report-uri /csp-violation-report-endpoint/
+							
+						</code>
+					</pre>
+					
+					<div id="flexcontain">
+						<div class="box red" style="font-size: 32px; margin: 10px; background-color: #eee; height: 220px; color: #111;"><p><b style="font-size: 28px;">Implementation</b> <br> Implemented via the server. You will need to set up your server to receive the reports; it can store or process them in whatever manner you determine is appropriate.</p></div>
+
+
+					</div>
+					<aside class="notes">
+						Before enacting a Content Security Policy, it may be helpful to monitor what URL's are triggered within your app.  You 
+						don't want to break a service that depends that your application depends on.  For example, your might make serveral request to 
+						an Extenral RESTFul API.  It's good to monitor the report that will be written to a file somewhere on your server just to observe
+						what HTTP request are taking place on your server.
+					</aside>
+				</section>
+				<section data-background="#fff">
+					<h3>Sample Output of Report</h3>
+				
+						<pre>
+							<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+							{
+						    "csp-report": {
+						        "document-uri": "https://mplsrenters.com/",
+						        "referrer": "",
+						        "violated-directive": "script-src",
+						        "effective-directive": "script-src",
+						        "original-policy": "default-src 'none'; form-action 'none'; frame-ancestors 'none'; report-uri https://mplsrenters.com/r/d/csp/wizard",
+						        "disposition": "report",
+						        "blocked-uri": "inline",
+						        "line-number": 4,
+						        "source-file": "https://mplsrenters.com/",
+						        "status-code": 0,
+						        "script-sample": ""
+						    }
+						}
+							
+						</code>
+					</pre>
+					
+					<div id="flexcontain">
+						<div class="box red" style="font-size: 32px; margin: 10px; background-color: #eee; height: 220px; color: #111;"><p><b style="font-size: 28px;">Implementation</b> <br> Implemented via the server. You will need to set up your server to receive the reports; it can store or process them in whatever manner you determine is appropriate.</p></div>
+
+
+					</div>
+					<aside class="notes">
+						This is what a report will look like once generated if someone seeks to involk JS code from a different domain.
+					</aside>
+				</section>
+
+
+
+
+
+				<!--<section data-background="#fff">
+					<h3>DFD Components</h3>
+					<p style="font-size: 24px;"> Front-end Frameworks    &#10022;  Back-end Frameworks &#10022;  Automation Tools &#10022;  Monitoring Tools</p>
+					<div id="flexcontain">
+						<div class="box_two" style="font-size: 22px; margin: 10px;">
+							<h3>Front-end frameworks</h3>
+							<ul>	
+								<li style="font-size: 20px;"><b>HTML Template Based</b>- Bootstrap, Zurb, PureCSS, etc. </li>
+								<li style="font-size: 20px;"><b>Component-Based</b>- React, Angular, Vue, Ember, etc.</li>
+								<li style="font-size: 20px;"><b>Template Binding</b>- HandleBars, Mustashe, Ejs, knockout, jade, etc.  </li>
+
+							</ul>
+						</div>
+						<div class="box_two" style="font-size: 22px; margin: 10px;">
+							<h3>Back-end Frameworks</h3>
+							<ul>	
+								<li style="font-size: 20px;"><b>Routing</b>- Express.js, Hapi.js, page.js </li>	 
+								<li style="font-size: 20px;"><b>Persistant Data Source</b>- Relational Databases [MySQL, PostgreSQL], NoSQL [MongoDB, CouchDB/Cloudant], Graph Databases, ect.. </li>
+							</ul>
+						</div>
+						<div class="box_two" style="font-size: 22px; margin: 10px;">
+							<h3>Automation</h3>
+							<ul>	
+								<li style="font-size: 20px;"><b>Module Bundler/Task Runner</b>- Webpack, Grunt, Gulp  </li>
+								<li style="font-size: 20px;"><b>Testing</b>- Jest, Mocha, Jasmine, ect. </li>
+							</ul>
+						</div>
+
+						
+					</div>
+				</section>
+				<section data-background="#fff">
+					<h3>DFD Example #1</h3>
+				
+					<img src="../img/arch/monolithic_micro.png" width="700" alt="Monolithic and Microservices" title="source: https://medium.com/koderlabs/introduction-to-monolithic-architecture-and-microservices-architecture-b211a5955c63">
+		
+				</section>
+				<section data-background="#fff">
+					<h3>DFD Example #2</h3>
+				
+					<img src="../img/arch/monolithic_micro.png" width="700" alt="Monolithic and Microservices" title="source: https://medium.com/koderlabs/introduction-to-monolithic-architecture-and-microservices-architecture-b211a5955c63">
+		
+				</section>-->
+				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
+					
+					<h3>Suggested Reading</h3>
+					<ul style="font-size: 28px;">
+						<li>Forthcoming</li>
+
+					</ul>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="../dist/reveal.js"></script>
+		<script src="../plugin/notes/notes.js"></script>
+		<script src="../plugin/markdown/markdown.js"></script>
+		<script src="../plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+	</body>
+</html>
