@@ -42,21 +42,24 @@
 				    <h2>Objectives</h2>
 			
 			        <ul>
-						<li>Understanding what is Data</li>
-			        	<li>Data Exchange Formats</li>
+						<li>Data Exchange Formats</li>
 			        	<ul>
-			        		<li>JSON</li>
+			        		<li>JSON | XML | Protobuf</li>
 			        		<li>XML</li>
 			        
 			        	</ul>
 			        	<li>Requesting Data</li>
 						<ul>
-							<li>AJAX</li>
-							<li>XMLHttpRequest</li>
-							<li>Fetch</li>
+							<li>XMLHTTPRequest | Fetch | AJAX</li>
 							<li>Modern Frameworks</li>
 
 						</ul>
+						<li>Understanding what is Data</li>
+						<li>Data Modeling</li>
+						<ul>
+							<li>Conceptual | Logical | Physical</li>
+						</ul>
+
 			        </ul>
  
 				</section>
@@ -118,52 +121,50 @@
 					  </aside>
 				</section>
 
-				<section data-background="../img/data/data_bg.png">
-					<h1 style="color: black; background-color: rgba(255,255,255, .6); padding: 3px;">The purpose of collecting raw data is to extract meaning.</h1>
+				<section data-background="../img/data/data_bg.jpg">
+					<h2 style="color: white; font-style: italic; background-color: rgba(0, 0, 0, 0.664); padding: 3px;">The purpose of collecting raw data is to extract meaning.</h2>
 				</section>
 				<section data-background="white" style="background-size: 80%;">
-					<h3 style="background-color:rgba(255, 255, 255, 0.7); color: black;">Ton's of Acronyms - Activity</h3>
-					<!--<p style="background-color:rgba(255, 255, 255, 0.7);  font-size: .8em; color: black;" class="fragment"> a method of providing <strong>shared computing resources</strong>, including applications, computing, storage, networking, development, and deployment platforms as well as business processes. </p>-->
-					<div id="flexcontain" class="fragment">
-						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">Http(s)</h3></div>
-						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">TCP</h3></div>
-						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">TLS</h3></div>
-						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">CSR</h3></div>
-						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">MAC</h3></div>
-						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">EV Cert.</h3></div>
-						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">CA</h3></div>
-						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">DNS</h3></div>
-						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">ECDHE</h3></div>
-
+					<h3 style="background-color:rgba(255, 255, 255, 0.7); color: black;">Data Pyramid</h3>
+					<img src="../img/data/knowledge_pyramid.jpg" width="600" alt="data pyramid" />
+					<div id="flexcontain">
+						<div class="box" style="font-size: 24px; margin: 10px; height: 120px; background-color: #eee;"><h3 style="margin-top: 50px;">Raw Data</h3></div>
+						<div class="box" style="font-size: 24px; margin: 10px; height: 120px; background-color: #eee;"><h3 style="margin-top: 50px;">Information</h3></div>
+						<div class="box" style="font-size: 24px; margin: 10px; height: 120px; background-color: #eee;"><h3 style="margin-top: 50px;">Knowledge</h3></div>
+						<div class="box" style="font-size: 24px; margin: 10px; height: 120px; background-color: #eee;"><h3 style="margin-top: 50px;">Intelligence / Insight / Wisdom</h3></div>
 					</div>
 				</section>
-				<section data-background="../img/arch/devops.jpg">
-					<h1 style="color: black; background-color: rgba(255,255,255, .6); padding: 3px;">Http/Http(s)</h1>
+				<section data-background="../img/data/data_bg.jpg">
+					<h2 style="color: white; font-style: italic; background-color: rgba(0, 0, 0, 0.664); padding: 3px;">Why is it important to think of data in this structure?</h2>
 				</section>
 
 				<section data-background="#fff">
-					<h3>Hypertext Transfer Protocol</h3>
-					<img src="../img/tls/http_image.jpg"  alt="URL Breakdown"/>
-					<p style="font-size: 24px;">an application layer protocol designed to transfer information between networked devices and runs on top of other layers of the network protocol stack.</p>
+					<h3>Data Modeling</h3>
+					
+					<p style="font-size: 24px;"><b>Minimum data rule:</b>  All that is needed is there, and all that is there is needed
+					</p>
 					<div id="flexcontain">
 						<div class="box_two" style="font-size: 22px; margin: 10px;">
-							<h3>http</h3>
+							<h3>Conceptual Design</h3>
 							<ul>	
-								<li style="font-size: 20px;"><b>protocol for transmitting hypermedia documents, such as HTML[Data-in-Transit - Plain text]</b></li>
+								<li style="font-size: 20px;">Design a database independent of database software and physical details
+									Conceptual data model – Describes main data entities, attributes, relationships, and contraints
+									</li>
 
 							</ul>
 						</div>
 						<div class="box_two" style="font-size: 22px; margin: 10px;">
-							<h3>https</h3>
+							<h3>Logical Design</h3>
 							<ul>	
-								<li style="font-size: 20px;"><b>is encrypted in order to increase security of data transfer  [Data-in-transit - cipher text]</b> </li>	 
-								
+								<li style="font-size: 20px;">The process of transforming (or mapping) a conceptual schema of the application domain into a schema for the data model </li>	 
+								<li style="font-size: 20px;">some software is typically to create and map this model</li>
 							</ul>
 						</div>
 						<div class="box_two" style="font-size: 22px; margin: 10px;">
-							<h3>http/2</h3>
+							<h3>Physical Design</h3>
 							<ul>	
-								<li style="font-size: 20px;"> <b>modifies how the data is formatted (framed) and transported between the client and server, both of which manage the entire process, and hides all the complexity from our applications within the new framing layer</b></li>
+								<li style="font-size: 20px;">modifies how the data is formatted (framed) and transported between the client and server, both of which manage the entire process, and hides all the complexity from our applications within the new framing layer</li>
+								<li style="font-size: 20px;">The process of transforming logical data models into physical data Models</li>
 							</ul>
 						</div>
 	
@@ -175,55 +176,45 @@
 					  </aside>
 				</section>
 				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
-					<h4>HTTP/2 overview</h4>
-					<p style="font-size: 28px;">The primary goals for HTTP/2 are to reduce latency by enabling full request and response multiplexing, minimize protocol overhead via efficient compression of HTTP header fields, and add support for request prioritization and server push.</p>
-					<img src="../img/tls/binary_framing_layer01.svg" width="650"  alt="http2 binary_framing Layer"/>
+					<h4>Conceptual Model</h4>
+					<p style="font-size: 28px;">Types of ER-Models</p>
+					<img src="../img/data/er_models.png" alt="Different types of ER models"/>
 					
 
 				</section>
 
 				<section data-background="#fff">
-					<h3>Encryption</h3>
-					<p style="font-size: 24px;"><strong>Encryption Algorithm</strong> takes input data and scrambles it by using an encryption key - a secret between two parties</p>
-					<div id="flexcontain">
-						<div class="box_two" style="font-size: 22px; margin: 10px;">
-							<h3>Symmetric</h3>
-							<ul>	
-								<li style="font-size: 20px;">- Uses the same key to encrypt and decrypt data <br>- Operate as <i>block ciphers</i> they break the input data into fixed-size blocks that can be individually encrypted</li>
-
-							</ul>
-						</div>
-						<div class="box_two" style="font-size: 22px; margin: 10px;">
-							<h3>Asymmetric</h3>
-							<ul>	
-								<li style="font-size: 20px;">- Uses different keys to encrypt and decrypt data. <br>- Sometimes called <i>public-key cryptography</i> the encryption key (public key) can be published; only the decryption key (private key) needs to be kept secret.</li>	 
-								
-							</ul>
-						</div>
-
-
-						
-					</div>
+					<h3>Conceptual Model Cont.</h3>
+					<p style="font-size: 24px;"><strong>Conceptual Modeling</strong> is an iterative process that requires you to constantly revisit your conceptual model and make alterations</p>
+					<img src="../img/data/conceptual_model_process.png" alt="stages of ER models"/>
+					<p><strong></strong></p>
 					  <aside class="notes">
 					    
 					    
 					  </aside>
 				</section>
 				<section data-background="#fff">
-					<h2>Symmetric vs. Asymmetric</h2>
-					<p>Visual without going into much detail</p>
+					<h2>MPLS Renters Example</h2>
+					<p>Entities and the Relationships that exist</p>
+
 					<div id="flexcontain">
-						<div class="box_two">
-							<img src="../img/tls/ceasar.png" alt="one key">
+						<div class="box_two" style="font-size: 22px; margin: 10px;">
+							<img src="../img/data/sample_er_model.PNG" alt="sample ER models"/>
 						</div>
-						<div class="box_two">
-						
-							<img src="../img/tls/dhe.png" alt="key-pair">
+						<div class="box_two" style="font-size: 22px; margin: 10px;">
+							<h3>Subset of Relationships Rules:</h3>
+							<ul>	
+								<li style="font-size: 20px;"><code>A <strong>PROPERTY</strong> can be <span style="text-decoration: underline;">associated</span> with one or more <strong>PROP_AMEN_LIST</strong>, each <strong>PROP_AMEN_LIST</strong> can be <span style="text-decoration: underline;">associated</span> with one <strong>PROPERTY</strong></code></li>	 
+								<li style="font-size: 20px;"><code>A <strong>PROPERTY</strong> can be <span style="text-decoration: underline;">added</span> zero or more<strong>PROPERTY_LIST</strong>, each <strong>PROPERTY_LIST</strong> can be <span style="text-decoration: underline;">added</span> to one <strong>PROPERTY</strong></code></li>
+							</ul>
 						</div>
-					</div>
 				</section>
 
-				<section data-background="#fff">
+
+				<section data-background="../img/arch/devops.jpg">
+					<h1 style="color: black; background-color: rgba(255,255,255, .6); padding: 3px;">Logical Model</h1>
+				</section>
+				<!--<section data-background="#fff">
 					<h3>Hash Functions</h3>
 					<p style="font-size: 24px;"><strong>Cryptographic hash functions </strong>which can be thought of as encryption algorithms whose output <i>cannot</i> be decrypted.</p>
 					
@@ -233,9 +224,6 @@
 					    
 					    
 					  </aside>
-				</section>
-				<section data-background="../img/arch/devops.jpg">
-					<h1 style="color: black; background-color: rgba(255,255,255, .6); padding: 3px;">What is this below?<br> ECDHE-ECDSA-AES128-GCM-SHA256</h1>
 				</section>
 				<section data-background="#fff">
 					<h3>Cipher Suites</h3>
@@ -284,7 +272,7 @@
 				<section data-background="../img/arch/devops.jpg">
 					<h1 style="color: black; background-color: rgba(255,255,255, .6); padding: 3px;">Digital Certificates</h1>
 				</section>
-				<!--<section data-background="#fff">
+				<section data-background="#fff">
 					<h3>Example 1 (Reflected XSS)</h3>
 					<p style="font-size: 28px;">Data is read directly from the HTTP request and reflected back in the HTTP response. Reflected XSS exploits occur when an attacker causes a user to supply dangerous content to a vulnerable web application, which is then reflected back to the user and executed by the web browser. The most common mechanism for delivering malicious content is to include it as a parameter in a URL that is posted publicly or e-mailed directly to victims. URLs constructed in this manner constitute the core of many phishing schemes, whereby an attacker convinces victims to visit a URL that refers to a vulnerable site. After the site reflects the attacker’s content back to the user, the content is executed and proceeds to transfer private information, such as cookies that may include session information, from the user’s machine to the attacker or perform other nefarious activities.</p>
 				</section>
@@ -446,7 +434,7 @@
 
 
 
-				<!--<section data-background="#fff">
+				<section data-background="#fff">
 					<h3>DFD Components</h3>
 					<p style="font-size: 24px;"> Front-end Frameworks    &#10022;  Back-end Frameworks &#10022;  Automation Tools &#10022;  Monitoring Tools</p>
 					<div id="flexcontain">
