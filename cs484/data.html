@@ -45,20 +45,19 @@
 						<li>Data Exchange Formats</li>
 			        	<ul>
 			        		<li>JSON | XML | Protobuf</li>
-			        		<li>XML</li>
-			        
 			        	</ul>
 			        	<li>Requesting Data</li>
 						<ul>
 							<li>XMLHTTPRequest | Fetch | AJAX</li>
 							<li>Modern Frameworks</li>
-
 						</ul>
 						<li>Understanding what is Data</li>
 						<li>Data Modeling</li>
 						<ul>
 							<li>Conceptual | Logical | Physical</li>
 						</ul>
+						<li>Implementing SQLite into Node.js app</li>
+						<li>Database Security Measures</li>
 
 			        </ul>
  
@@ -201,11 +200,31 @@
 						<div class="box_two" style="font-size: 22px; margin: 10px;">
 							<img src="../img/data/sample_er_model.PNG" alt="sample ER models"/>
 						</div>
-						<div class="box_two" style="font-size: 22px; margin: 10px;">
+						<div class="box_two" style="font-size: 22px; margin: 10px; max-width: 400px;">
 							<h3>Subset of Relationships Rules:</h3>
 							<ul>	
 								<li style="font-size: 20px;"><code>A <strong>PROPERTY</strong> can be <span style="text-decoration: underline;">associated</span> with one or more <strong>PROP_AMEN_LIST</strong>, each <strong>PROP_AMEN_LIST</strong> can be <span style="text-decoration: underline;">associated</span> with one <strong>PROPERTY</strong></code></li>	 
 								<li style="font-size: 20px;"><code>A <strong>PROPERTY</strong> can be <span style="text-decoration: underline;">added</span> zero or more<strong>PROPERTY_LIST</strong>, each <strong>PROPERTY_LIST</strong> can be <span style="text-decoration: underline;">added</span> to one <strong>PROPERTY</strong></code></li>
+							</ul>
+						</div>
+				</section>
+				<section data-background="#fff">
+					<h2>MPLS Renters Example</h2>
+					<p>Entities and the Relationships that exist</p>
+
+					<div id="flexcontain">
+						<div class="box_two" style="font-size: 22px; margin: 10px;">
+							<img src="../img/data/sample_er_model.PNG" alt="sample ER models"/>
+						</div>
+						<div class="box_two" style="font-size: 22px; margin: 10px; max-width: 300px;">
+							<h3>What is Depicted in ER Diagram:</h3>
+							<ul>	
+								<li style="font-size: 20px;"><code>Entity Name</code></li>	 
+								<li style="font-size: 20px;"><code>Entity Strength</code></li>
+								<li style="font-size: 20px;"><code>Relationship Strength(Week and Strong)</code></li>
+								<li style="font-size: 20px;"><code>Cardinality</code></li>
+								<li style="font-size: 20px;"><code>Null vs. Not Null</code></li>
+								<li style="font-size: 20px;"><code>Sometimes the Data type</code></li>
 							</ul>
 						</div>
 				</section>
@@ -214,31 +233,29 @@
 				<section data-background="../img/arch/devops.jpg">
 					<h1 style="color: black; background-color: rgba(255,255,255, .6); padding: 3px;">Logical Model</h1>
 				</section>
-				<!--<section data-background="#fff">
-					<h3>Hash Functions</h3>
-					<p style="font-size: 24px;"><strong>Cryptographic hash functions </strong>which can be thought of as encryption algorithms whose output <i>cannot</i> be decrypted.</p>
+				<section data-background="#fff">
+					<h3>Logical Model</h3>
+					<p>A logical design is a conceptual, abstract design. You do not deal with the physical implementation details yet; you start to define the types of information that you need.</p>
+					<img src="../img/data/data_modeling_logical.png" width="600" alt="Data Modeling Logical and Pysical Requirements">
+
 					
-					<p>Using hashing algorithms is typically how passwords are stored in a database.  The web server store the hashed value of the password in the database but will deliberately forget the actuall password value.</p>
-					<img src="../img/tls/hash.png" alt="picture of hashing algorithm process" />
+				
+				</section>
+				<section data-background="#fff">
+					<h3>Different Types of DB</h3>
+					<p style="font-size: 28px;">Selection of DB should be based upon how, when, where and who will use the data.</p>
+					<img src="../img/data/database_types.jpg" alt="Database Types and brands" />
+
+					<p style="font-size: 24px;"><strong>Relational & Non-Relational</strong> are the overarching categories of DB's</p>
 					  <aside class="notes">
 					    
 					    
 					  </aside>
 				</section>
-				<section data-background="#fff">
-					<h3>Cipher Suites</h3>
-					<p>A set of algorithms used to secure communication - Consist of three separate algorithms</p>
-					<img src="../img/tls/cipher-suite-elements.png" width="600" alt="cipher suites graphic">
-					<div id="flexcontain">
-						<div class="box red" style="font-size: 22px; margin: 10px; background-color: #eee; height: 180px; color: #111;"><p><b style="font-size: 28px;">key-exchange algorithm</b> <br> asymmetric encryption algorithm used to exchange secret keys </p></div>
-						<div class="box blue" style="font-size: 22px; margin: 10px; background-color: #eee; height: 180px; color: #111;"><p><b style="font-size: 28px;">Symmetric algorithm</b> <br>block cipher designed for encrypting the content of TCP packets</p></div>
-						<div class="box green" style="font-size: 22px; margin: 10px; background-color: #eee; height: 180px; color: #111;"><p><b style="font-size: 28px;">MAC Algorithm</b> <br>authenticating the encrypted messages.</p></div>
-
-					</div>
-					
-				
+				<section data-background="../img/arch/devops.jpg">
+					<h1 style="color: black; background-color: rgba(255,255,255, .6); padding: 3px;">Physical Model</h1>
 				</section>
-				<section data-background="#fff">
+				<!--<section data-background="#fff">
 					<h2>TLS Handshake Steps</h2>
 					<div id="flexcontain">
 						<div class="box_two">
