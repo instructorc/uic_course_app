@@ -252,9 +252,59 @@
 					    
 					  </aside>
 				</section>
+				<section data-background="#fff">
+					<h3>Tools</h3>
+					<p>A number of tools can help with visualizing and database script creation</p>
+				
+					<div id="flexcontain">
+						<div class="box red" style="font-size: 24px; margin: 10px; background-color: #eee; height: 220px; color: #111;"><code><b style="font-size: 32px;">ER Modeling tools</b> <br> - <a href="https://draw.io">Draw.io</a><br> - <a href="https://www.erdconcepts.com/index.html">ER Concepts 8</a><br> - <a href="https://github.com/ondras/wwwsqldesigner">SQL Designer</a> </code></div>
+						<div class="box blue" style="font-size: 24px; margin: 10px; background-color: #eee; height: 220px; color: #111;"><code><b style="font-size: 32px;">Database Interface Tools</b> <br> - <a href="https://sqlitebrowser.org/">DB Browser</a> <br> - <a href="https://dbeaver.io/">DB Beaver</a> <br> - <a href="https://www.mysql.com/products/workbench/">MySQL Workbench</a></code></div>
+						<div class="box green" style="font-size: 24px; margin: 10px; background-color: #eee; height: 220px; color: #111;"><code><b style="font-size: 32px;">IDE/Editor tools</b> <br> </code></div>
+
+					</div>
+					<aside class="notes">
+
+					</aside>
+				</section>
+				<section data-background="#fff">
+					<h4>SQL Statement to execute our example</h4>
+				
+					<p style="font-size: 24px;"></p>
+					<div id="flexcontain">
+						<div class="box">
+							<img src="../img/data/entity_relationship.PNG" alt="Entity Relationship"/>
+						</div>
+						<div class="box">
+							<pre>
+								<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+									CREATE TABLE "USER" (
+										"user_id"	INTEGER,
+										"user_email"	TEXT NOT NULL,
+										"user_password"	TEXT,
+										PRIMARY KEY("user_id" AUTOINCREMENT)
+									);
+									
+									CREATE TABLE "TASK" (
+										"task_id"	INTEGER,
+										"task_user_id"	INTEGER NOT NULL,
+										"task_category"	TEXT,
+										"task_description"	TEXT,
+										FOREIGN KEY("task_user_id") REFERENCES "USER"("user_id"),
+										PRIMARY KEY("task_id" AUTOINCREMENT)
+									);
+
+
+							</code>
+						</pre>
+						</div>
+						
+					</div>
+					
+				</section>
 				<section data-background="../img/arch/devops.jpg">
 					<h1 style="color: black; background-color: rgba(255,255,255, .6); padding: 3px;">Physical Model</h1>
 				</section>
+
 				<!--<section data-background="#fff">
 					<h2>TLS Handshake Steps</h2>
 					<div id="flexcontain">
