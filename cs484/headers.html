@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Http Headers</title>
+		<link rel="stylesheet" href="../dist/reset.css">
+		<link rel="stylesheet" href="../dist/reveal.css">
+		<link rel="stylesheet" href="../dist/theme/black.css">
+
+		<link rel="stylesheet" href="../dist/uic.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<!--<link rel="stylesheet" href="lib/css/zenburn.css">-->
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../plugin/highlight/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../css/print/pdf.css' : '../css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;800;900&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-background="#f8f8f8">
+				    <h2 style="color: #000;">Http Headers + CORS + REST/RESTFul API</h2>
+				    <h3 style="color: #000; font-weight: 200;">Understanding Headers and making request/response</h3>
+				    <!--<h3 style="color: #000; font-weight: 200; text-transform: none;">Survery of Process, Tools, Environments and Version Control</h3>-->
+				    <img src="../img/presentations/uic_logo_blk.PNG" width="300"  alt="UIC logo">
+				</section>
+				
+				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
+				    <h2>Objectives</h2>
+			
+			        <ul style="font-size: 26px;">
+						<li>REST/RESTFul API</li>
+						<ul>
+							<li>Example using Chucknorris.io API</li>
+			        		<li>Tools</li>
+							<li>NPM Packages </li>
+			        	</ul>
+						<li>Http Headers</li>
+			        	<ul>
+			        		<li>CORS</li>
+							<li>Message body Information</li>
+			        		<li>Security</li>
+			        	</ul>
+
+			        </ul>
+ 
+				</section>
+				<section data-background="../img/arch/devops.jpg">
+					<h1 style="color: black; background-color: rgba(255,255,255, .6); padding: 3px;">REST/RESTFul API<br><span style="font-size: 28px;">What is the difference? </span></h1>
+				</section>
+				<section data-background="#fff">
+					<h3>REST/RESTFul API</h3>
+					<p style="font-size: 24px;"><strong>REST(Representational State of Transfer)</strong> Partner with someone and think about important factors you need to consider when implementing Authentication. Consider the two buckets below.</p>
+					
+					<div id="flexcontain">
+						<div class="box red" style="font-size: 24px; margin: 10px; background-color: #eee; height: 300px;  color: #111;"><p><b style="font-size: 28px;">REST</b> <br><strong>Architectural Constraints or set of Guidelines</strong> <br>- Sessions not used and should be Stateless. *No information stored <br>- No Encryption and uses HTTP protocol *Use of GET,POST, PUT, DELETE <br>-Access resources using URL and returns JSON, XML.</p></div>
+						<div class="box blue" style="font-size: 24px; margin: 10px; background-color: #eee; height: 300px; color: #111;"><p><b style="font-size: 28px;">RESTFul</b> <br>A service that implements the Constraints and Guidelines</p></div>
+					</div>
+					<p style="font-size: 24px; font-weight: 900;">Conforming to theses guidelines affords faster, lightweight, and increased scalablity</p>
+				</section>
+				<section data-background="#fff">
+					<h3>Video Explanation of REST</h3>
+					<iframe width="760" height="515" src="https://www.youtube.com/embed/y0U-ZxgLu98" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</section>
+				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
+					<h4>REST API TOOLS</h4>
+					<div id="flexcontain">
+						
+						<div class="box red" style="font-size: 26px; margin: 10px; background-color: white; height: 300px; text-align: left;  color: #111;">
+							<h3>REST Tools</h3>
+								<p><strong><a href="https://hoppscotch.io/">HoppScotch</a></strong> - Easy to use web-based interface </p>
+								<p><strong><a href="https://www.postman.com/">Postman</a></strong> - Browser extension, Desktop application </p>
+								<p><strong><a href="https://curl.se/">Curl</a></strong> - Quick testing commandline interface</p>
+								<p><strong><a href="https://insomnia.rest/">Insomnia REST</a></strong> - Commercial SaaS product and Limited Free version </p>
+						</div>
+						
+						<pre>
+							<h3>Example using Curl</h3>
+							<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+								curl https://api.chucknorris.io/jokes/random  //Simple GET request
+
+								curl -d "id=1&createdAt=2021-02-27T08:57:20.804Z&name=Chris&avatar=null" -X POST https://603a806df1d6aa0017a10c48.mockapi.io/users
+							</code>
+						</pre>
+							
+						
+					</div>
+				</section>
+				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
+					<h4>Node Modules and NPM Packages</h4>
+					<div id="flexcontain">
+						
+							<div class="box blue" style="font-size: 26px; margin: 10px; margin-bottom: -60px; background-color: white; text-align: left;  color: #111;">
+								<p><strong>http/https node.js core modules</strong> - A good resource can be found <a href="https://nodejs.dev/learn/making-http-requests-with-nodejs">here</a> </p>
+								<p><strong>npm package axios</strong> - Good documentation new website at https://axios-http.com/ </p>
+							</div>
+							<pre>
+								<h4>Example using axios</h4>
+								<code style="font-size: 14px;" class="cs hljs"  data-trim contenteditable>
+									const axios = require('axios'); //npm install axios
+
+									// Make a request for a user with a given ID
+									axios.get('/user?ID=12345')
+									  .then(function (response) {
+										// handle success
+										console.log(response);
+									  })
+									  .catch(function (error) {
+										// handle error
+										console.log(error);
+									  })
+									  .then(function () {
+										// always executed
+									  });
+								</code>
+							</pre>
+						
+					</div>
+				</section>
+				<section data-background="../img/arch/devops.jpg">
+					<h1 style="color: black; background-color: rgba(255,255,255, .6); padding: 3px;">Http Headers<br><span style="font-size: 28px;">What is the difference? How does this show up in a web app?</span></h1>
+				</section>
+				<!--<section data-background="white" style="background-size: 80%;">
+					<h3 style="background-color:rgba(255, 255, 255, 0.7); color: black;">HTTP Header Categories</h3>
+
+					<div id="flexcontain" class="fragment">
+						<div class="box" style="font-size: 20px; margin: 10px; height: 120px; background-color: #eee;"><h3 style="margin-top: 50px;">Authentication</h3><code>WWW-Authentication, Authorization, Proxy-Authenticate, Proxy Authorization</code></div>
+						<div class="box" style="font-size: 20px; margin: 10px; height: 120px; background-color: #eee;"><h3 style="margin-top: 50px;">Caching</h3><code>Age, Cache-Control, Clear-Site-Data, Expires, Pragma, Warning</code></div>
+						<div class="box" style="font-size: 20px; margin: 10px; height: 120px; background-color: #eee;"><h3 style="margin-top: 50px;">Request/Response context</h3></div>
+						<div class="box" style="font-size: 20px; margin: 10px; height: 120px; background-color: #eee;"><h3 style="margin-top: 50px;">Connection Management</h3></div>
+						<div class="box" style="font-size: 20px; margin: 10px; height: 120px; background-color: #eee;"><h3 style="margin-top: 50px;">Content Negotiation</h3></div>
+						<div class="box" style="font-size: 20px; margin: 10px; height: 120px; background-color: #eee;"><h3 style="margin-top: 50px;">Message body information</h3></div>
+						<div class="box" style="font-size: 20px; margin: 10px; height: 120px; background-color: #eee;"><h3 style="margin-top: 50px;">Cookies</h3></div>
+						<div class="box" style="font-size: 20px; margin: 10px; height: 120px; background-color: #eee;"><h3 style="margin-top: 50px;">Proxies</h3></div>
+						<div class="box" style="font-size: 20px; margin: 10px; height: 120px; background-color: #eee;"><h3 style="margin-top: 50px;">Security</h3></div>
+						<div class="box" style="font-size: 20px; margin: 10px; height: 120px; background-color: #eee;"><h3 style="margin-top: 50px;">CORS</h3></div>
+						<div class="box" style="font-size: 20px; margin: 10px; height: 120px; background-color: #eee;"><h3 style="margin-top: 50px;">Client Hints(Device and Network)</h3></div>
+						<div class="box" style="font-size: 20px; margin: 10px; height: 120px; background-color: #eee;"><h3 style="margin-top: 50px;">Conditionals</h3></div>
+					</div>
+				</section>
+
+
+				<section data-background="#fff">
+					<h3>HTTP Headers</h3>
+					<img src="../img/auth/auth_access.png" width="650"  alt="Courtesy of okta - authorization verses access"/>
+					<p style="font-size: 24px;"></p>
+					<div id="flexcontain">
+						<div class="box_two" style="font-size: 28px; margin: 10px;">
+							<h3>Authentication</h3>
+							<ul>	
+								<li style="font-size: 26px;"><b>Validating</b> that users are whom they claim to be</li>
+
+							</ul>
+						</div>
+						<div class="box_two" style="font-size: 26px; margin: 10px;">
+							<h3>Authorization</h3>
+							<ul>	
+								<li style="font-size: 26px;"><b>Access and permission</b> to specific resource or application functions </li>	 
+							</ul>
+						</div>
+	
+					</div>
+					
+					  <aside class="notes">
+					    
+					    
+					  </aside>
+				</section>
+
+				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
+					<h4>Authentication Options</h4>
+					<div id="flexcontain">
+						<div class="box_two" style="font-size: 22px; margin: 10px;">
+				
+							<ul>
+								<li><strong>Http-Native</strong> - built into HyperText Transfer Protocol [locked-in to whats provided]</li>
+								<li><strong>Sessions</strong> - Utilizes Cookies & Sessions to manage logged-in and logged-out users</li>
+								<li><strong>JWT Tokens</strong> - stateless authentication method where a JSON Web token (JWT) is stored in the browser (usually localStorage)</li>
+								<li><strong>OAuth</strong> - open-standard authorization protocol that allows for authentication via server to server communication.   Allow a website or application to access resources hosted by other web apps. Access Token provided for authentication purposes.</li>
+								<li><strong>Third-Party Cloud-base Authentication</strong> - Netlify, Amazon Cognito, AuthO</li>
+							</ul>
+						</div>
+						<div class="box_two" style="font-size: 22px; margin: 10px;">
+							<img src="../img/auth/auth_options.png" alt="authentication options"/>
+						</div>
+					</div>
+				</section>
+				<section data-background="white" style="background-size: 80%;">
+					<h3 style="background-color:rgba(255, 255, 255, 0.7); color: black;">Authentication Considerations</h3>
+					<p style="background-color:rgba(255, 255, 255, 0.7);  font-size: .8em; color: black;" class="fragment"> There are a number things we can do to enhance authorization security. </p>
+					<div id="flexcontain" class="fragment">
+						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">Secure Storage of Passwords </h3></div>
+						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">Enforcing Strong Passwords</h3></div>
+						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">Implementing CAPTCHA</h3></div>
+						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">Secure Password Resets</h3></div>
+						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">Banning Disposable Email Accounts</h3></div>
+						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">Multifactor Authentication</h3></div>
+
+
+					</div>
+				</section>
+
+				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
+					<h4>Secure Storage of Password</h4>
+					<div id="flexcontain">
+					
+							<img src="../img/auth/hash_salt.png" width="700" alt="Hashing and Salting Password" title="SOURCE: https://cyberhoot.com/cybrary/password-salting/"/>
+						
+						<div class="box_two" style="font-size: 22px; margin: 10px;">
+							<ul>
+								<li><strong>Hashing Passwords </strong> - are functions that generate a fixed-length result (the hash, or hash value) from a given input</li>
+								<li><strong>Salting</strong> - Use to protect against rainbow table attacks, salting adds an element of randomness to the hashing algorithm</li>
+
+							</ul>
+						</div>
+					</div>
+				</section>
+				<section data-background="#fff">
+					<h2>Sample Code to encrypt using bcrypt</h2>
+					<pre>
+						<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+						// 1)Install bcrypt npm module  npm install bcryptjs
+
+						// 2) Make bcrypt resource available to file
+						const bcrypt = require('bcryptjs');
+
+						const hashedPassword = await bcrypt.hash(req.body.password, 10);
+						
+						// 3) Input hashedPassword into Database
+					</code>
+				</pre>
+					<div id="flexcontain">
+
+						<div class="box_two">
+						
+							<img src="../img/auth/hash_database.PNG" alt="Example of hashed password in database" width="575" title="Picture Attribution: https://sudonull.com/post/93227-Risks-and-problems-of-password-hashing">
+						</div>
+					</div>
+				</section>
+
+				<section data-background="#fff">
+					<h3>Enforcing Strong Passwords</h3>
+				
+						<pre>
+							<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+								// Create a schema
+								var schema = new passwordValidator();
+								
+								// Add properties to it
+								schema
+								.is().min(8)                                    // Minimum length 8
+								.is().max(1000)                                 // Maximum length 1000
+								.has().uppercase()                              // Must have uppercase letters
+								.has().lowercase()                              // Must have lowercase letters
+								.has().digits()                                 // Must have digits
+								.has().not().spaces()                           // Should not have spaces
+								.is().not().oneOf(['Passw0rd', 'Password123']); // Blacklist these values
+								
+								//Validate password is complying to properties set
+								var isValid = schema.validate(req.body.password);
+
+								//Hash Password
+								const hashedPassword = await bcrypt.hash(req.body.password, 10);
+	
+						</code>
+					</pre>
+				
+					<div id="flexcontain">
+						<div class="box red" style="font-size: 20px; margin: 10px; background-color: #eee; height: 180px; color: #111;"><p><b style="font-size: 26px;">Longer is better</b> <br> - Set minimum character length; </p></div>
+						<div class="box blue" style="font-size: 20px; margin: 10px; background-color: #eee; height: 180px; color: #111;"><p><b style="font-size: 26px;">Case-Sensitive + Special Characters</b> <br> - Password Suggestion or recommendation</p></div>
+						<div class="box green" style="font-size: 20px; margin: 10px; background-color: #eee; height: 180px; color: #111;"><p><b style="font-size: 26px;">Negate Common Passwords</b> <br> - Do not allow certain passwords <br> - Prevent previous used passwords</a></p></div>
+
+					</div>
+					<aside class="notes">
+
+					</aside>
+				</section>
+				<section data-background="#fff">
+					<h3>Implementing CAPTCHA</h3>
+				
+					<img src="../img/auth/survey-captcha-example.png" alt="Picture of Google CAPTCHA"  >
+					<p style="font-size: 20px;">Good Article - https://www.wired.com/2014/12/google-one-click-recaptcha/ </p>
+					<div id="flexcontain">
+						<div class="box red" style="font-size: 24px; margin: 10px; background-color: #eee; height: 220px; color: #111;"><p><b style="font-size: 26px;">Why CAPTCHA</b> <br>  </p></div>
+						<div class="box blue" style="font-size: 24px; margin: 10px; background-color: #eee; height: 220px; color: #111;"><p><b style="font-size: 26px;">Drawbacks to CAPTCHA</b> <br> </p></div>
+
+
+					</div>
+					<aside class="notes">
+
+					</aside>
+				</section>
+				<section data-background="#fff">
+					<h3>Password Recovery/Reset</h3>
+					<img src="../img/auth/login_forgot.png" width="500" alt="login screen"/>
+					<h3>Common Attack Vectors</h3>
+					<div id="flexcontain">
+						<div class="box red" style="font-size: 20px; margin: 10px; background-color: #eee; height: 190px; color: #111;"><p><b style="font-size: 22px;">Step 1 - User enumeration attack</b> <br>- malicious actor is looking for differences in the server's response based on the validity of submitted credentials. <br> <a href="https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/03-Identity_Management_Testing/04-Testing_for_Account_Enumeration_and_Guessable_User_Account">OWASP good read</a>  </p></div>
+						<div class="box red" style="font-size: 20px; margin: 10px; background-color: #eee; height: 190px; color: #111;"><p><b style="font-size: 22px;">Step 2 - Brute Force attack</b> <br>- consists of an attacker submitting many passwords or passphrases with the hope of eventually guessing correctly<br>  </p></div>
+
+					</div>
+					<aside class="notes">
+
+					</aside>
+				</section>
+				<section data-background="#fff">
+					<h2>Banning Disposable Email Accounts</h2>
+					<ul style="font-size: 24px;">
+						<li>Very hard to maintain, but might be work having someone check and update a list of disposable email Accounts</li>
+						<li>Adopting a subscription API services that identifiy disposable email addresses could be a viable option</li>
+
+					<pre style="max-height: 300px;">
+						<code style="font-size: 16px; max-height: 300px;" class="cs hljs"  data-trim contenteditable>
+							// Maintained List of disposable email addresses
+							0815.ru
+
+							emailtemporario.com.br
+							emailthe.net
+
+					</code>
+				</pre>
+				</section>
+
+				<section data-background="#fff">
+					<h3>MultiFactor Authentication</h3>
+					<p style="font-size: 28px;"><strong>MultiFactor Authentication </strong> also known as two-factor authentication; requires a returning user to identify themselves with at least two of the following three categories of information.  something they <strong>know</strong>, something they <strong>have</strong> and something they <strong>are</strong>.</p>
+					
+
+					<p style="font-size: 26px; font-weight: 700;">Question 1: What ways have you seen the three categories implemented? <br> Question 2: What type of attack might this prevent?</p>
+					
+					  <aside class="notes">
+					    
+					    
+					  </aside>
+				</section>
+				<section data-background="../img/arch/devops.jpg">
+					<h1 style="color: black; background-color: rgba(255,255,255, .6); padding: 3px;">Understanding Cookies and Sessions</h1>
+				</section>
+				<section data-background="#fff">
+					<h4>Question 1</h4>
+
+					<p>A cookie can be used for all of the below options expect which option? </p>
+					<ul>
+						<li>A. Session Management</li>
+						<li>B. Personalization of Settings</li>
+						<li>C. Refresing Browser</li>
+						<li>D. Tracking User Behavior</li>
+					
+					</ul>
+				</section>
+				<section data-background="#fff">
+					<h4>Question 2</h4>
+
+					<p>Which of the following can you not set for a cookie? </p>
+					<ul>
+						<li>A. Max-Age</li>
+						<li>B. Expiration</li>
+						<li>C. Domain</li>
+						<li>D. Path</li>
+						<li>E. All are permissible options</li>
+					
+					</ul>
+				</section>
+				<section data-background="#fff">
+					<h3>What is a cookie?</h3>
+					<p style="font-size: 28px;">A small piece of data that a server sends to a user's web browser</p>
+					<p style="font-size: 24px;"> <span style="font-weight: 700;">Primary use cases: </span><br>Session management | Personalization | Tracking</li>
+					<p style="font-weight: 700; font-size: 22px;">What additional info. can a cookie carry besides the value? </p>
+					<img src="../img/auth/cookie_info.PNG" width="500" alt="cookie properties" title="SOURCE: https://flaviocopes.com/express-cookies/ ">
+					<pre>
+						<code style="font-size: 14px;" class="cs hljs"  data-trim contenteditable>
+							//Expires after 360000 ms from the time it is set.
+							res.cookie(name, 'value', {expire: 360000 + Date.now(), httpOnly: true, path: '/admin', secure: true}); 	
+						</code>
+					</pre>
+					<aside class="notes">
+						Good resource: https://www.paladion.net/blogs/cookie-attributes-and-their-importance
+					</aside>
+				
+				</section>
+				<section data-background="#fff">
+					<h4>Question 1</h4>
+
+					<p>Which of the following is not a authentication choice primarily used in applications? </p>
+					<ul>
+						<li>A. Session Based Authentication</li>
+						<li>B. JWT Authentication</li>
+						<li>C. OAuth and OpenID</li>
+						<li>D. Http-Native Authentication</li>
+					
+					</ul>
+				</section>
+				<section data-background="#fff">
+					<h4>Question 2</h4>
+
+					<p>If a Hashing algorithm encypts your password, what does salting your password do ? </p>
+					<ul>
+						<li>A. Salt generates a private key that is saved to the database</li>
+						<li>B. Salt adds an element of randomness to the hashing algorithm </li>
+						<li>C. Salt checks the end-users password with what is generated via the hashing algorithm</li>
+						<li>E. None of the options presented</li>
+					</ul>
+		
+				
+
+				</section>
+				<section data-background="../img/arch/devops.jpg">
+					<h1 style="color: black; background-color: rgba(255,255,255, .6); padding: 3px;">Implementing Passport.js</h1>
+				</section>
+				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
+					<h4>Getting Started with Passport.js</h4>
+					<p>Passport is authentication middleware for Node.js.  Configuration steps below:</p>
+					<div id="flexcontain">
+						<div class="box_two" style="font-size: 22px; margin: 10px;">
+				
+							<ul>
+								<li><strong>Step 1</strong> - Determine which strategy. Ex. local strategy, OAuth, OpenID & Install Dependencies</li>
+								<li><strong>Step 2</strong> - Configure Strategy *There are over 480 of these</li>
+								<li><strong>Step 3</strong> - Set Middleware</li>
+								<li><strong>Step 4</strong> - Authorize Protected Routes</li>
+
+							</ul>
+						</div>
+						<div class="box_two" style="font-size: 22px; margin: 10px;">
+							<img src="../img/auth/auth_options.png" alt="authentication options"/>
+						</div>
+					</div>
+				</section>
+				<section data-background="#fff">
+					<h4>Step 1 - Install Dependencies</h4>
+				
+					<p style="font-size: 24px;">When incorporating a database, we will install more packages</p>
+					<div id="flexcontain">
+						<div class="box">
+							<pre>
+								<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+								npm install passport.js //install passport.js
+								npm install passport passport-local  //install passport.js local strategy
+								npm install express body-parser express-session //one command to install body-parser and express session 
+								//consider install bycryptjs for hashing passwords
+							</code>
+						</pre>
+						</div>
+						
+					</div>
+					
+				</section>
+				<section data-background="#fff">
+					<h4>Step 2 - Configure Strategy </h4>
+				
+					<p style="font-size: 24px;">Create a config folder and file that holds strategy configuration </p>
+					<div id="flexcontain">
+						<div class="box">
+							<pre>
+								<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+									const LocalStrategy = require('passport-local').Strategy;
+									var sqlite3 = require('sqlite3').verbose()
+									let databaseOperations = require('../database.js');
+									
+
+									module.exports = function(passport) {
+									console.log("Passport Function triggered");
+									//Passport pulls the the name variables from the name attribute in login form.  If different, you need to use whats on lines 10 and 11
+									passport.use(new LocalStrategy({
+										usernameField: 'email',
+										passwordField: 'password'
+									}, function(username, password, done) {
+										console.log(username);
+										databaseOperations.authenticateUser(username, password, done);
+									}));
+
+									passport.serializeUser(function(user, done) {
+										done(null, user); 
+									});
+									
+									passport.deserializeUser(function(user, done) {
+										done(null, user); //you can access with req.user
+									});
+									
+									}
+								</code>
+							</pre>
+						</div>
+						
+					</div>
+					
+				</section>
+				<section data-background="#fff">
+					<h4>Step 2 cont. - Context File "database.js" </h4>
+				
+					<p style="font-size: 24px;">Helpful Database Operations </p>
+					<div id="flexcontain">
+						<div class="box">
+							<pre>
+								<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+									var sqlite3 = require('sqlite3').verbose()
+									const bcrypt = require('bcryptjs');
+									
+									//Creating a new database instance - Indication of connected database
+									let db = new sqlite3.Database('./mplsrenter.sqlite', (err) => {
+										if (err) {
+										  // Cannot open database
+										  console.error(err.message)
+										  throw err
+										}else{
+											//Successful database connection
+											console.log('Connected to the SQLite database.') 
+										}
+									});
+									
+									let createProfile = (profile) =>{
+										var createProfileSql ='INSERT INTO PROSPECTIVE_PROFILE (prof_id, prof_firstname,prof_lastname, prof_address, prof_decision_date, prof_email, prof_password, prof_phone, prof_rent_range, prof_image_url, prof_class_num) VALUES (?,?,?,?,?,?,?,?,?,?,?)'
+										var params =[null, profile.firstName, profile.lastName, null, profile.move_date, profile.userEmail, profile.user_password, null, profile.user_rent_range, './images/user_profile_images/generic_profile_img.png', null];
+									
+										db.run(createProfileSql, params, function(err){
+											if (err){
+												return console.log(err.message);
+											}
+											console.log("Profile Created");
+											console.log(`Rows inserted ${this.changes}`);	  
+										});
+									}
+									
+									let authenticateUser = (username, password, done) =>{
+									
+										var findUser = 'SELECT * FROM PROSPECTIVE_PROFILE WHERE prof_email = ?';
+									
+										db.get(findUser, username, function (err, user) {
+											console.log(user);
+											if (!user) {
+											  return done(null, false);
+											}
+											bcrypt.compare(password, user.prof_password, function (err, result) {
+											  if (err) {
+												return console.log(err.message);
+											  }
+											  if (result) {
+												return done(null, user);
+											  }
+											});
+									  
+										  });
+									}
+									
+									
+									//Create Prospective Profile Table
+									db.run(`CREATE TABLE PROSPECTIVE_PROFILE (
+										prof_id INTEGER PRIMARY KEY,
+										prof_firstname varchar(255),
+										prof_lastname varchar(255),
+										prof_address varchar(255),
+										prof_decision_date date,
+										prof_email varchar(100),
+										prof_password text,
+										prof_phone varchar(45),
+										prof_rent_range varchar(45),
+										prof_image_url text,
+										prof_class_num int(11)
+									  )`,
+									(err) => {
+										if (err) {
+											// Table already created
+										}else{
+										   //Indicate if table is already created
+										   console.log('Prospective Profile Created');
+										}
+									});
+									
+								</code>
+							</pre>
+						</div>
+						
+					</div>
+					
+				</section>
+				<section data-background="#fff">
+					<h4>Step 3 - Configure Middleware </h4>
+				
+				
+					<div id="flexcontain">
+						<div class="box">
+							<pre>
+								<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+									//Require dependencies you installed
+									var createError = require('http-errors');
+									var express = require('express');
+									var session = require('express-session');
+									var path = require('path');
+									var cookieParser = require('cookie-parser');
+									var logger = require('morgan');
+									var hbs = require('hbs');
+									const passport = require('passport');
+
+									//passport config
+									require('./config/passport')(passport);
+									
+									var session_config = {
+											secret: 'secret', //a random unique string key used to authenticate a session
+											resave: true, //nables the session to be stored back to the session store, even if the session was never modified during the request
+											saveUninitialized: true //his allows any uninitialized session to be sent to the store. When a session is created but not modified, it is referred to as uninitialized.
+											cookie: { secure: true } //true is a recommended option. However, it requires an https-enabled website
+											//store  parameter when saving session to database
+									};
+									
+									session_config.cookie.secure = false;
+									//IMPORTANT REVIEW IN CLASS - https://expressjs.com/en/resources/middleware/session.html
+
+									//Express Sessions
+									app.use(session(session_config))
+									//Reference for above - https://www.section.io/engineering-education/session-management-in-nodejs-using-expressjs-and-express-session/
+
+
+									//Passport middleware
+									app.use(passport.initialize());
+									app.use(passport.session());
+								</code>
+							</pre>
+						</div>
+						
+					</div>
+					
+				</section>
+				<section data-background="#fff">
+					<h4>Step 4 - Authorize Routes </h4>
+				
+					<p style="font-size: 24px;">Once Authenticated - where can user access </p>
+					<div id="flexcontain">
+						<div class="box">
+							<pre>
+								<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+									var express = require('express');
+									var router = express.Router();
+									const passport = require('passport');
+
+
+									router.post('/', (req, res, next) => {
+										passport.authenticate('local', {
+											successRedirect: '/dashboard',
+											failureRedirect: '/sign_in'
+										})(req, res, next);
+									});
+
+									module.exports = router;
+								</code>
+							</pre>
+						</div>
+						
+					</div>
+					
+				</section>
+				<!--<section data-background="../img/arch/devops.jpg">
+					<h1 style="color: black; background-color: rgba(255,255,255, .6); padding: 3px;">What is this below?<br> ECDHE-ECDSA-AES128-GCM-SHA256</h1>
+				</section>
+				<section data-background="#fff">
+					<h3>Cipher Suites</h3>
+					<p>A set of algorithms used to secure communication - Consist of three separate algorithms</p>
+					<img src="../img/tls/cipher-suite-elements.png" width="600" alt="cipher suites graphic">
+					<div id="flexcontain">
+						<div class="box red" style="font-size: 22px; margin: 10px; background-color: #eee; height: 180px; color: #111;"><p><b style="font-size: 28px;">key-exchange algorithm</b> <br> asymmetric encryption algorithm used to exchange secret keys </p></div>
+						<div class="box blue" style="font-size: 22px; margin: 10px; background-color: #eee; height: 180px; color: #111;"><p><b style="font-size: 28px;">Symmetric algorithm</b> <br>block cipher designed for encrypting the content of TCP packets</p></div>
+						<div class="box green" style="font-size: 22px; margin: 10px; background-color: #eee; height: 180px; color: #111;"><p><b style="font-size: 28px;">MAC Algorithm</b> <br>authenticating the encrypted messages.</p></div>
+
+					</div>
+					
+				
+				</section>
+
+
+				<section data-background="#fff">
+					<h4>Performing Reflected Cross Scripting Attack</h4>
+				
+					<p style="font-size: 24px;">We can do this using default parameters, where we add an equal sign and the default value at the end of the parameter or structure the URL to execute JS code that makes a HTTP request to desired location.   </p>
+					<div id="flexcontain">
+						<div class="box">
+							<pre>
+								<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+								// 1) test browser for execution of JS code
+								// 2) Formulate URL to execute JS code as endpoint
+								
+								
+								&lt;script type="text/javascript"&gt;
+									var information = '../hackinfo?getCookies=' + escape(document.cookie);
+								&lt;/script&gt;
+							</code>
+						</pre>
+						</div>
+						
+					</div>
+					
+				</section>
+				
+				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
+					<h4>Mitigating both Reflected and Stored </h4>
+				
+					<ul>
+						<li>Escaping control characters in dynamic content that the website interpolates into HTML</li>
+						<ul>
+							<li>Modern templating and front-end frameworks implement this feature </li>
+						</ul>
+			
+					</ul>
+					<p>Helpful tips for finding XSS Attacks</p>
+					<ul>
+						<li>Test URL Endpoints</li>
+						<li>Test the attack in a browser</li>
+					
+					</ul>
+					<p><strong>Implement a Content Security Policy!!</strong></p>
+					<aside class="notes">
+						When mitigating Cross Site Scripting attacks, there are a number of things we can do.  Some are small measures, 
+						but helpful.  Limiting the number of characters that are allowed in input fields.  Although this can be altered,
+						it is still a good practice. Health Insurance provider Blue Cross Blue Shield always cuts my name off
+						and I want to think that this is a small measure of security that is being implemented.  
+						
+						Escaping content is key, whether dynamic content comes from the backend database or the HTTP request, you need to 
+						escape it in the same way.
+						
+						For testing URL Endpoints -  Submit a unique random value and determine whether the value is reflected in the response
+						For testing in the browser - execute some simple JavaScript like alert(document.domain) which will trigger a visible popup within the browser if the attack succeeds.
+						
+						
+						
+						
+					</aside>
+				</section>
+				<section data-background="#fff">
+					<h2>Content Security Policy (CSP)</h2>
+					<p>CSP makes it possible for server administrators to <strong>reduce</strong> or <strong>eliminate</strong> the vectors by which XSS can occur by specifying the domains that the browser should consider to be valid sources of executable scripts</p>
+				</section>
+
+				<section data-background="#fff">
+					<h3>Implementing a CSP</h3>
+				
+						<pre>
+							<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+							// 1) Via the server: Example Below
+							Content-Security-Policy: default-src 'self' trusted.com *.trusted.com
+							
+							// 2) Meta tag with head of site
+							&lt;meta http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src https://*; child-src 'none';" /&gt;
+							
+							// 3) We can use the set method of the Express Response object
+							res.set("Content-Security-Policy", "default-src 'self'");
+	
+						</code>
+					</pre>
+				
+					<div id="flexcontain">
+						<div class="box red" style="font-size: 24px; margin: 10px; background-color: #eee; height: 220px; color: #111;"><p><b style="font-size: 32px;">Consideration 1</b> <br> Implement via the server. If you have access </p></div>
+						<div class="box blue" style="font-size: 24px; margin: 10px; background-color: #eee; height: 220px; color: #111;"><p><b style="font-size: 32px;">Consideration 2</b> <br>Use of Meta Tag within HTML</p></div>
+						<div class="box green" style="font-size: 24px; margin: 10px; background-color: #eee; height: 220px; color: #111;"><p><b style="font-size: 32px;">Consideration 3</b> <br> Use within Middleware <a href="https://content-security-policy.com/examples/express-js/">Configuration with Express.js</a></p></div>
+
+					</div>
+					<aside class="notes">
+						Example 1 - A web site administrator wants to allow content from a trusted domain and all its subdomains (it doesn't have to be the same domain that the CSP is set on.)
+						Example 2 - We use the meta tag within the head of the site.
+						Example 3 - Implemented within the middleware of a framework.  The link will take you to an example of how Express.js middleware is used to set the Content Security Policy.
+						    This will discussed more in the upcoming weeks.
+					</aside>
+				</section>
+				<section data-background="#fff">
+					<h3>Enabling Reporting on CSP</h3>
+				
+						<pre>
+							<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+							// 1) Server Implementation: 
+							Content-Security-Policy-Report-Only: default-src https:; report-uri /csp-violation-report-endpoint/
+							
+						</code>
+					</pre>
+					
+					<div id="flexcontain">
+						<div class="box red" style="font-size: 32px; margin: 10px; background-color: #eee; height: 220px; color: #111;"><p><b style="font-size: 28px;">Implementation</b> <br> Implemented via the server. You will need to set up your server to receive the reports; it can store or process them in whatever manner you determine is appropriate.</p></div>
+
+
+					</div>
+					<aside class="notes">
+						Before enacting a Content Security Policy, it may be helpful to monitor what URL's are triggered within your app.  You 
+						don't want to break a service that depends that your application depends on.  For example, your might make serveral request to 
+						an Extenral RESTFul API.  It's good to monitor the report that will be written to a file somewhere on your server just to observe
+						what HTTP request are taking place on your server.
+					</aside>
+				</section>
+				<section data-background="#fff">
+					<h3>Sample Output of Report</h3>
+				
+						<pre>
+							<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+							{
+						    "csp-report": {
+						        "document-uri": "https://mplsrenters.com/",
+						        "referrer": "",
+						        "violated-directive": "script-src",
+						        "effective-directive": "script-src",
+						        "original-policy": "default-src 'none'; form-action 'none'; frame-ancestors 'none'; report-uri https://mplsrenters.com/r/d/csp/wizard",
+						        "disposition": "report",
+						        "blocked-uri": "inline",
+						        "line-number": 4,
+						        "source-file": "https://mplsrenters.com/",
+						        "status-code": 0,
+						        "script-sample": ""
+						    }
+						}
+							
+						</code>
+					</pre>
+					
+					<div id="flexcontain">
+						<div class="box red" style="font-size: 32px; margin: 10px; background-color: #eee; height: 220px; color: #111;"><p><b style="font-size: 28px;">Implementation</b> <br> Implemented via the server. You will need to set up your server to receive the reports; it can store or process them in whatever manner you determine is appropriate.</p></div>
+
+
+					</div>
+					<aside class="notes">
+						This is what a report will look like once generated if someone seeks to involk JS code from a different domain.
+					</aside>
+				</section>
+
+
+
+
+
+				<section data-background="#fff">
+					<h3>DFD Components</h3>
+					<p style="font-size: 24px;"> Front-end Frameworks    &#10022;  Back-end Frameworks &#10022;  Automation Tools &#10022;  Monitoring Tools</p>
+					<div id="flexcontain">
+						<div class="box_two" style="font-size: 22px; margin: 10px;">
+							<h3>Front-end frameworks</h3>
+							<ul>	
+								<li style="font-size: 20px;"><b>HTML Template Based</b>- Bootstrap, Zurb, PureCSS, etc. </li>
+								<li style="font-size: 20px;"><b>Component-Based</b>- React, Angular, Vue, Ember, etc.</li>
+								<li style="font-size: 20px;"><b>Template Binding</b>- HandleBars, Mustashe, Ejs, knockout, jade, etc.  </li>
+
+							</ul>
+						</div>
+						<div class="box_two" style="font-size: 22px; margin: 10px;">
+							<h3>Back-end Frameworks</h3>
+							<ul>	
+								<li style="font-size: 20px;"><b>Routing</b>- Express.js, Hapi.js, page.js </li>	 
+								<li style="font-size: 20px;"><b>Persistant Data Source</b>- Relational Databases [MySQL, PostgreSQL], NoSQL [MongoDB, CouchDB/Cloudant], Graph Databases, ect.. </li>
+							</ul>
+						</div>
+						<div class="box_two" style="font-size: 22px; margin: 10px;">
+							<h3>Automation</h3>
+							<ul>	
+								<li style="font-size: 20px;"><b>Module Bundler/Task Runner</b>- Webpack, Grunt, Gulp  </li>
+								<li style="font-size: 20px;"><b>Testing</b>- Jest, Mocha, Jasmine, ect. </li>
+							</ul>
+						</div>
+
+						
+					</div>
+				</section>
+				<section data-background="#fff">
+					<h3>DFD Example #1</h3>
+				
+					<img src="../img/arch/monolithic_micro.png" width="700" alt="Monolithic and Microservices" title="source: https://medium.com/koderlabs/introduction-to-monolithic-architecture-and-microservices-architecture-b211a5955c63">
+		
+				</section>
+				<section data-background="#fff">
+					<h3>DFD Example #2</h3>
+				
+					<img src="../img/arch/monolithic_micro.png" width="700" alt="Monolithic and Microservices" title="source: https://medium.com/koderlabs/introduction-to-monolithic-architecture-and-microservices-architecture-b211a5955c63">
+		
+				</section>
+				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
+					
+					<h3>Suggested Reading</h3>
+					<ul style="font-size: 28px;">
+					
+
+					</ul>
+				</section>-->
+
+			</div>
+		</div>
+
+		<script src="../dist/reveal.js"></script>
+		<script src="../plugin/notes/notes.js"></script>
+		<script src="../plugin/markdown/markdown.js"></script>
+		<script src="../plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+	</body>
+</html>
