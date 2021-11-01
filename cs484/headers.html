@@ -133,12 +133,12 @@
 				<section data-background="../img/arch/devops.jpg">
 					<h1 style="color: black; background-color: rgba(255,255,255, .6); padding: 3px;">Http Headers<br><span style="font-size: 28px;">What is the difference? How does this show up in a web app?</span></h1>
 				</section>
-				<!--<section data-background="white" style="background-size: 80%;">
+				<section data-background="white" style="background-size: 80%;">
 					<h3 style="background-color:rgba(255, 255, 255, 0.7); color: black;">HTTP Header Categories</h3>
 
 					<div id="flexcontain" class="fragment">
-						<div class="box" style="font-size: 20px; margin: 10px; height: 120px; background-color: #eee;"><h3 style="margin-top: 50px;">Authentication</h3><code>WWW-Authentication, Authorization, Proxy-Authenticate, Proxy Authorization</code></div>
-						<div class="box" style="font-size: 20px; margin: 10px; height: 120px; background-color: #eee;"><h3 style="margin-top: 50px;">Caching</h3><code>Age, Cache-Control, Clear-Site-Data, Expires, Pragma, Warning</code></div>
+						<div class="box" style="font-size: 20px; margin: 10px; height: 120px; background-color: #eee;"><h3 style="margin-top: 50px;">Authentication</h3></div>
+						<div class="box" style="font-size: 20px; margin: 10px; height: 120px; background-color: #eee;"><h3 style="margin-top: 50px;">Caching</h3></div>
 						<div class="box" style="font-size: 20px; margin: 10px; height: 120px; background-color: #eee;"><h3 style="margin-top: 50px;">Request/Response context</h3></div>
 						<div class="box" style="font-size: 20px; margin: 10px; height: 120px; background-color: #eee;"><h3 style="margin-top: 50px;">Connection Management</h3></div>
 						<div class="box" style="font-size: 20px; margin: 10px; height: 120px; background-color: #eee;"><h3 style="margin-top: 50px;">Content Negotiation</h3></div>
@@ -154,100 +154,180 @@
 
 
 				<section data-background="#fff">
-					<h3>HTTP Headers</h3>
-					<img src="../img/auth/auth_access.png" width="650"  alt="Courtesy of okta - authorization verses access"/>
-					<p style="font-size: 24px;"></p>
-					<div id="flexcontain">
-						<div class="box_two" style="font-size: 28px; margin: 10px;">
-							<h3>Authentication</h3>
-							<ul>	
-								<li style="font-size: 26px;"><b>Validating</b> that users are whom they claim to be</li>
-
-							</ul>
-						</div>
-						<div class="box_two" style="font-size: 26px; margin: 10px;">
-							<h3>Authorization</h3>
-							<ul>	
-								<li style="font-size: 26px;"><b>Access and permission</b> to specific resource or application functions </li>	 
-							</ul>
-						</div>
-	
-					</div>
+					<h3>Setting HTTP Headers</h3>
+					<pre>
+						<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+							// Node.js program to demonstrate the
+							// response.setHeaders() Method
+							
+							// Importing http module
+							var http = require('http');
+							// Setting up PORT
+							const PORT = process.env.PORT || 3000;
+							
+							// Creating http Server
+							var httpServer = http.createServer(
+								function(request, response) {
+							
+							// Setting up Headers
+							response.setHeader('Content-Type', 'text/html');
+							response.setHeader('Set-Cookie', ['type=ninja',
+							'language=javascript']);
+							
+							// Checking and printing the headers
+							console.log("When Header is set a string:",
+							response.getHeader('Content-Type'));
+							console.log("When Header is set an Array:",
+							response.getHeader('Set-Cookie'));
+								
+							// Getting the set Headers
+							const headers = response.getHeaders();
+								
+							// Printing those headers
+							console.log(headers);
+							
+							// Prints Output on the browser in response
+							response.writeHead(200,
+								{ 'Content-Type': 'text/plain' });
+							response.end('ok');
+							});
+							
+							// Listening to http Server
+							httpServer.listen(PORT, () => {
+								console.log("Server is running at port 3000...");
+							});
+							
+						</code>
+					</pre>
+					<p>Or you can use third-party npm packages that will help with configuration such as helmet.js</p>
 					
 					  <aside class="notes">
 					    
 					    
 					  </aside>
 				</section>
+				<section data-background="white" style="background-size: 80%;">
+					<h3 style="background-color:rgba(255, 255, 255, 0.7); color: black;">Security Headers</h3>
+					<p style="background-color:rgba(255, 255, 255, 0.7);  font-size: .8em; color: black;" class="fragment"> Headers to consider for security purposes </p>
+					<div id="flexcontain" class="fragment">
+						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">HSTS</h3></div>
+						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">Expect-CT</h3></div>
+						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">X-Frame-Options</h3></div>
+						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">Content-Security-Policy</h3></div>
+						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">CORS</h3></div>
+						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">Referrer-Policy</h3></div>
 
-				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
-					<h4>Authentication Options</h4>
+
+					</div>
+				</section>
+				<!--<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
+					<h4>HSTS</h4>
 					<div id="flexcontain">
 						<div class="box_two" style="font-size: 22px; margin: 10px;">
 				
 							<ul>
-								<li><strong>Http-Native</strong> - built into HyperText Transfer Protocol [locked-in to whats provided]</li>
-								<li><strong>Sessions</strong> - Utilizes Cookies & Sessions to manage logged-in and logged-out users</li>
-								<li><strong>JWT Tokens</strong> - stateless authentication method where a JSON Web token (JWT) is stored in the browser (usually localStorage)</li>
-								<li><strong>OAuth</strong> - open-standard authorization protocol that allows for authentication via server to server communication.   Allow a website or application to access resources hosted by other web apps. Access Token provided for authentication purposes.</li>
-								<li><strong>Third-Party Cloud-base Authentication</strong> - Netlify, Amazon Cognito, AuthO</li>
+								<li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security">Strict-Transport-Security</a></strong> - This tells the browser to prefer HTTPS over HTTP. The maxAge parameter lets the number of seconds browsers should remember to prefer HTTPS. By default, this figure is 15552000 — or 180 days.  You can also include subdomains as well via includeSubDomains</li>
+								<li><code>Why do you think this would be necessary? What does this header help mitigate as it relates to security?</code></li>
+								<li><a href="https://hstspreload.org/">hstspreload.org</a> - You can tell browsers in advance that your site uses HSTS, so that first interaction enforces secure channel. </li>
 							</ul>
 						</div>
+						<pre>
+							<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+								Strict-Transport-Security: max-age=expire-time
+								Strict-Transport-Security: max-age=expire-time; includeSubDomains
+								Strict-Transport-Security: max-age=expire-time; preload	
+								
+								//Example
+								Strict-Transport-Security: max-age=31536000; includeSubDomains
+   
+							</code>
+						</pre>
+						
+					</div>
+				</section>
+				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
+					<h4>Expect-CT</h4>
+					<div id="flexcontain">
 						<div class="box_two" style="font-size: 22px; margin: 10px;">
-							<img src="../img/auth/auth_options.png" alt="authentication options"/>
+				
+							<ul>
+								<li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Expect-CT">Expect-CT</a></strong> - Informs the browser that it should make additional background checks</li>
+								<li><code>Why do you think this would be necessary? What does this header help mitigate as it relates to security?</code></li>
+								<li><a href="https://certificate.transparency.dev/">certificate.transparency.dev</a> - Goal is to detect mis-issued or malicious certificates, with earlier, faster than any other method. </li>
+							</ul>
 						</div>
+						<pre>
+							<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+								Expect-CT: max-age=360000, enforce, report-uri="https://s_reports.mplsrenters.com/report"	
+							</code>
+						</pre>
+						
 					</div>
 				</section>
-				<section data-background="white" style="background-size: 80%;">
-					<h3 style="background-color:rgba(255, 255, 255, 0.7); color: black;">Authentication Considerations</h3>
-					<p style="background-color:rgba(255, 255, 255, 0.7);  font-size: .8em; color: black;" class="fragment"> There are a number things we can do to enhance authorization security. </p>
-					<div id="flexcontain" class="fragment">
-						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">Secure Storage of Passwords </h3></div>
-						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">Enforcing Strong Passwords</h3></div>
-						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">Implementing CAPTCHA</h3></div>
-						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">Secure Password Resets</h3></div>
-						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">Banning Disposable Email Accounts</h3></div>
-						<div class="box" style="font-size: 24px; margin: 10px; height: 150px; background-color: #eee;"><h3 style="margin-top: 50px;">Multifactor Authentication</h3></div>
-
-
+				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
+					<h4>X-Frame-Option</h4>
+					<div id="flexcontain">
+						<div class="box_two" style="font-size: 22px; margin: 10px;">
+				
+							<ul>
+								<li><strong></strong>X-Frame-Option - response header can be used to indicate whether or not a browser should be allowed to render a page in a frame, iframe, embed or object </li>
+								<li><code>Why do you think this would be necessary? What does this header help mitigate as it relates to security?</code></li>
+								<li><a href="https://instructorc.github.io/site/slides/webtools/docker.html">Docker course slides example</a> - Site that takes the full range of window using iframe </li>
+							</ul>
+						</div>
+						<pre>
+							<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
+								X-Frame-Options: DENY //page cannot be displayed in a frame, regardless of the site attempting to do so
+								X-Frame-Options: SAMEORIGIN //page can only be displayed in a frame on the same origin as the page itself
+							</code>
+						</pre>
+						
 					</div>
 				</section>
+
 
 				<section data-background="" data-background-size="contain" data-background="#fff" style="top: 0;">
-					<h4>Secure Storage of Password</h4>
+					<h4>CORS</h4>
 					<div id="flexcontain">
 					
-							<img src="../img/auth/hash_salt.png" width="700" alt="Hashing and Salting Password" title="SOURCE: https://cyberhoot.com/cybrary/password-salting/"/>
+							<img src="../img/headers/cors_principle.png" width="500" alt="CORS" title="SOURCE: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"/>
 						
 						<div class="box_two" style="font-size: 22px; margin: 10px;">
 							<ul>
-								<li><strong>Hashing Passwords </strong> - are functions that generate a fixed-length result (the hash, or hash value) from a given input</li>
-								<li><strong>Salting</strong> - Use to protect against rainbow table attacks, salting adds an element of randomness to the hashing algorithm</li>
-
+								<li><strong>Cross-origin Resource Sharing </strong> - HTTP-header based mechanism that allows a server to indicate any origins (domain, scheme, or port) other than its own from which a browser should permit loading resources</li>
+								
+								<li>CORS Preflight - The request is made, but resource prevented.  Potentially dangerous due to the abilityt to send data to server.  </li>
 							</ul>
 						</div>
 					</div>
 				</section>
 				<section data-background="#fff">
-					<h2>Sample Code to encrypt using bcrypt</h2>
+					<h2>Referrer-Policy</h2>
 					<pre>
 						<code style="font-size: 16px;" class="cs hljs"  data-trim contenteditable>
-						// 1)Install bcrypt npm module  npm install bcryptjs
+							//Via server
+							Referrer-Policy: no-referrer
+							Referrer-Policy: no-referrer-when-downgrade
+							Referrer-Policy: origin
+							Referrer-Policy: origin-when-cross-origin
+							Referrer-Policy: same-origin
+							Referrer-Policy: strict-origin
+							Referrer-Policy: strict-origin-when-cross-origin
+							Referrer-Policy: unsafe-url
 
-						// 2) Make bcrypt resource available to file
-						const bcrypt = require('bcryptjs');
+							//Can also be sent via HTML using the meta tag
 
-						const hashedPassword = await bcrypt.hash(req.body.password, 10);
-						
-						// 3) Input hashedPassword into Database
 					</code>
 				</pre>
 					<div id="flexcontain">
-
-						<div class="box_two">
-						
-							<img src="../img/auth/hash_database.PNG" alt="Example of hashed password in database" width="575" title="Picture Attribution: https://sudonull.com/post/93227-Risks-and-problems-of-password-hashing">
+						<div class="box_two" style="font-size: 22px; margin: 10px;">
+							<ul>
+								<li> HTTP header controls how much referrer information (sent with the Referer header) should be included with requests.</li>
+								
+								
+							</ul>
 						</div>
+					
 					</div>
 				</section>
 
